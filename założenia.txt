@@ -1,0 +1,28 @@
+Tytul projektu:
+System rezerwacji biletów
+
+Zespól:
+- Kamil Rusin
+- Bartlomiej Szlachta
+
+Glówna funkcjonalnosc systemu: 
+- logowanie 
+- rejestracja dla uzytkownika
+- rola(uzytkownik, admin od poczatku systemowo)
+- rezerwacja miejsc
+
+Dodatkowa planowana funkcjonalnosc systemu:
+- (uzytkownik) wyswietlanie listy zarezerwowanych miejsc
+- (admin) dodawanie filmów
+- (uzytkownik) anulowanie rezerwacji
+
+Zakres prac:
+- utworzenie bazy danych (Bartek)
+- zamodelowanie klas (Bartek)
+- utworzenie polaczenia z baza danych (Bartek)
+- utworzenie funkcjonalnosci w modelu (Bartek)
+- utworzenie modelu MVP aplikacji desktopowej (Kamil)
+- utworzenie ekranu logowania i rejestracji (Bartek)
+- utworzenie widoku listy rezerwacji (Kamil)
+- utworzenie ekranu dostepnych miejsc dla projekcji (Kamil)
+- utworzenie ekranu dostepnych projekcji (Kamil)
