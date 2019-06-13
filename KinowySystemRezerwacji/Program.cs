@@ -9,7 +9,7 @@ namespace KinowySystemRezerwacji
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// Główny punkt startowy aplikacji.
         /// </summary>
         [STAThread]
         static void Main()
