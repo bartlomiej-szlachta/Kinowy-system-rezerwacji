@@ -1,4 +1,4 @@
-# System-rezerwacji
+# Kinowy-system-rezerwacji
 
 Jest to aplikacja służąca do zarządzania systemem rezerwacji biletów w kinie.
 
