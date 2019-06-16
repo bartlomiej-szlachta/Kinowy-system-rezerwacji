@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KinowySystemRezerwacji.dto;
 
-namespace KinowySystemRezerwacji.model
+namespace KinowySystemRezerwacji.service
 {
     /// <summary>
     /// Logika biznesowa aplikacji.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KinowySystemRezerwacji.dto;
-using KinowySystemRezerwacji.model;
+using KinowySystemRezerwacji.service;
 
 namespace KinowySystemRezerwacji
 {
