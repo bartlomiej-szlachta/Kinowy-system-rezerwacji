@@ -51,5 +51,4 @@ CONSTRAINT fk_rezerwacjauzytkownika FOREIGN KEY (id_uzytkownika) REFERENCES Uzyt
 CONSTRAINT fk_rezerwacjamiejsc FOREIGN KEY (id_miejsca) REFERENCES Miejsca(id),
 CONSTRAINT fk_rezerwacjawseansie FOREIGN KEY (id_seansu) REFERENCES Seanse(id))
 ENGINE = innodb
-default character set utf8 collate utf8_unicode_ci
- 
+default character set utf8 collate utf8_unicode_ci;
