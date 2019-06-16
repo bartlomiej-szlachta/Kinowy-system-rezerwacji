@@ -10,7 +10,7 @@ namespace KinowySystemRezerwacji.model
     /// <summary>
     /// Logika biznesowa aplikacji.
     /// </summary>
-    internal class Model
+    internal class Service
     {
         /// <summary>
         /// Event reprezentujący prostą odpowiedź informującą o suckesie danej operacji.

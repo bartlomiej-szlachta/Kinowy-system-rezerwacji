@@ -53,7 +53,7 @@
     <Compile Include="dto\SeatToChooseResponse.cs" />
     <Compile Include="dto\ShowingResponse.cs" />
     <Compile Include="IView.cs" />
-    <Compile Include="model\Model.cs" />
+    <Compile Include="service\Service.cs" />
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

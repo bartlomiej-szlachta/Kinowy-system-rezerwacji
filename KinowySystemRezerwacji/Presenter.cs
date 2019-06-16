@@ -16,7 +16,7 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Model zawierający logikę biznesową.
         /// </summary>
-        private Model model;
+        private Service model;
 
         /// <summary>
         /// Widok zawierający interfejs użytkownika.
@@ -28,7 +28,7 @@ namespace KinowySystemRezerwacji
         /// </summary>
         /// <param name="model">Model zawierający logikę biznesową</param>
         /// <param name="view">Widok zawierający interfejs użytkownika</param>
-        internal Presenter(Model model, IView view)
+        internal Presenter(Service model, IView view)
         {
             this.model = model;
             this.view = view;
