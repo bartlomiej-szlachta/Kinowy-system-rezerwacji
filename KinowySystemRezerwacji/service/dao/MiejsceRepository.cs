@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using KinowySystemRezerwacji.model;
-using KinowySystemRezerwacji.service;
+using KinowySystemRezerwacji.service.model;
 
-namespace KinowySystemRezerwacji.dao
+namespace KinowySystemRezerwacji.service.dao
 {
     /// <summary>
     /// Repozytorium miejsc.
@@ -18,9 +17,9 @@ namespace KinowySystemRezerwacji.dao
         /// Metoda wyciągająca z bazy danych dane dotyczące wszystkich miejsc na sali.
         /// </summary>
         /// <returns>Lista miejsc</returns>
-        internal static List<Miejsce> FindAll()
+        internal static List<MiejsceEntity> FindAll()
         {
-            List<Miejsce> miejsca = new List<Miejsce>();
+            List<MiejsceEntity> miejsca = new List<MiejsceEntity>();
             MySqlConnection connection = DBConnection.Instance.Connection;
             using (MySqlCommand command = new MySqlCommand("SELECT * FROM miejsca;", connection))
             {
@@ -28,7 +27,7 @@ namespace KinowySystemRezerwacji.dao
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    miejsca.Add(new Miejsce(reader));
+                    miejsca.Add(new MiejsceEntity(reader));
                 }
                 connection.Close();
             }

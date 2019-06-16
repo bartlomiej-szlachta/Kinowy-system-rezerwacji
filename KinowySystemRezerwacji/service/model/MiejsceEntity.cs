@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace KinowySystemRezerwacji.model
+namespace KinowySystemRezerwacji.service.model
 {
     /// <summary>
     /// Klasa reprezentująca encję miejsca z bazy danych.
     /// </summary>
-    internal class Miejsce
+    internal class MiejsceEntity
     {
         /// <summary>
         /// Id miejsca.
@@ -31,7 +31,7 @@ namespace KinowySystemRezerwacji.model
         /// Konstruktor.
         /// </summary>
         /// <param name="reader">Obiekt readera MySql</param>
-        internal Miejsce(MySqlDataReader reader)
+        internal MiejsceEntity(MySqlDataReader reader)
         {
             Id = (int)reader["id"];
             Rzad = (int)reader["rzad"];
