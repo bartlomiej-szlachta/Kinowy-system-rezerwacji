@@ -1,4 +1,4 @@
-﻿namespace KinowySystemRezerwacji
+﻿namespace KinowySystemRezerwacji.view
 {
     partial class MainForm
     {
