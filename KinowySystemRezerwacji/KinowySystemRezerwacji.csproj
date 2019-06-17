@@ -47,13 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dto\BookingResponse.cs" />
+    <Compile Include="dto\BookSeatsRequest.cs" />
+    <Compile Include="dto\RegisterRequest.cs" />
+    <Compile Include="dto\BookedSeatResponse.cs" />
+    <Compile Include="dto\SeatToChooseResponse.cs" />
+    <Compile Include="dto\ShowingResponse.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="view\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter.cs" />
     <Compile Include="service\model\MiejsceEntity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
