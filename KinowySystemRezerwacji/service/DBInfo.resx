@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataBase" xml:space="preserve">
-    <value />
+    <value>kinowy_system_rezerwacji</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value />
@@ -130,6 +130,6 @@
     <value>localhost</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value />
+    <value>root</value>
   </data>
 </root>

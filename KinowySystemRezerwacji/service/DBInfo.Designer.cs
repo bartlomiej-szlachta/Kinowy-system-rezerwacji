@@ -61,7 +61,7 @@ namespace KinowySystemRezerwacji.service {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to kinowy_system_rezerwacji.
         /// </summary>
         internal static string DataBase {
             get {
@@ -97,7 +97,7 @@ namespace KinowySystemRezerwacji.service {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to root.
         /// </summary>
         internal static string User {
             get {
