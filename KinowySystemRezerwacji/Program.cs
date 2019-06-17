@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KinowySystemRezerwacji.service;
+using KinowySystemRezerwacji.view;
 
 namespace KinowySystemRezerwacji
 {
@@ -16,7 +18,11 @@ namespace KinowySystemRezerwacji
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            Service model = new Service();
+            IView view = new MainForm();
+            Presenter presenter = new Presenter(model, view);
+            Application.Run((Form)view);
         }
     }
 }
