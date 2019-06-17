@@ -24,7 +24,7 @@ namespace KinowySystemRezerwacji
         private IView view;
 
         /// <summary>
-        /// Konstruktor.
+        /// Konstruktor, lol.
         /// </summary>
         /// <param name="model">Model zawierający logikę biznesową</param>
         /// <param name="view">Widok zawierający interfejs użytkownika</param>
@@ -62,7 +62,7 @@ namespace KinowySystemRezerwacji
         /// Metoda obsługująca event logowania.
         /// </summary>
         /// <param name="username">Nazwa użytkownika</param>
-        /// <param name="password">Zahashowane hasło</param>
+        /// <param name="password">Hasło użytkownika</param>
         private void HandleLogIn(string username, string password)
         {
             try

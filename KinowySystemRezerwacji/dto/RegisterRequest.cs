@@ -17,9 +17,9 @@ namespace KinowySystemRezerwacji.dto
         internal string Username { get; set; }
 
         /// <summary>
-        /// Hasło użytkownika, przekazane w 
+        /// Hasło użytkownika.
         /// </summary>
-        internal string HashedPassword { get; set; }
+        internal string Password { get; set; }
 
         /// <summary>
         /// Imię.

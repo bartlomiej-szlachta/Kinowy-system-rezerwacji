@@ -30,8 +30,8 @@ namespace KinowySystemRezerwacji.service
         /// Metoda logująca użytkownika.
         /// </summary>
         /// <param name="username">Nazwa użytkownika</param>
-        /// <param name="hashedPassword">Zahashowane hasło</param>
-        internal void LogIn(string username, string hashedPassword)
+        /// <param name="password">Hasło użytkownika</param>
+        internal void LogIn(string username, string password)
         {
             throw new NotImplementedException();
         }
