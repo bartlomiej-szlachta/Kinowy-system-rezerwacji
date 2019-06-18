@@ -56,8 +56,9 @@ namespace KinowySystemRezerwacji.service
         /// <summary>
         /// Metoda zwracająca listę dostępnych seansów.
         /// </summary>
+        /// <param name="date">Data, dla której mają zostać wyświetlone seanse</param>
         /// <returns>Informacje o dostępnych seansach</returns>
-        internal ShowingResponse[] GetShowings()
+        internal ShowingResponse[] GetShowings(DateTime date)
         {
             throw new NotImplementedException();
         }

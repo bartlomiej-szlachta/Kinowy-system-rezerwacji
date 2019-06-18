@@ -108,11 +108,12 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Metoda obsługująca event uzyskania listy dostępnych seansów.
         /// </summary>
-        private void HandleShowingsList()
+        /// <param name="date">Data, dla której mają zostać wyświetlone seanse.</param>
+        private void HandleShowingsList(DateTime date)
         {
             try
             {
-                view.ShowShowingsList(model.GetShowings());
+                view.ShowShowingsList(model.GetShowings(date));
             }
             catch (Exception ex)
             {

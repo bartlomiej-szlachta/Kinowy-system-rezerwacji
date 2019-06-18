@@ -35,7 +35,7 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Event reprezentujący żądanie wyświetlenia listy dostępnych seansów.
         /// </summary>
-        event Action RequestShowingsList;
+        event Action<DateTime> RequestShowingsList;
 
         /// <summary>
         /// Event reprezentujący żądanie wyświetlenia listy miejsc na dany seans.
