@@ -39,6 +39,7 @@ namespace KinowySystemRezerwacji
             view.RequestShowingsList += HandleShowingsList;
             view.RequestSeatsList += HandleSeatsList;
             view.RequestBookShowing += HandleBookShowing;
+            model.LoggingInCompleted += HandleLoggingInCompleted;
             model.BasicResponse += HandleBasicResponse;
         }
         
@@ -151,6 +152,15 @@ namespace KinowySystemRezerwacji
             {
                 view.ShowMessage(false, ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Metoda obsługująca event ukończenia logowania się do systemu.
+        /// </summary>
+        /// <param name="username">Nazwa zalogowanego użytkownika</param>
+        private void HandleLoggingInCompleted(string username)
+        {
+            view.LoggingInCompleted(username);
         }
 
         /// <summary>

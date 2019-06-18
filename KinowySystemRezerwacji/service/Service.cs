@@ -13,6 +13,11 @@ namespace KinowySystemRezerwacji.service
     internal class Service
     {
         /// <summary>
+        /// Event potwierdzający ukończenie logowania się do systemu.
+        /// </summary>
+        internal event Action<string> LoggingInCompleted;
+
+        /// <summary>
         /// Event reprezentujący prostą odpowiedź informującą o suckesie danej operacji.
         /// </summary>
         internal event Action<bool, string> BasicResponse;

@@ -48,6 +48,12 @@ namespace KinowySystemRezerwacji
         event Action<BookSeatsRequest> RequestBookShowing;
 
         /// <summary>
+        /// Metoda potwierdzająca zalogowanie użytkownika do systemu
+        /// </summary>
+        /// <param name="username"></param>
+        void LoggingInCompleted(string username);
+
+        /// <summary>
         /// Metoda wyświetlająca listę wcześniejszych rezerwacji.
         /// </summary>
         /// <param name="response">Zestaw obiektów zawierających dane dotyczące rezerwacji</param>
@@ -71,5 +77,7 @@ namespace KinowySystemRezerwacji
         /// <param name="success">Informacja o tym, czy komunikat jest pozytywny</param>
         /// <param name="message">Treść komunikatu</param>
         void ShowMessage(bool success, string message);
+
+        
     }
 }
