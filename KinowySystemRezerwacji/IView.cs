@@ -50,7 +50,7 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Metoda potwierdzająca zalogowanie użytkownika do systemu
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="username">Nazwa zalogowanego użytkownika</param>
         void LoggingInCompleted(string username);
 
         /// <summary>
