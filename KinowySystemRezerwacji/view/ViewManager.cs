@@ -26,9 +26,9 @@ namespace KinowySystemRezerwacji.view
             return view.GetActiveForm();
         }
 
-        #endregion Non-static members
+        #endregion
 
-        #region
+        #region Non-static members
 
         private LoginForm loginForm;
         private MainForm mainForm;
@@ -41,7 +41,7 @@ namespace KinowySystemRezerwacji.view
             loginForm = LoginForm.GetInstance();
             activeForm = loginForm;
             loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
-            loginForm.RequestLogIn += (string login, string password) => LoggingInCompleted(login);//RequestLogIn?.Invoke(login, password);
+            loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
         }
 
         #endregion
@@ -97,6 +97,7 @@ namespace KinowySystemRezerwacji.view
         {
             return activeForm;
         }
+
         #endregion
     }
 }
