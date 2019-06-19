@@ -11,17 +11,22 @@ namespace KinowySystemRezerwacji.view
     /// <summary>
     /// Główna klasa widoku, zarządzająca ekranami.
     /// </summary>
-    internal class ViewPresenter : IView
+    internal class ViewManager : IView
     {
         #region Static members
 
         private static Form activeForm;
-        public static explicit operator Form(ViewPresenter view)
+
+        /// <summary>
+        /// Przeciążenie jawnego rzutowania na formularz.
+        /// </summary>
+        /// <param name="view">Obiekt ViewManager</param>
+        public static explicit operator Form(ViewManager view)
         {
             return view.GetActiveForm();
         }
 
-        #endregion
+        #endregion Non-static members
 
         #region
 
@@ -31,7 +36,7 @@ namespace KinowySystemRezerwacji.view
         /// <summary>
         /// Konstruktor.
         /// </summary>
-        internal ViewPresenter()
+        internal ViewManager()
         {
             loginForm = LoginForm.GetInstance();
             activeForm = loginForm;
@@ -54,10 +59,13 @@ namespace KinowySystemRezerwacji.view
         public void LoggingInCompleted(string username)
         {
             loginForm.Hide();
-            loginForm = null;
             mainForm = new MainForm();
+            mainForm.ShowDialog();
+            loginForm.Close();
+
+            loginForm = null;
             activeForm = mainForm;
-            activeForm.Show();
+            
             mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
             mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
             mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);

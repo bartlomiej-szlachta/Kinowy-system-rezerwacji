@@ -20,10 +20,9 @@ namespace KinowySystemRezerwacji
             Application.SetCompatibleTextRenderingDefault(false);
 
             Service model = new Service();
-            IView view = new ViewPresenter();
+            IView view = new ViewManager();
             Presenter presenter = new Presenter(model, view);
-            var from = (Form)(ViewPresenter)view;
-            Application.Run(from);
+            Application.Run((Form)(ViewManager)view);
         }
     }
 }
