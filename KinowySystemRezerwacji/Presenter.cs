@@ -39,6 +39,7 @@ namespace KinowySystemRezerwacji
             view.RequestShowingsList += HandleShowingsList;
             view.RequestSeatsList += HandleSeatsList;
             view.RequestBookShowing += HandleBookShowing;
+            model.LoggingInCompleted += HandleLoggingInCompleted;
             model.BasicResponse += HandleBasicResponse;
         }
         
@@ -108,11 +109,12 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Metoda obsługująca event uzyskania listy dostępnych seansów.
         /// </summary>
-        private void HandleShowingsList()
+        /// <param name="date">Data, dla której mają zostać wyświetlone seanse</param>
+        private void HandleShowingsList(DateTime date)
         {
             try
             {
-                view.ShowShowingsList(model.GetShowings());
+                view.ShowShowingsList(model.GetShowings(date));
             }
             catch (Exception ex)
             {
@@ -150,6 +152,15 @@ namespace KinowySystemRezerwacji
             {
                 view.ShowMessage(false, ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Metoda obsługująca event ukończenia logowania się do systemu.
+        /// </summary>
+        /// <param name="username">Nazwa zalogowanego użytkownika</param>
+        private void HandleLoggingInCompleted(string username)
+        {
+            view.LoggingInCompleted(username);
         }
 
         /// <summary>

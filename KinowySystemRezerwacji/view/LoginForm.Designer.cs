@@ -1,6 +1,6 @@
 ﻿namespace KinowySystemRezerwacji.view
 {
-    partial class MainForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // MainForm
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainForm";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Kinowy system rezerwacji";
+            this.Text = "Logowanie do systemu";
             this.ResumeLayout(false);
 
         }
@@ -45,3 +45,4 @@
         #endregion
     }
 }
+
