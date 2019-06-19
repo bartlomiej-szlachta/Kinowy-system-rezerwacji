@@ -109,7 +109,7 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Metoda obsługująca event uzyskania listy dostępnych seansów.
         /// </summary>
-        /// <param name="date">Data, dla której mają zostać wyświetlone seanse.</param>
+        /// <param name="date">Data, dla której mają zostać wyświetlone seanse</param>
         private void HandleShowingsList(DateTime date)
         {
             try
