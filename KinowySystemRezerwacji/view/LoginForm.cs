@@ -14,7 +14,7 @@ namespace KinowySystemRezerwacji.view
     /// <summary>
     /// Formularz logowania do systemu, zaprojektowany jako singleton.
     /// </summary>
-    partial class LoginForm : Form
+    internal partial class LoginForm : Form
     {
         #region Singleton elements
 
@@ -42,6 +42,9 @@ namespace KinowySystemRezerwacji.view
         public event Action<RegisterRequest> RequestRegister;
         public event Action<string, string> RequestLogIn;
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RequestLogIn?.Invoke("mocklogin", "mockpassword");
+        }
     }
 }

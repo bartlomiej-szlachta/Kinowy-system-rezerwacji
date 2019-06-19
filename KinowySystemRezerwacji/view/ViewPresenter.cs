@@ -16,7 +16,10 @@ namespace KinowySystemRezerwacji.view
         #region Static members
 
         private static Form activeForm;
-        public static implicit operator Form(ViewPresenter view) { return activeForm; }
+        public static explicit operator Form(ViewPresenter view)
+        {
+            return view.GetActiveForm();
+        }
 
         #endregion
 
@@ -33,7 +36,7 @@ namespace KinowySystemRezerwacji.view
             loginForm = LoginForm.GetInstance();
             activeForm = loginForm;
             loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
-            loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+            loginForm.RequestLogIn += (string login, string password) => LoggingInCompleted(login);//RequestLogIn?.Invoke(login, password);
         }
 
         #endregion
@@ -50,9 +53,11 @@ namespace KinowySystemRezerwacji.view
 
         public void LoggingInCompleted(string username)
         {
+            loginForm.Hide();
             loginForm = null;
             mainForm = new MainForm();
             activeForm = mainForm;
+            activeForm.Show();
             mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
             mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
             mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
@@ -80,6 +85,10 @@ namespace KinowySystemRezerwacji.view
             MessageBox.Show(message, success ? "Message" : "Error", MessageBoxButtons.OK);
         }
 
+        public Form GetActiveForm()
+        {
+            return activeForm;
+        }
         #endregion
     }
 }

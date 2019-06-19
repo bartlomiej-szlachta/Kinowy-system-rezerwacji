@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KinowySystemRezerwacji.dto;
+using System.Windows.Forms;
 
 namespace KinowySystemRezerwacji
 {
     /// <summary>
     /// Interfejs określający funkcjonalność widoku.
     /// </summary>
-    interface IView
+    internal interface IView
     {
         /// <summary>
         /// Event reprezentujący żądanie rejestracji nowego użytkownika.
@@ -77,7 +78,5 @@ namespace KinowySystemRezerwacji
         /// <param name="success">Informacja o tym, czy komunikat jest pozytywny</param>
         /// <param name="message">Treść komunikatu</param>
         void ShowMessage(bool success, string message);
-
-        
     }
 }

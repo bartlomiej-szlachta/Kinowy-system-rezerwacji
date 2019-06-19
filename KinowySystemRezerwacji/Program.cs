@@ -22,7 +22,8 @@ namespace KinowySystemRezerwacji
             Service model = new Service();
             IView view = new ViewPresenter();
             Presenter presenter = new Presenter(model, view);
-            Application.Run((Form)view);
+            var from = (Form)(ViewPresenter)view;
+            Application.Run(from);
         }
     }
 }
