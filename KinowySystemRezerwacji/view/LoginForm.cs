@@ -19,9 +19,20 @@ namespace KinowySystemRezerwacji.view
         #region Singleton elements
 
         private static LoginForm instance = null;
+
+        /// <summary>
+        /// Konstruktor, lol.
+        /// </summary>
         private LoginForm()
         {
             InitializeComponent();
+            passwordExtendedTextBox.SetTextMask(true);
+            usernameExtendedTextBox.PlaceHolder = "Nazwa użytkownika";
+            passwordExtendedTextBox.PlaceHolder = "Hasło";
+            firstNameExtendedTextBox.PlaceHolder = "Imię";
+            lastNameExtendedTextBox.PlaceHolder = "Nazwisko";
+            emailExtendedTextBox.PlaceHolder = "E-mail";
+            confirmLoginRegisterButton.Top = 152;
         }
 
         /// <summary>
@@ -41,5 +52,66 @@ namespace KinowySystemRezerwacji.view
 
         public event Action<RegisterRequest> RequestRegister;
         public event Action<string, string> RequestLogIn;
+
+        private enum Mode { LOGIN, REGISTER };
+
+        private Mode mode = Mode.LOGIN;
+
+        private void ResetTextFields()
+        {
+            //usernameExtendedTextBox.Text = "";
+            //passwordExtendedTextBox.Text = "";
+            //firstNameExtendedTextBox.Text = "";
+            //lastNameExtendedTextBox.Text = "";
+            //emailExtendedTextBox.Text = "";
+        }
+
+        private void confirmLoginRegisterButton_Click(object sender, EventArgs e)
+        {
+            if (mode == Mode.LOGIN)
+            {
+                RequestLogIn?.Invoke(usernameExtendedTextBox.Text, passwordExtendedTextBox.Text);
+            }
+            if (mode == Mode.REGISTER)
+            {
+                RegisterRequest request = new RegisterRequest
+                {
+                    Username = usernameExtendedTextBox.Text,
+                    Password = passwordExtendedTextBox.Text,
+                    FirstName = firstNameExtendedTextBox.Text,
+                    LastName = lastNameExtendedTextBox.Text,
+                    Email = emailExtendedTextBox.Text
+                };
+                RequestRegister?.Invoke(request);
+            }
+        }
+
+        private void switchLoginRegisterButton_Click(object sender, EventArgs e)
+        {
+            if (mode == Mode.LOGIN)
+            {
+                mode = Mode.REGISTER;
+                titleLabel.Text = "Rejestracja";
+                confirmLoginRegisterButton.Text = "Zarejestruj";
+                switchLoginRegisterButton.Text = "Tryb logowania";
+                firstNameExtendedTextBox.Visible = true;
+                lastNameExtendedTextBox.Visible = true;
+                emailExtendedTextBox.Visible = true;
+                confirmLoginRegisterButton.Top = 276;
+                ResetTextFields();
+            }
+            else if (mode == Mode.REGISTER)
+            {
+                mode = Mode.LOGIN;
+                titleLabel.Text = "Logowanie";
+                confirmLoginRegisterButton.Text = "Zaloguj";
+                switchLoginRegisterButton.Text = "Tryb rejestracji";
+                firstNameExtendedTextBox.Visible = false;
+                lastNameExtendedTextBox.Visible = false;
+                emailExtendedTextBox.Visible = false;
+                confirmLoginRegisterButton.Top = 152;
+                ResetTextFields();
+            }
+        }
     }
 }
