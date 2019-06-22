@@ -90,7 +90,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowMessage(bool success, string message)
         {
-            MessageBox.Show(message, success ? "Message" : "Error", MessageBoxButtons.OK);
+            MessageBox.Show(message, success ? "Komunikat" : "Błąd", MessageBoxButtons.OK);
         }
 
         public Form GetActiveForm()

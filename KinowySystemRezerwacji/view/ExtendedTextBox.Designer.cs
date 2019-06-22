@@ -55,7 +55,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "ExtendedTextBox";
             this.Size = new System.Drawing.Size(314, 35);
-            this.Load += new System.EventHandler(this.ExtendedTextBox_Load);
             this.Enter += new System.EventHandler(this.ExtendedTextBox_Enter);
             this.Leave += new System.EventHandler(this.ExtendedTextBox_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

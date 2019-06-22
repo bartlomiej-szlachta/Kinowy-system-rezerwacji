@@ -15,11 +15,8 @@ namespace KinowySystemRezerwacji.view
     /// </summary>
     internal partial class ExtendedTextBox : UserControl
     {
-        private bool shouldBeMasked = false;
-        private string placeHolder;
-        private string errorMessage;
-        private Func<string, bool> condition;
-        
+        #region Constructor
+
         /// <summary>
         /// Konstruktor.
         /// </summary>
@@ -28,28 +25,35 @@ namespace KinowySystemRezerwacji.view
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Private fields and getters / setters / other
+
+        private bool shouldBeMasked = false;
+        private string placeHolder;
+        private bool shouldValidate = false;
+        private string errorMessage;
+        private Func<string, bool> condition;
+
         /// <summary>
-        /// Tekst wyświetlany w TextBoxie, gdy nie jest do niego wprowadzany tekst.
+        /// Metoda ustawiająca maskowanie wprowadzanego tekstu.
         /// </summary>
-        internal string PlaceHolder
+        /// <param name="value">Informacja o tym, czy maskować hasło</param>
+        internal void SetShouldBeMasked(bool value)
         {
-            get
-            {
-                return placeHolder;
-            }
-            set
-            {
-                placeHolder = value;
-                textBox1.ForeColor = Color.Gray;
-                textBox1.Text = placeHolder;
-            }
+            shouldBeMasked = true;
         }
 
         /// <summary>
-        /// Tekst wpisany do TextBoxa.
+        /// Metoda ustawiająca placeholder w TextBoxie.
         /// </summary>
-        public override string Text { get { return textBox1.Text; } }
-
+        /// <param name="value">Treść placeholdera</param>
+        internal void SetPlaceHolder(string value)
+        {
+            placeHolder = value;
+            textBox1.ForeColor = Color.Gray;
+            textBox1.Text = placeHolder;
+        }
 
         /// <summary>
         /// Metoda ustawiająca parametry walidacji pola tekstowego.
@@ -58,31 +62,32 @@ namespace KinowySystemRezerwacji.view
         /// <param name="condition">Warunek, jaki musi spełnić tekst, aby przejść walidację</param>
         internal void SetValidation(string errorMessage, Func<string, bool> condition)
         {
+            shouldValidate = true;
             this.errorMessage = errorMessage;
             this.condition = condition;
         }
-        
 
         /// <summary>
-        /// Metoda uruchamiająca ErrorProvidera obok TextBoxa.
+        /// Metoda włączająca / wyłączająca walidację dla TextBoxa.
         /// </summary>
-        /// <param name="message">Treść komunikatu</param>
-        internal void SetError(string message)
+        /// <param name="value">Wartość logiczna informująca, czy pole ma być walidowane</param>
+        internal void SetShouldValidate(bool value)
         {
-            errorProvider1.SetError(textBox1, message);
+            shouldValidate = value;
         }
 
         /// <summary>
-        /// Metoda ustawiająca maskowanie wprowadzanego tekstu.
+        /// Metoda zwracająca tekst wpisany do TextBoxa.
         /// </summary>
-        /// <param name="value">Informacja o tym, czy maskować hasło</param>
-        internal void SetTextMask(bool value)
+        /// <returns>Tekst wpisany do TextBoxa</returns>
+        internal string GetText()
         {
-            shouldBeMasked = true;
+            return textBox1.Text;
         }
-        
-        
 
+        /// <summary>
+        /// Metoda resetująca TextBoxa.
+        /// </summary>
         internal void SetEmpty()
         {
             errorProvider1.Clear();
@@ -90,6 +95,32 @@ namespace KinowySystemRezerwacji.view
             textBox1.Text = placeHolder;
             textBox1.ForeColor = Color.Gray;
         }
+
+        /// <summary>
+        /// Metoda walidująca pole tekstowe.
+        /// </summary>
+        /// <returns>Rezultat walidacji</returns>
+        internal bool ValidateAndGetResult()
+        {
+            if (condition == null)
+            {
+                return true;
+            }
+            else if (condition(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, "");
+                return true;
+            }
+            else
+            {
+                errorProvider1.SetError(textBox1, errorMessage);
+                return false;
+            }
+        }
+
+        #endregion
+
+        #region Windows Forms event handlers
 
         private void ExtendedTextBox_Enter(object sender, EventArgs e)
         {
@@ -106,13 +137,9 @@ namespace KinowySystemRezerwacji.view
 
         private void ExtendedTextBox_Leave(object sender, EventArgs e)
         {
-            if (condition != null && condition(textBox1.Text))
+            if (shouldValidate)
             {
-                errorProvider1.SetError(textBox1, "");
-            }
-            if (condition != null && !condition(textBox1.Text))
-            {
-                errorProvider1.SetError(textBox1, errorMessage);
+                ValidateAndGetResult();
             }
             if (textBox1.Text == "")
             {
@@ -122,9 +149,6 @@ namespace KinowySystemRezerwacji.view
             }
         }
 
-        private void ExtendedTextBox_Load(object sender, EventArgs e)
-        {
-            textBox1.Text = placeHolder;
-        }
+        #endregion
     }
 }

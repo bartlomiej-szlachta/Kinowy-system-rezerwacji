@@ -18,7 +18,7 @@ namespace KinowySystemRezerwacji.view
     /// </summary>
     internal partial class LoginForm : Form
     {
-        #region Singleton elements
+        #region Static members
 
         /// <summary>
         /// Instancja klasy.
@@ -38,19 +38,41 @@ namespace KinowySystemRezerwacji.view
             return instance;
         }
 
+        #endregion
+
+        #region Events
+
+        public event Action<RegisterRequest> RequestRegister;
+        public event Action<string, string> RequestLogIn;
+
+        #endregion
+
+        #region Mode
+
+        /// <summary>
+        /// Enum określający wybrany tryb - logowania lub rejestracji.
+        /// </summary>
+        private enum Mode { LOGIN, REGISTER };
+
+        private Mode mode = Mode.LOGIN;
+
+        #endregion
+
+        #region Konstruktor
+
         /// <summary>
         /// Konstruktor, lol.
         /// </summary>
         private LoginForm()
         {
             InitializeComponent();
-            passwordExtendedTextBox.SetTextMask(true);
+            passwordExtendedTextBox.SetShouldBeMasked(true);
 
-            usernameExtendedTextBox.PlaceHolder = "Nazwa użytkownika";
-            passwordExtendedTextBox.PlaceHolder = "Hasło";
-            firstNameExtendedTextBox.PlaceHolder = "Imię";
-            lastNameExtendedTextBox.PlaceHolder = "Nazwisko";
-            emailExtendedTextBox.PlaceHolder = "E-mail";
+            usernameExtendedTextBox.SetPlaceHolder("Nazwa użytkownika");
+            passwordExtendedTextBox.SetPlaceHolder("Hasło");
+            firstNameExtendedTextBox.SetPlaceHolder("Imię");
+            lastNameExtendedTextBox.SetPlaceHolder("Nazwisko");
+            emailExtendedTextBox.SetPlaceHolder("E-mail");
 
             usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać co najmniej 8 znaków", 
                 (string text) => text.Length >= 8 && !text.Contains(" "));
@@ -64,43 +86,36 @@ namespace KinowySystemRezerwacji.view
                 (string text) => new EmailAddressAttribute().IsValid(text));
 
             confirmLoginRegisterButton.Top = 152;
+
+            usernameExtendedTextBox.SetShouldValidate(false);
+            passwordExtendedTextBox.SetShouldValidate(false);
         }
 
         #endregion
 
-        public event Action<RegisterRequest> RequestRegister;
-        public event Action<string, string> RequestLogIn;
-
-        private enum Mode { LOGIN, REGISTER };
-
-        private Mode mode = Mode.LOGIN;
-
-        private void ResetTextFields()
-        {
-            usernameExtendedTextBox.SetEmpty();
-            passwordExtendedTextBox.SetEmpty();
-            firstNameExtendedTextBox.SetEmpty();
-            lastNameExtendedTextBox.SetEmpty();
-            emailExtendedTextBox.SetEmpty();
-        }
+        #region Windows Forms event handlers
 
         private void confirmLoginRegisterButton_Click(object sender, EventArgs e)
         {
             if (mode == Mode.LOGIN)
             {
-                RequestLogIn?.Invoke(usernameExtendedTextBox.Text, passwordExtendedTextBox.Text);
+                RequestLogIn?.Invoke(usernameExtendedTextBox.GetText(), passwordExtendedTextBox.GetText());
             }
-            if (mode == Mode.REGISTER)
+            else if (mode == Mode.REGISTER && usernameExtendedTextBox.ValidateAndGetResult() && passwordExtendedTextBox.ValidateAndGetResult()  && firstNameExtendedTextBox.ValidateAndGetResult() && lastNameExtendedTextBox.ValidateAndGetResult() && emailExtendedTextBox.ValidateAndGetResult())
             {
                 RegisterRequest request = new RegisterRequest
                 {
-                    Username = usernameExtendedTextBox.Text,
-                    Password = passwordExtendedTextBox.Text,
-                    FirstName = firstNameExtendedTextBox.Text,
-                    LastName = lastNameExtendedTextBox.Text,
-                    Email = emailExtendedTextBox.Text
+                    Username = usernameExtendedTextBox.GetText(),
+                    Password = passwordExtendedTextBox.GetText(),
+                    FirstName = firstNameExtendedTextBox.GetText(),
+                    LastName = lastNameExtendedTextBox.GetText(),
+                    Email = emailExtendedTextBox.GetText()
                 };
                 RequestRegister?.Invoke(request);
+            }
+            else
+            {
+                MessageBox.Show("Wpisano niepoprawne dane", "Błąd", MessageBoxButtons.OK);
             }
         }
 
@@ -116,7 +131,9 @@ namespace KinowySystemRezerwacji.view
                 lastNameExtendedTextBox.Visible = true;
                 emailExtendedTextBox.Visible = true;
                 confirmLoginRegisterButton.Top = 276;
-                ResetTextFields();
+                usernameExtendedTextBox.SetShouldValidate(true);
+                passwordExtendedTextBox.SetShouldValidate(true);
+
             }
             else if (mode == Mode.REGISTER)
             {
@@ -128,8 +145,17 @@ namespace KinowySystemRezerwacji.view
                 lastNameExtendedTextBox.Visible = false;
                 emailExtendedTextBox.Visible = false;
                 confirmLoginRegisterButton.Top = 152;
-                ResetTextFields();
+                usernameExtendedTextBox.SetShouldValidate(false);
+                passwordExtendedTextBox.SetShouldValidate(false);
             }
+
+            usernameExtendedTextBox.SetEmpty();
+            passwordExtendedTextBox.SetEmpty();
+            firstNameExtendedTextBox.SetEmpty();
+            lastNameExtendedTextBox.SetEmpty();
+            emailExtendedTextBox.SetEmpty();
         }
+
+        #endregion
     }
 }
