@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 using KinowySystemRezerwacji.dto;
 
 namespace KinowySystemRezerwacji.view
@@ -18,7 +20,23 @@ namespace KinowySystemRezerwacji.view
     {
         #region Singleton elements
 
+        /// <summary>
+        /// Instancja klasy.
+        /// </summary>
         private static LoginForm instance = null;
+
+        /// <summary>
+        /// Metoda tworząca instancję klasy, jeśli ta jeszcze nie istnieje.
+        /// </summary>
+        /// <returns>Nowo utworzona lub wcześniej istniejąca instancja klasy</returns>
+        internal static LoginForm GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new LoginForm();
+            }
+            return instance;
+        }
 
         /// <summary>
         /// Konstruktor, lol.
@@ -27,25 +45,25 @@ namespace KinowySystemRezerwacji.view
         {
             InitializeComponent();
             passwordExtendedTextBox.SetTextMask(true);
+
             usernameExtendedTextBox.PlaceHolder = "Nazwa użytkownika";
             passwordExtendedTextBox.PlaceHolder = "Hasło";
             firstNameExtendedTextBox.PlaceHolder = "Imię";
             lastNameExtendedTextBox.PlaceHolder = "Nazwisko";
             emailExtendedTextBox.PlaceHolder = "E-mail";
-            confirmLoginRegisterButton.Top = 152;
-        }
 
-        /// <summary>
-        /// Metoda tworząca obiekt ekranu logowania, jeśli ten jeszcze nie istnieje.
-        /// </summary>
-        /// <returns>Obiekt ekranu logowania</returns>
-        internal static LoginForm GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new LoginForm();
-            }
-            return instance;
+            usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać co najmniej 8 znaków", 
+                (string text) => text.Length >= 8 && !text.Contains(" "));
+            passwordExtendedTextBox.SetValidation("Hasło musi zawierać co najmniej 8 znaków, co najmniej jedną cyfrę i co najmniej jedną wielką literę", 
+                (string text) => !new Regex(@"^(.{0,7}|[^0-9]*|[^A-Z])$").Match(text).Success);
+            firstNameExtendedTextBox.SetValidation("Imię musi rozpoczynać się z wielkiej litery", 
+                (string text) => text.Length > 0 && text.First() == text.ToUpper().First());
+            lastNameExtendedTextBox.SetValidation("Nazwisko musi rozpoczynać się z wielkiej litery", 
+                (string text) => text.Length > 0 && text.First() == text.ToUpper().First());
+            emailExtendedTextBox.SetValidation("Podany e-mail jest nieprawidłowy", 
+                (string text) => new EmailAddressAttribute().IsValid(text));
+
+            confirmLoginRegisterButton.Top = 152;
         }
 
         #endregion
@@ -59,11 +77,11 @@ namespace KinowySystemRezerwacji.view
 
         private void ResetTextFields()
         {
-            //usernameExtendedTextBox.Text = "";
-            //passwordExtendedTextBox.Text = "";
-            //firstNameExtendedTextBox.Text = "";
-            //lastNameExtendedTextBox.Text = "";
-            //emailExtendedTextBox.Text = "";
+            usernameExtendedTextBox.SetEmpty();
+            passwordExtendedTextBox.SetEmpty();
+            firstNameExtendedTextBox.SetEmpty();
+            lastNameExtendedTextBox.SetEmpty();
+            emailExtendedTextBox.SetEmpty();
         }
 
         private void confirmLoginRegisterButton_Click(object sender, EventArgs e)

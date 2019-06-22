@@ -71,7 +71,7 @@
             this.switchLoginRegisterButton.Location = new System.Drawing.Point(45, 409);
             this.switchLoginRegisterButton.Name = "switchLoginRegisterButton";
             this.switchLoginRegisterButton.Size = new System.Drawing.Size(295, 40);
-            this.switchLoginRegisterButton.TabIndex = 7;
+            this.switchLoginRegisterButton.TabIndex = 0;
             this.switchLoginRegisterButton.Text = "Tryb rejestracji";
             this.switchLoginRegisterButton.UseVisualStyleBackColor = true;
             this.switchLoginRegisterButton.Click += new System.EventHandler(this.switchLoginRegisterButton_Click);
@@ -83,7 +83,7 @@
             this.usernameExtendedTextBox.Location = new System.Drawing.Point(12, 70);
             this.usernameExtendedTextBox.Name = "usernameExtendedTextBox";
             this.usernameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
-            this.usernameExtendedTextBox.TabIndex = 0;
+            this.usernameExtendedTextBox.TabIndex = 1;
             // 
             // passwordExtendedTextBox
             // 
@@ -92,7 +92,7 @@
             this.passwordExtendedTextBox.Location = new System.Drawing.Point(12, 111);
             this.passwordExtendedTextBox.Name = "passwordExtendedTextBox";
             this.passwordExtendedTextBox.Size = new System.Drawing.Size(360, 35);
-            this.passwordExtendedTextBox.TabIndex = 1;
+            this.passwordExtendedTextBox.TabIndex = 2;
             // 
             // firstNameExtendedTextBox
             // 
@@ -101,7 +101,7 @@
             this.firstNameExtendedTextBox.Location = new System.Drawing.Point(12, 152);
             this.firstNameExtendedTextBox.Name = "firstNameExtendedTextBox";
             this.firstNameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
-            this.firstNameExtendedTextBox.TabIndex = 2;
+            this.firstNameExtendedTextBox.TabIndex = 3;
             this.firstNameExtendedTextBox.Visible = false;
             // 
             // lastNameExtendedTextBox
@@ -111,7 +111,7 @@
             this.lastNameExtendedTextBox.Location = new System.Drawing.Point(12, 193);
             this.lastNameExtendedTextBox.Name = "lastNameExtendedTextBox";
             this.lastNameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
-            this.lastNameExtendedTextBox.TabIndex = 3;
+            this.lastNameExtendedTextBox.TabIndex = 4;
             this.lastNameExtendedTextBox.Visible = false;
             // 
             // emailExtendedTextBox
@@ -121,7 +121,7 @@
             this.emailExtendedTextBox.Location = new System.Drawing.Point(12, 234);
             this.emailExtendedTextBox.Name = "emailExtendedTextBox";
             this.emailExtendedTextBox.Size = new System.Drawing.Size(360, 35);
-            this.emailExtendedTextBox.TabIndex = 4;
+            this.emailExtendedTextBox.TabIndex = 5;
             this.emailExtendedTextBox.Visible = false;
             // 
             // LoginForm

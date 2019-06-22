@@ -15,6 +15,11 @@ namespace KinowySystemRezerwacji.view
     /// </summary>
     internal partial class ExtendedTextBox : UserControl
     {
+        private bool shouldBeMasked = false;
+        private string placeHolder;
+        private string errorMessage;
+        private Func<string, bool> condition;
+        
         /// <summary>
         /// Konstruktor.
         /// </summary>
@@ -22,8 +27,6 @@ namespace KinowySystemRezerwacji.view
         {
             InitializeComponent();
         }
-
-        private string placeHolder;
 
         /// <summary>
         /// Tekst wyświetlany w TextBoxie, gdy nie jest do niego wprowadzany tekst.
@@ -45,17 +48,20 @@ namespace KinowySystemRezerwacji.view
         /// <summary>
         /// Tekst wpisany do TextBoxa.
         /// </summary>
-        public override string Text
+        public override string Text { get { return textBox1.Text; } }
+
+
+        /// <summary>
+        /// Metoda ustawiająca parametry walidacji pola tekstowego.
+        /// </summary>
+        /// <param name="errorMessage">Wiadomość do pokazania przy błędzie walidacji</param>
+        /// <param name="condition">Warunek, jaki musi spełnić tekst, aby przejść walidację</param>
+        internal void SetValidation(string errorMessage, Func<string, bool> condition)
         {
-            get
-            {
-                return textBox1.Text;
-            }
-            set
-            {
-                textBox1.Text = value;
-            }
+            this.errorMessage = errorMessage;
+            this.condition = condition;
         }
+        
 
         /// <summary>
         /// Metoda uruchamiająca ErrorProvidera obok TextBoxa.
@@ -74,8 +80,16 @@ namespace KinowySystemRezerwacji.view
         {
             shouldBeMasked = true;
         }
+        
+        
 
-        private bool shouldBeMasked = false;
+        internal void SetEmpty()
+        {
+            errorProvider1.Clear();
+            textBox1.PasswordChar = '\0';
+            textBox1.Text = placeHolder;
+            textBox1.ForeColor = Color.Gray;
+        }
 
         private void ExtendedTextBox_Enter(object sender, EventArgs e)
         {
@@ -92,6 +106,14 @@ namespace KinowySystemRezerwacji.view
 
         private void ExtendedTextBox_Leave(object sender, EventArgs e)
         {
+            if (condition != null && condition(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, "");
+            }
+            if (condition != null && !condition(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, errorMessage);
+            }
             if (textBox1.Text == "")
             {
                 textBox1.PasswordChar = '\0';
