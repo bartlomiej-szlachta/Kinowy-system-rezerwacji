@@ -14,9 +14,9 @@ VALUES
 -- has³a: 'YouShallNotPass!1'
 INSERT INTO Uzytkownicy
 VALUES
-(1, "sowinho", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Jacek", "Sowa", "jacek.sowa@gmail.com", '2003-12-31'),
-(2, "makumba", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Tomasz", "Rutkowski", "tomekr@gmail.com", '2000-04-16'),
-(3, "mleczko123", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Miko³aj", "Mleczko", "mleko@wp.pl", '2001-02-20');
+(1, "sowinho", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Jacek", "Sowa", "jacek.sowa@gmail.com", '2003-12-31'),
+(2, "makumba", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Tomasz", "Rutkowski", "tomekr@gmail.com", '2000-04-16'),
+(3, "mleczko123", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Miko³aj", "Mleczko", "mleko@wp.pl", '2001-02-20');
 
 INSERT INTO Seanse
 VALUES

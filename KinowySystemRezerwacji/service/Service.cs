@@ -51,13 +51,18 @@ namespace KinowySystemRezerwacji.service
         /// <param name="password">Hasło użytkownika</param>
         internal void LogIn(string username, string password)
         {
+            string NOT_LOGGED_IN = "Nie udało się zalogować";
             UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
-            UzytkownikEntity uzytkownik = uzytkownikRepository.FindByNazwaUzytkownika(username);
+            UzytkownikEntity uzytkownik = uzytkownikRepository.FindByNazwaUzytkownika(username).OrElseThrow(NOT_LOGGED_IN);
             if (Security.HashPassword(password) == uzytkownik.Haslo)
             {
                 loggedUser = uzytkownik;
+                LoggingInCompleted?.Invoke("Pomyślnie zalogowano do systemu");
             }
-            LoggingInCompleted?.Invoke("Pomyślnie zalogowano do systemu");
+            else
+            {
+                throw new Exception(NOT_LOGGED_IN);
+            }
         }
 
         /// <summary>

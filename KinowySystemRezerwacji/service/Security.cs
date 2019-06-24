@@ -7,25 +7,35 @@ using System.Security.Cryptography;
 
 namespace KinowySystemRezerwacji.service
 {
+    /// <summary>
+    /// Klasa odpowiedzialna za hashowanie haseł.
+    /// </summary>
     internal class Security
     {
-        internal static string HashPassword(string plainPassword)
+        /// <summary>
+        /// Funkcja hashująca hasło.
+        /// </summary>
+        /// <param name="input">Hasło w postaci wpisanej przez użytkownika</param>
+        /// <returns>Zahashowane hasło</returns>
+        internal static string HashPassword(string input)
         {
-            int iterations = 10000;
+            string salt = "SZLACHTARUSIN";
+            byte[] data = new UnicodeEncoding().GetBytes(input + salt);
+            var sha256Managed = new SHA256Managed();
+            var computeHash = sha256Managed.ComputeHash(data);
 
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            return ToHex(computeHash);
+        }
 
-            var pbkdf2 = new Rfc2898DeriveBytes(plainPassword, salt, iterations);
-            byte[] hash = pbkdf2.GetBytes(20);
+        private static string ToHex(byte[] computeHash)
+        {
+            var hex = new StringBuilder();
+            foreach (var b in computeHash)
+            {
+                hex.AppendFormat("{0:x2}", b);
+            }
 
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-
-            string base64Hash = Convert.ToBase64String(hashBytes);
-
-            return string.Format("$SZLACHTA$RUSIN$HASH$V1${0}${1}", iterations, base64Hash);
+            return hex.ToString();
         }
     }
 }

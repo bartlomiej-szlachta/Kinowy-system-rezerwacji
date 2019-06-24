@@ -13,7 +13,7 @@ namespace KinowySystemRezerwacji.service.dao
     /// </summary>
     internal class UzytkownikRepository
     {
-        internal UzytkownikEntity FindByNazwaUzytkownika(string username)
+        internal Optional<UzytkownikEntity> FindByNazwaUzytkownika(string username)
         {
             UzytkownikEntity user = null;
             MySqlConnection connection = DBConnection.Instance.Connection;
@@ -27,11 +27,7 @@ namespace KinowySystemRezerwacji.service.dao
                 }
                 connection.Close();
             }
-            if (user == null)
-            {
-                throw new Exception("Użytkownik o podanej nazwie nie istnieje");
-            }
-            return user;
+            return new Optional<UzytkownikEntity>(user);
         }
     }
 }
