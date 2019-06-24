@@ -46,7 +46,7 @@ Ten rozdział zostanie jeszcze uzupełniony. //TODO
 
 System zapisuje dane do bazy danych o nazwie `kinowy_system_rezerwacji`, która domyślnie powinna znajdować się na lokalnym serwerze na komputerze. Jej dane dostępowe, znajdujące się w pliku źródłowym `DBInfo.resx`, to:
 - DataBase: `kinowy_system_rezerwacji`
-- Password: ``
+- Password: puste
 - Port: `3306`
 - Server: `localhost`
 - User: `root`
