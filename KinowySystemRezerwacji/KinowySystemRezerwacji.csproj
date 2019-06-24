@@ -55,6 +55,9 @@
     <Compile Include="dto\SeatToChooseResponse.cs" />
     <Compile Include="dto\ShowingResponse.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="service\dao\UzytkownikRepository.cs" />
+    <Compile Include="service\model\UzytkownikEntity.cs" />
+    <Compile Include="service\Security.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
     <Compile Include="view\ExtendedTextBox.cs">
