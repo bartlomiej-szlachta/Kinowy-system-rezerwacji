@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KinowySystemRezerwacji.dto;
+using KinowySystemRezerwacji.service.dao;
+using KinowySystemRezerwacji.service.model;
 
 namespace KinowySystemRezerwacji.service
 {
@@ -12,6 +14,17 @@ namespace KinowySystemRezerwacji.service
     /// </summary>
     internal class Service
     {
+        #region Private fields
+
+        /// <summary>
+        /// Obiekt zalogowanego użytkownika.
+        /// </summary>
+        private UzytkownikEntity loggedUser = null;
+
+        #endregion
+
+        #region Shared with Presenter
+
         /// <summary>
         /// Event potwierdzający ukończenie logowania się do systemu.
         /// </summary>
@@ -38,7 +51,18 @@ namespace KinowySystemRezerwacji.service
         /// <param name="password">Hasło użytkownika</param>
         internal void LogIn(string username, string password)
         {
-            throw new NotImplementedException();
+            string NOT_LOGGED_IN = "Nie udało się zalogować";
+            UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
+            UzytkownikEntity uzytkownik = uzytkownikRepository.FindByNazwaUzytkownika(username).OrElseThrow(NOT_LOGGED_IN);
+            if (Security.HashPassword(password) == uzytkownik.Haslo)
+            {
+                loggedUser = uzytkownik;
+                LoggingInCompleted?.Invoke("Pomyślnie zalogowano do systemu");
+            }
+            else
+            {
+                throw new Exception(NOT_LOGGED_IN);
+            }
         }
 
         /// <summary>
@@ -86,5 +110,7 @@ namespace KinowySystemRezerwacji.service
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
