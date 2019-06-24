@@ -17,7 +17,7 @@ namespace KinowySystemRezerwacji.service.dao
         {
             UzytkownikEntity user;
             MySqlConnection connection = DBConnection.Instance.Connection;
-            using (MySqlCommand command = new MySqlCommand("SELECT * FROM users WHERE users.id = " + username + ";", connection))
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = " + username + ";", connection))
             {
                 connection.Open();
                 user = new UzytkownikEntity(command.ExecuteReader());
