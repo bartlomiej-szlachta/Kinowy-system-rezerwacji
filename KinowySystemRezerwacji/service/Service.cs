@@ -17,7 +17,7 @@ namespace KinowySystemRezerwacji.service
         #region Private fields
 
         /// <summary>
-        /// Encja zalogowanego użytkownika.
+        /// Obiekt zalogowanego użytkownika.
         /// </summary>
         private UzytkownikEntity loggedUser = null;
 
