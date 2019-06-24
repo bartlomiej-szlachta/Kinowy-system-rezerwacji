@@ -74,7 +74,7 @@ namespace KinowySystemRezerwacji.view
             lastNameExtendedTextBox.SetPlaceHolder("Nazwisko");
             emailExtendedTextBox.SetPlaceHolder("E-mail");
 
-            usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać od 8 do 14 znaków", 
+            usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać od 8 do 14 znaków oraz nie może zawierać znaku spacji", 
                 (string text) => text.Length >= 8 && text.Length <= 14 && !text.Contains(" "));
             passwordExtendedTextBox.SetValidation("Hasło musi zawierać co najmniej 8 znaków, co najmniej jedną cyfrę i co najmniej jedną wielką literę", 
                 (string text) => !new Regex(@"^(.{0,7}|[^0-9]*|[^A-Z])$").Match(text).Success);
