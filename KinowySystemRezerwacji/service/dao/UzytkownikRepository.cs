@@ -15,12 +15,16 @@ namespace KinowySystemRezerwacji.service.dao
     {
         internal UzytkownikEntity FindByNazwaUzytkownika(string username)
         {
-            UzytkownikEntity user;
+            UzytkownikEntity user = null;
             MySqlConnection connection = DBConnection.Instance.Connection;
-            using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = " + username + ";", connection))
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = '" + username + "';", connection))
             {
                 connection.Open();
-                user = new UzytkownikEntity(command.ExecuteReader());
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    user = new UzytkownikEntity(reader);
+                }
                 connection.Close();
             }
             if (user == null)
