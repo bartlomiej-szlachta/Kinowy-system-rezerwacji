@@ -11,11 +11,12 @@ VALUES
 (9, "Szósty zmys³", 107, 3.8, 1999),
 (10, "Barbie: Ksiê¿niczka i Piosenkarka", 86, 3.1, 2012);
 
+-- has³a: 'YouShallNotPass!1'
 INSERT INTO Uzytkownicy
 VALUES
-(1, "sowinho", "poka123", "Jacek", "Sowa", "jacek.sowa@gmail.com", '2003-12-31'),
-(2, "makumba", "Majfrend1#", "Tomasz", "Rutkowski", "tomekr@gmail.com", '2000-04-16'),
-(3, "mleczko123", "lubiszto123", "Miko³aj", "Mleczko", "mleko@wp.pl", '2001-02-20');
+(1, "sowinho", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Jacek", "Sowa", "jacek.sowa@gmail.com", '2003-12-31'),
+(2, "makumba", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Tomasz", "Rutkowski", "tomekr@gmail.com", '2000-04-16'),
+(3, "mleczko123", "$SZLACHTA$RUSIN$HASH$V1$10000$jk/2CNLLVqMIZ480mEGTeIk91EHW6LOgw+lIvgmprZXYiN/l", "Miko³aj", "Mleczko", "mleko@wp.pl", '2001-02-20');
 
 INSERT INTO Seanse
 VALUES
