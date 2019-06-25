@@ -57,5 +57,15 @@ namespace KinowySystemRezerwacji.service.model
             Email = (string)reader["email"];
             Data_urodzenia = (DateTime)reader["data_urodzenia"];
         }
+
+        internal UzytkownikEntity(string username,string password, string firstName, string lastName, string email, DateTime birthday)
+        {
+            Nazwa_uzytkownika = username;
+            Ukryte_haslo = password;
+            Imie = firstName;
+            Nazwisko = lastName;
+            Email = email;
+            Data_urodzenia = birthday;
+        }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KinowySystemRezerwacji.dto;
+using KinowySystemRezerwacji.service.dao;
+using KinowySystemRezerwacji.service.model;
 
 namespace KinowySystemRezerwacji.service
 {
@@ -28,7 +30,17 @@ namespace KinowySystemRezerwacji.service
         /// <param name="request">Dane dotyczące nowego użytkownika</param>
         internal void Register(RegisterRequest request)
         {
-            throw new NotImplementedException();
+            UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
+            if (uzytkownikRepository.ExistsByNazwaUzytkownika(request.Username))
+            {
+                BasicResponse(false, "Użytkownik o takiej nazwie już istnieje!");
+            }
+            else
+            {
+                UzytkownikEntity userToRegister = new UzytkownikEntity(request.Username, request.Password, request.FirstName, request.LastName, request.Email, request.Birthday);
+                uzytkownikRepository.Save(userToRegister);
+                BasicResponse(true, "Pomyślnie zarejestrowano!");
+            }
         }
 
         /// <summary>
