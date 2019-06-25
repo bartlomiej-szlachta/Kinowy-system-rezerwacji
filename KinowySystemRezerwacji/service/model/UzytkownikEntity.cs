@@ -55,7 +55,7 @@ namespace KinowySystemRezerwacji.service.model
             Imie = (string)reader["imie"];
             Nazwisko = (string)reader["nazwisko"];
             Email = (string)reader["email"];
-            Data_urodzenia = (DateTime)reader["date"];
+            Data_urodzenia = (DateTime)reader["data_urodzenia"];
         }
     }
 }
