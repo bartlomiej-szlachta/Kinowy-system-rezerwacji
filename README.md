@@ -11,5 +11,6 @@ System może zostać w przyszłości rozbudowany o następujące funkcjonalnośc
 - anulowanie dokonanych rezerwacji
 - dodawanie filmów i seansów (dla administratorów)
 - obsługa wielu sal kinowych
+- filtrowanie filmów zgodnie z wiekiem użytkownika
 
 Dostęp do systemu jest zabezpieczony mechanizmem logowania.

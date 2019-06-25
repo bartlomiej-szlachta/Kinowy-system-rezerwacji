@@ -10,7 +10,7 @@ namespace KinowySystemRezerwacji
     /// <summary>
     /// Interfejs określający funkcjonalność widoku.
     /// </summary>
-    interface IView
+    internal interface IView
     {
         /// <summary>
         /// Event reprezentujący żądanie rejestracji nowego użytkownika.
@@ -35,7 +35,7 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Event reprezentujący żądanie wyświetlenia listy dostępnych seansów.
         /// </summary>
-        event Action RequestShowingsList;
+        event Action<DateTime> RequestShowingsList;
 
         /// <summary>
         /// Event reprezentujący żądanie wyświetlenia listy miejsc na dany seans.
@@ -46,6 +46,12 @@ namespace KinowySystemRezerwacji
         /// Event reprezentujący żądanie zarezerwowania miejsc na dany seans.
         /// </summary>
         event Action<BookSeatsRequest> RequestBookShowing;
+
+        /// <summary>
+        /// Metoda potwierdzająca zalogowanie użytkownika do systemu
+        /// </summary>
+        /// <param name="username">Nazwa zalogowanego użytkownika</param>
+        void LoggingInCompleted(string username);
 
         /// <summary>
         /// Metoda wyświetlająca listę wcześniejszych rezerwacji.

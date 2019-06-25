@@ -13,7 +13,7 @@ default character set utf8 collate utf8_unicode_ci;
 CREATE TABLE Uzytkownicy(
 id int not null auto_increment,
 nazwa_uzytkownika char(14) not null,
-ukryte_haslo char(50),
+ukryte_haslo char(50) not null,
 imie char(20) not null,
 nazwisko char(30) not null,
 email char(30) not null,
