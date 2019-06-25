@@ -74,16 +74,16 @@ namespace KinowySystemRezerwacji.view
             lastNameExtendedTextBox.SetPlaceHolder("Nazwisko");
             emailExtendedTextBox.SetPlaceHolder("E-mail");
 
-            usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać co najmniej 8 znaków", 
-                (string text) => text.Length >= 8 && !text.Contains(" "));
+            usernameExtendedTextBox.SetValidation("Nazwa użytkownika musi zawierać od 8 do 14 znaków oraz nie może zawierać znaku spacji", 
+                (string text) => text.Length >= 8 && text.Length <= 14 && !text.Contains(" "));
             passwordExtendedTextBox.SetValidation("Hasło musi zawierać co najmniej 8 znaków, co najmniej jedną cyfrę i co najmniej jedną wielką literę", 
                 (string text) => !new Regex(@"^(.{0,7}|[^0-9]*|[^A-Z])$").Match(text).Success);
-            firstNameExtendedTextBox.SetValidation("Imię musi rozpoczynać się z wielkiej litery", 
-                (string text) => text.Length > 0 && text.First() == text.ToUpper().First());
-            lastNameExtendedTextBox.SetValidation("Nazwisko musi rozpoczynać się z wielkiej litery", 
-                (string text) => text.Length > 0 && text.First() == text.ToUpper().First());
+            firstNameExtendedTextBox.SetValidation("Imię musi rozpoczynać się z wielkiej litery oraz zawierać co najwyżej 20 znaków", 
+                (string text) => text.Length > 0 && text.Length <= 20 && text.Length <= 20 && text.First() == text.ToUpper().First());
+            lastNameExtendedTextBox.SetValidation("Nazwisko musi rozpoczynać się z wielkiej litery oraz zawierać co najwyżej 30 znaków", 
+                (string text) => text.Length > 0 && text.Length <= 30 && text.First() == text.ToUpper().First());
             emailExtendedTextBox.SetValidation("Podany e-mail jest nieprawidłowy", 
-                (string text) => new EmailAddressAttribute().IsValid(text));
+                (string text) => text.Length <= 30 && new EmailAddressAttribute().IsValid(text));
 
             confirmLoginRegisterButton.Top = 152;
 
