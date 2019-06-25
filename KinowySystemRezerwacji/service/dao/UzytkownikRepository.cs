@@ -23,12 +23,12 @@ namespace KinowySystemRezerwacji.service.dao
             connection.Open();
             MySqlCommand insertingCommand = connection.CreateCommand();
             insertingCommand.CommandText = "INSERT INTO Uzytkownicy(nazwa_uzytkownika, ukryte_haslo, imie, nazwisko, email, data_urodzenia) VALUES (?nazwa_uzytkownika, ?ukryte_haslo, ?imie, ?nazwisko, ?email, ?data_urodzenia)";
-            insertingCommand.Parameters.AddWithValue("?nazwa_uzytkownika", uzytkownik.Nazwa_uzytkownika);
-            insertingCommand.Parameters.AddWithValue("?ukryte_haslo", uzytkownik.Ukryte_haslo);
+            insertingCommand.Parameters.AddWithValue("?nazwa_uzytkownika", uzytkownik.NazwaUzytkownika);
+            insertingCommand.Parameters.AddWithValue("?ukryte_haslo", uzytkownik.Haslo);
             insertingCommand.Parameters.AddWithValue("?imie", uzytkownik.Imie);
             insertingCommand.Parameters.AddWithValue("?nazwisko", uzytkownik.Nazwisko);
             insertingCommand.Parameters.AddWithValue("?email", uzytkownik.Email);
-            insertingCommand.Parameters.AddWithValue("?data_urodzenia", uzytkownik.Data_urodzenia.ToString("yyyy-MM-dd"));
+            insertingCommand.Parameters.AddWithValue("?data_urodzenia", uzytkownik.DataUrodzenia.ToString("yyyy-MM-dd"));
             insertingCommand.ExecuteNonQuery();
             connection.Close();
         }
