@@ -33,7 +33,7 @@ namespace KinowySystemRezerwacji.service
             UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
             if (uzytkownikRepository.ExistsByNazwaUzytkownika(request.Username))
             {
-                BasicResponse(false, "Użytkownik o takiej nazwie już istnieje!");
+                BasicResponse(false, "Użytkownik o takiej nazwie już istnieje");
             }
             else
             {
