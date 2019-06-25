@@ -13,6 +13,9 @@ namespace KinowySystemRezerwacji
     /// </summary>
     class Presenter
     {
+
+        #region Private fields
+
         /// <summary>
         /// Model zawierający logikę biznesową.
         /// </summary>
@@ -22,6 +25,10 @@ namespace KinowySystemRezerwacji
         /// Widok zawierający interfejs użytkownika.
         /// </summary>
         private IView view;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Konstruktor, lol.
@@ -42,7 +49,11 @@ namespace KinowySystemRezerwacji
             model.LoggingInCompleted += HandleLoggingInCompleted;
             model.BasicResponse += HandleBasicResponse;
         }
-        
+
+        #endregion
+
+        #region Event handlers
+
         /// <summary>
         /// Metoda obsługująca event rejestracji nowego użytkownika.
         /// </summary>
@@ -55,7 +66,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -72,7 +83,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -87,7 +98,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -102,7 +113,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -118,7 +129,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -134,7 +145,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -150,7 +161,7 @@ namespace KinowySystemRezerwacji
             }
             catch (Exception ex)
             {
-                view.ShowMessage(false, ex.Message);
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
             }
         }
 
@@ -172,5 +183,26 @@ namespace KinowySystemRezerwacji
         {
             view.ShowMessage(success, message);
         }
+
+        #endregion
+
+        #region Additional methods
+
+        private string TranslateToPolish(string message)
+        {
+            switch (message)
+            {
+                case "Unable to connect to any of the specified MySQL hosts.":
+                    {
+                        return "Nie udało się uzyskać połączenia z bazą danych.";
+                    }
+                default:
+                    {
+                        return message;
+                    }
+            }
+        }
+
+        #endregion
     }
 }

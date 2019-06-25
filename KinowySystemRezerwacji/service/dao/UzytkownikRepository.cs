@@ -56,8 +56,29 @@ namespace KinowySystemRezerwacji.service.dao
                     connection.Close();
                     return true;
                 }
-                
+
             }
+
         }
+
+       
+            internal Optional<UzytkownikEntity> FindByNazwaUzytkownika(string username)
+            {
+                UzytkownikEntity user = null;
+                MySqlConnection connection = DBConnection.Instance.Connection;
+                using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = '" + username + "';", connection))
+                {
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        user = new UzytkownikEntity(reader);
+                    }
+                    connection.Close();
+                }
+                return new Optional<UzytkownikEntity>(user);
+            }
+       
     }
 }
+
