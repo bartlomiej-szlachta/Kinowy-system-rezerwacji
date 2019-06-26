@@ -44,13 +44,13 @@ namespace KinowySystemRezerwacji.service
             UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
             if (uzytkownikRepository.ExistsByNazwaUzytkownika(request.Username))
             {
-                BasicResponse(false, "Użytkownik o takiej nazwie już istnieje");
+                BasicResponse?.Invoke(false, "Użytkownik o takiej nazwie już istnieje");
             }
             else
             {
                 UzytkownikEntity userToRegister = new UzytkownikEntity(request.Username, request.Password, request.FirstName, request.LastName, request.Email, request.Birthday);
                 uzytkownikRepository.Save(userToRegister);
-                BasicResponse(true, "Pomyślnie zarejestrowano użytkownika");
+                BasicResponse?.Invoke(true, "Pomyślnie zarejestrowano użytkownika");
             }
         }
 

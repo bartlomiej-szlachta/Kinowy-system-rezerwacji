@@ -41,14 +41,7 @@ namespace KinowySystemRezerwacji.service.dao
         internal bool ExistsByNazwaUzytkownika(string username)
         {
             Optional<UzytkownikEntity> user = FindByNazwaUzytkownika(username);
-            if (user.Success)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return user.Success;
         }
 
         /// <summary>
