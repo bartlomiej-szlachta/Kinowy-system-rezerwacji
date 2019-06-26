@@ -40,44 +40,38 @@ namespace KinowySystemRezerwacji.service.dao
         /// <returns>Prawda/Fałsz</returns>
         internal bool ExistsByNazwaUzytkownika(string username)
         {
+            Optional<UzytkownikEntity> user = FindByNazwaUzytkownika(username);
+            if (user.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Metoda wyszukuje w bazie danych użytkownika o wybranej nazwie.
+        /// </summary>
+        /// <param name="username">Nazwa użytkownika, którego szukamy</param>
+        /// <returns>Zwraca encję użytkownika jeżeli istnieje</returns>
+        internal Optional<UzytkownikEntity> FindByNazwaUzytkownika(string username)
+        {
+            UzytkownikEntity user = null;
             MySqlConnection connection = DBConnection.Instance.Connection;
-            using (MySqlCommand command = new MySqlCommand("SELECT id FROM Uzytkownicy WHERE nazwa_uzytkownika = '" + username + "';", connection))
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = '" + username + "';", connection))
             {
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
-
-                if (Convert.IsDBNull(reader["id"]))
+                while (reader.Read())
                 {
-                    connection.Close();
-                    return false;
+                    user = new UzytkownikEntity(reader);
                 }
-                else
-                {
-                    connection.Close();
-                    return true;
-                }
-
+                connection.Close();
             }
-
+            return new Optional<UzytkownikEntity>(user);
         }
-
-       
-            internal Optional<UzytkownikEntity> FindByNazwaUzytkownika(string username)
-            {
-                UzytkownikEntity user = null;
-                MySqlConnection connection = DBConnection.Instance.Connection;
-                using (MySqlCommand command = new MySqlCommand("SELECT * FROM uzytkownicy u WHERE u.nazwa_uzytkownika = '" + username + "';", connection))
-                {
-                    connection.Open();
-                    MySqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        user = new UzytkownikEntity(reader);
-                    }
-                    connection.Close();
-                }
-                return new Optional<UzytkownikEntity>(user);
-            }
        
     }
 }

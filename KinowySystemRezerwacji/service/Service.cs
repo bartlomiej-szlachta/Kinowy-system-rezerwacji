@@ -50,7 +50,7 @@ namespace KinowySystemRezerwacji.service
             {
                 UzytkownikEntity userToRegister = new UzytkownikEntity(request.Username, request.Password, request.FirstName, request.LastName, request.Email, request.Birthday);
                 uzytkownikRepository.Save(userToRegister);
-                BasicResponse(true, "Pomyślnie zarejestrowano!");
+                BasicResponse(true, "Pomyślnie zarejestrowano użytkownika");
             }
         }
 
