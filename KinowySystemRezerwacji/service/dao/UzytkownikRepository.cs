@@ -24,7 +24,7 @@ namespace KinowySystemRezerwacji.service.dao
             MySqlCommand insertingCommand = connection.CreateCommand();
             insertingCommand.CommandText = "INSERT INTO Uzytkownicy(nazwa_uzytkownika, ukryte_haslo, imie, nazwisko, email, data_urodzenia) VALUES (?nazwa_uzytkownika, ?ukryte_haslo, ?imie, ?nazwisko, ?email, ?data_urodzenia)";
             insertingCommand.Parameters.AddWithValue("?nazwa_uzytkownika", uzytkownik.NazwaUzytkownika);
-            insertingCommand.Parameters.AddWithValue("?ukryte_haslo", uzytkownik.Haslo);
+            insertingCommand.Parameters.AddWithValue("?ukryte_haslo", Security.HashPassword(uzytkownik.Haslo));
             insertingCommand.Parameters.AddWithValue("?imie", uzytkownik.Imie);
             insertingCommand.Parameters.AddWithValue("?nazwisko", uzytkownik.Nazwisko);
             insertingCommand.Parameters.AddWithValue("?email", uzytkownik.Email);
