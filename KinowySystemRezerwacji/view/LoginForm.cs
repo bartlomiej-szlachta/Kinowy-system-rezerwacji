@@ -38,6 +38,14 @@ namespace KinowySystemRezerwacji.view
             return instance;
         }
 
+        /// <summary>
+        /// Metoda usuwająca instancję klasy.
+        /// </summary>
+        internal static void DeleteInstance()
+        {
+            instance = null;
+        }
+
         #endregion
 
         #region Events
@@ -100,6 +108,8 @@ namespace KinowySystemRezerwacji.view
             if (mode == Mode.LOGIN)
             {
                 RequestLogIn?.Invoke(usernameExtendedTextBox.GetText(), passwordExtendedTextBox.GetText());
+                usernameExtendedTextBox.SetEmpty();
+                passwordExtendedTextBox.SetEmpty();
             }
             else if (mode == Mode.REGISTER && usernameExtendedTextBox.ValidateAndGetResult() && passwordExtendedTextBox.ValidateAndGetResult()  && firstNameExtendedTextBox.ValidateAndGetResult() && lastNameExtendedTextBox.ValidateAndGetResult() && emailExtendedTextBox.ValidateAndGetResult())
             {
@@ -112,6 +122,11 @@ namespace KinowySystemRezerwacji.view
                     Email = emailExtendedTextBox.GetText()
                 };
                 RequestRegister?.Invoke(request);
+                usernameExtendedTextBox.SetEmpty();
+                passwordExtendedTextBox.SetEmpty();
+                firstNameExtendedTextBox.SetEmpty();
+                lastNameExtendedTextBox.SetEmpty();
+                emailExtendedTextBox.SetEmpty();
             }
             else
             {

@@ -18,6 +18,11 @@ namespace KinowySystemRezerwacji.view
             InitializeComponent();
         }
 
+        internal void SetLoggedUser(string username)
+        {
+            użytkownikToolStripMenuItem.Text = username;
+        }
+
         public event Action RequestLogOut;
         public event Action RequestBookingsList;
         public event Action<DateTime> RequestShowingsList;
@@ -37,6 +42,11 @@ namespace KinowySystemRezerwacji.view
         public void ShowShowingsList(ShowingResponse[] response)
         {
             throw new NotImplementedException();
+        }
+
+        private void wylogujToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            RequestLogOut?.Invoke();
         }
     }
 }

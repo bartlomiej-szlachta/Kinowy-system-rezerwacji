@@ -32,6 +32,7 @@ namespace KinowySystemRezerwacji.view
 
         private LoginForm loginForm;
         private MainForm mainForm;
+        private Action ExitAction;
 
         /// <summary>
         /// Konstruktor.
@@ -42,6 +43,11 @@ namespace KinowySystemRezerwacji.view
             activeForm = loginForm;
             loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
             loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+        }
+
+        internal Form GetActiveForm()
+        {
+            return activeForm;
         }
 
         #endregion
@@ -56,21 +62,40 @@ namespace KinowySystemRezerwacji.view
         public event Action<int> RequestSeatsList;
         public event Action<BookSeatsRequest> RequestBookShowing;
 
-        public void LoggingInCompleted(string username)
+        public void UpdateLoggedInAs(string username)
         {
-            loginForm.Hide();
-            mainForm = new MainForm();
-            mainForm.ShowDialog();
-            loginForm.Close();
+            if (activeForm == loginForm && username != null)
+            {
+                mainForm = new MainForm();
+                mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
+                mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
+                mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+                mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
+                mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
+                mainForm.SetLoggedUser(username);
 
-            loginForm = null;
-            activeForm = mainForm;
-            
-            mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
-            mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
-            mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
-            mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
+                activeForm = mainForm;
+                
+
+                loginForm.Close();
+                LoginForm.DeleteInstance();
+                loginForm = null;
+            }
+            else if (activeForm == mainForm && username == null)
+            {
+                loginForm = LoginForm.GetInstance();
+                loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
+                loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+
+                activeForm = loginForm;
+
+                mainForm.Close();
+                mainForm = null;
+            }
+            else
+            {
+                MessageBox.Show("Wystąpił nieoczekiwany błąd", "Błąd", MessageBoxButtons.OK);
+            }
         }
 
         public void ShowBookingsList(BookingResponse[] response)
@@ -93,9 +118,13 @@ namespace KinowySystemRezerwacji.view
             MessageBox.Show(message, success ? "Komunikat" : "Błąd", MessageBoxButtons.OK);
         }
 
-        public Form GetActiveForm()
+        public void Run(Action<IView> RunAction, Action ExitAction)
         {
-            return activeForm;
+            this.ExitAction = ExitAction;
+            while (true)
+            {
+                RunAction(this);
+            }
         }
 
         #endregion

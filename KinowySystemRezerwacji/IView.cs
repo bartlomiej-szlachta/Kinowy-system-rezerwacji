@@ -50,8 +50,8 @@ namespace KinowySystemRezerwacji
         /// <summary>
         /// Metoda potwierdzająca zalogowanie użytkownika do systemu
         /// </summary>
-        /// <param name="username">Nazwa zalogowanego użytkownika</param>
-        void LoggingInCompleted(string username);
+        /// <param name="username">Nazwa zalogowanego użytkownika lub wartość null</param>
+        void UpdateLoggedInAs(string username);
 
         /// <summary>
         /// Metoda wyświetlająca listę wcześniejszych rezerwacji.
@@ -77,5 +77,11 @@ namespace KinowySystemRezerwacji
         /// <param name="success">Informacja o tym, czy komunikat jest pozytywny</param>
         /// <param name="message">Treść komunikatu</param>
         void ShowMessage(bool success, string message);
+
+        /// <summary>
+        /// Metoda uruchamiająca widok.
+        /// </summary>
+        /// <param name="RunAction">Funckja uruchamiająca aplikację</param>
+        void Run(Action<IView> RunAction, Action ExitAction);
     }
 }

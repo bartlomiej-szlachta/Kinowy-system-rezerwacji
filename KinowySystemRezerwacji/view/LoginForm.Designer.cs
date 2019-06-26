@@ -141,7 +141,7 @@
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Logowanie do systemu";
+            this.Text = "Kinowy system rezerwacji";
             this.ResumeLayout(false);
 
         }

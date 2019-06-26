@@ -41,7 +41,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <summary>
         /// Data urodzenia użytkownika.
         /// </summary>
-        internal DateTime DataUrodzenia { get; set; }
+        internal DateTime? DataUrodzenia { get; set; }
 
         /// <summary>
         /// Konstruktor.
@@ -55,7 +55,16 @@ namespace KinowySystemRezerwacji.service.model
             Imie = (string)reader["imie"];
             Nazwisko = (string)reader["nazwisko"];
             Email = (string)reader["email"];
-            DataUrodzenia = (DateTime)reader["data_urodzenia"];
+
+            var temp = reader["data_urodzenia"];
+            if (temp is DBNull)
+            {
+                DataUrodzenia = null;
+            }
+            else
+            {
+                DataUrodzenia = (DateTime)temp;
+            }
         }
     }
 }
