@@ -41,7 +41,17 @@ namespace KinowySystemRezerwacji.service
         /// <param name="request">Dane dotyczące nowego użytkownika</param>
         internal void Register(RegisterRequest request)
         {
-            throw new NotImplementedException();
+            UzytkownikRepository uzytkownikRepository = new UzytkownikRepository();
+            if (uzytkownikRepository.ExistsByNazwaUzytkownika(request.Username))
+            {
+                BasicResponse?.Invoke(false, "Użytkownik o takiej nazwie już istnieje");
+            }
+            else
+            {
+                UzytkownikEntity userToRegister = new UzytkownikEntity(request.Username, request.Password, request.FirstName, request.LastName, request.Email, request.Birthday);
+                uzytkownikRepository.Save(userToRegister);
+                BasicResponse?.Invoke(true, "Pomyślnie zarejestrowano użytkownika");
+            }
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace KinowySystemRezerwacji.service.model
         internal string NazwaUzytkownika { get; set; }
 
         /// <summary>
-        /// Ukryte hasło użytkownika.
+        /// Zahaszowane hasło użytkownika.
         /// </summary>
         internal string Haslo { get; set; }
 
@@ -56,6 +56,25 @@ namespace KinowySystemRezerwacji.service.model
             Nazwisko = (string)reader["nazwisko"];
             Email = (string)reader["email"];
             DataUrodzenia = (DateTime)reader["data_urodzenia"];
+        }
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="username">Nazwa użytkownika</param>
+        /// <param name="password">Zahaszowane hasło użytkownika</param>
+        /// <param name="firstName">Imię użytkownika</param>
+        /// <param name="lastName">Nazwisko użytkownika</param>
+        /// <param name="email">Email użytkownika</param>
+        /// <param name="birthday">Data urodzenia użytkownika</param>
+        internal UzytkownikEntity(string username, string password, string firstName, string lastName, string email, DateTime birthday)
+        {
+            NazwaUzytkownika = username;
+            Haslo = password;
+            Imie = firstName;
+            Nazwisko = lastName;
+            Email = email;
+            DataUrodzenia = birthday;
         }
     }
 }
