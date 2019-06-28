@@ -77,11 +77,5 @@ namespace KinowySystemRezerwacji
         /// <param name="success">Informacja o tym, czy komunikat jest pozytywny</param>
         /// <param name="message">Treść komunikatu</param>
         void ShowMessage(bool success, string message);
-
-        /// <summary>
-        /// Metoda uruchamiająca widok. Ukończenie jej wykonywania zamyka aplikację.
-        /// </summary>
-        /// <param name="RunAction">Funckja uruchamiająca aplikację</param>
-        void Run(Action<IView> RunAction);
     }
 }
