@@ -20,7 +20,7 @@ namespace KinowySystemRezerwacji.view
 
         internal void SetLoggedUser(string username)
         {
-            użytkownikToolStripMenuItem.Text = username;
+            użytkownikToolStripMenuItem.Text = "Zalogowany jako: " + username;
         }
 
         public event Action RequestLogOut;

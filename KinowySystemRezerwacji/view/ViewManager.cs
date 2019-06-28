@@ -18,7 +18,7 @@ namespace KinowySystemRezerwacji.view
         private static Form activeForm;
 
         /// <summary>
-        /// Przeciążenie jawnego rzutowania na formularz.
+        /// Przeciążenie jawnego rzutowania na obiekt Form.
         /// </summary>
         /// <param name="view">Obiekt ViewManager</param>
         public static explicit operator Form(ViewManager view)
@@ -32,19 +32,19 @@ namespace KinowySystemRezerwacji.view
 
         private LoginForm loginForm;
         private MainForm mainForm;
-        private Action ExitAction;
 
         /// <summary>
         /// Konstruktor.
         /// </summary>
         internal ViewManager()
         {
-            loginForm = LoginForm.GetInstance();
-            activeForm = loginForm;
-            loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
-            loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+            InitializeLoginForm();
         }
 
+        /// <summary>
+        /// Metoda zwracająca aktywny ekran.
+        /// </summary>
+        /// <returns>Obiekt Form aktywnego ekranu</returns>
         internal Form GetActiveForm()
         {
             return activeForm;
@@ -66,30 +66,17 @@ namespace KinowySystemRezerwacji.view
         {
             if (activeForm == loginForm && username != null)
             {
-                mainForm = new MainForm();
-                mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
-                mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
-                mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-                mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
-                mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
-                mainForm.SetLoggedUser(username);
+                InitializeMainForm(username);
 
-                activeForm = mainForm;
-                
-
-                loginForm.Close();
+                loginForm.Dispose();
                 LoginForm.DeleteInstance();
                 loginForm = null;
             }
             else if (activeForm == mainForm && username == null)
             {
-                loginForm = LoginForm.GetInstance();
-                loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
-                loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+                InitializeLoginForm();
 
-                activeForm = loginForm;
-
-                mainForm.Close();
+                mainForm.Dispose();
                 mainForm = null;
             }
             else
@@ -117,14 +104,41 @@ namespace KinowySystemRezerwacji.view
         {
             MessageBox.Show(message, success ? "Komunikat" : "Błąd", MessageBoxButtons.OK);
         }
-
-        public void Run(Action<IView> RunAction, Action ExitAction)
+        
+        public void Run(Action<IView> RunAction)
         {
-            this.ExitAction = ExitAction;
-            while (true)
+            while (activeForm != null)
             {
                 RunAction(this);
             }
+        }
+
+        #endregion
+
+        #region Private additional methods
+
+        private void InitializeLoginForm()
+        {
+            loginForm = LoginForm.GetInstance();
+            loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
+            loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+            loginForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
+
+            activeForm = loginForm;
+        }
+
+        private void InitializeMainForm(string username)
+        {
+            mainForm = new MainForm();
+            mainForm.RequestLogOut += () => RequestLogOut?.Invoke();
+            mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
+            mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
+            mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
+            mainForm.SetLoggedUser(username);
+            mainForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
+
+            activeForm = mainForm;
         }
 
         #endregion

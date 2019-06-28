@@ -79,9 +79,9 @@ namespace KinowySystemRezerwacji
         void ShowMessage(bool success, string message);
 
         /// <summary>
-        /// Metoda uruchamiająca widok.
+        /// Metoda uruchamiająca widok. Ukończenie jej wykonywania zamyka aplikację.
         /// </summary>
         /// <param name="RunAction">Funckja uruchamiająca aplikację</param>
-        void Run(Action<IView> RunAction, Action ExitAction);
+        void Run(Action<IView> RunAction);
     }
 }
