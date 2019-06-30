@@ -43,9 +43,10 @@
             this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.titleLabel.Location = new System.Drawing.Point(13, 10);
+            this.titleLabel.Location = new System.Drawing.Point(17, 12);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(359, 57);
+            this.titleLabel.Size = new System.Drawing.Size(479, 70);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Logowanie";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,9 +56,10 @@
             this.confirmLoginRegisterButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.confirmLoginRegisterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.confirmLoginRegisterButton.Location = new System.Drawing.Point(45, 275);
+            this.confirmLoginRegisterButton.Location = new System.Drawing.Point(60, 338);
+            this.confirmLoginRegisterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.confirmLoginRegisterButton.Name = "confirmLoginRegisterButton";
-            this.confirmLoginRegisterButton.Size = new System.Drawing.Size(295, 40);
+            this.confirmLoginRegisterButton.Size = new System.Drawing.Size(393, 49);
             this.confirmLoginRegisterButton.TabIndex = 6;
             this.confirmLoginRegisterButton.Text = "Zaloguj";
             this.confirmLoginRegisterButton.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             this.switchLoginRegisterButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.switchLoginRegisterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.switchLoginRegisterButton.Location = new System.Drawing.Point(45, 409);
+            this.switchLoginRegisterButton.Location = new System.Drawing.Point(60, 503);
+            this.switchLoginRegisterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.switchLoginRegisterButton.Name = "switchLoginRegisterButton";
-            this.switchLoginRegisterButton.Size = new System.Drawing.Size(295, 40);
+            this.switchLoginRegisterButton.Size = new System.Drawing.Size(393, 49);
             this.switchLoginRegisterButton.TabIndex = 0;
             this.switchLoginRegisterButton.Text = "Tryb rejestracji";
             this.switchLoginRegisterButton.UseVisualStyleBackColor = true;
@@ -80,27 +83,30 @@
             // 
             this.usernameExtendedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.usernameExtendedTextBox.Location = new System.Drawing.Point(12, 70);
+            this.usernameExtendedTextBox.Location = new System.Drawing.Point(16, 86);
+            this.usernameExtendedTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.usernameExtendedTextBox.Name = "usernameExtendedTextBox";
-            this.usernameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
+            this.usernameExtendedTextBox.Size = new System.Drawing.Size(480, 43);
             this.usernameExtendedTextBox.TabIndex = 1;
             // 
             // passwordExtendedTextBox
             // 
             this.passwordExtendedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordExtendedTextBox.Location = new System.Drawing.Point(12, 111);
+            this.passwordExtendedTextBox.Location = new System.Drawing.Point(16, 137);
+            this.passwordExtendedTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.passwordExtendedTextBox.Name = "passwordExtendedTextBox";
-            this.passwordExtendedTextBox.Size = new System.Drawing.Size(360, 35);
+            this.passwordExtendedTextBox.Size = new System.Drawing.Size(480, 43);
             this.passwordExtendedTextBox.TabIndex = 2;
             // 
             // firstNameExtendedTextBox
             // 
             this.firstNameExtendedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.firstNameExtendedTextBox.Location = new System.Drawing.Point(12, 152);
+            this.firstNameExtendedTextBox.Location = new System.Drawing.Point(16, 187);
+            this.firstNameExtendedTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.firstNameExtendedTextBox.Name = "firstNameExtendedTextBox";
-            this.firstNameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
+            this.firstNameExtendedTextBox.Size = new System.Drawing.Size(480, 43);
             this.firstNameExtendedTextBox.TabIndex = 3;
             this.firstNameExtendedTextBox.Visible = false;
             // 
@@ -108,9 +114,10 @@
             // 
             this.lastNameExtendedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lastNameExtendedTextBox.Location = new System.Drawing.Point(12, 193);
+            this.lastNameExtendedTextBox.Location = new System.Drawing.Point(16, 238);
+            this.lastNameExtendedTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.lastNameExtendedTextBox.Name = "lastNameExtendedTextBox";
-            this.lastNameExtendedTextBox.Size = new System.Drawing.Size(360, 35);
+            this.lastNameExtendedTextBox.Size = new System.Drawing.Size(480, 43);
             this.lastNameExtendedTextBox.TabIndex = 4;
             this.lastNameExtendedTextBox.Visible = false;
             // 
@@ -118,17 +125,19 @@
             // 
             this.emailExtendedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailExtendedTextBox.Location = new System.Drawing.Point(12, 234);
+            this.emailExtendedTextBox.Location = new System.Drawing.Point(16, 288);
+            this.emailExtendedTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.emailExtendedTextBox.Name = "emailExtendedTextBox";
-            this.emailExtendedTextBox.Size = new System.Drawing.Size(360, 35);
+            this.emailExtendedTextBox.Size = new System.Drawing.Size(480, 43);
             this.emailExtendedTextBox.TabIndex = 5;
             this.emailExtendedTextBox.Visible = false;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.confirmLoginRegisterButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.ClientSize = new System.Drawing.Size(512, 567);
             this.Controls.Add(this.emailExtendedTextBox);
             this.Controls.Add(this.lastNameExtendedTextBox);
             this.Controls.Add(this.firstNameExtendedTextBox);
@@ -138,6 +147,7 @@
             this.Controls.Add(this.confirmLoginRegisterButton);
             this.Controls.Add(this.titleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
