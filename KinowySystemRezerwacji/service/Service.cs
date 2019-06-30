@@ -28,7 +28,7 @@ namespace KinowySystemRezerwacji.service
         /// <summary>
         /// Event potwierdzający ukończenie logowania się do systemu.
         /// </summary>
-        internal event Action<string> LoggingInCompleted;
+        internal event Action<string> UpdateLoggedInAs;
 
         /// <summary>
         /// Event reprezentujący prostą odpowiedź informującą o suckesie danej operacji.
@@ -67,7 +67,7 @@ namespace KinowySystemRezerwacji.service
             if (Security.HashPassword(password) == uzytkownik.Haslo)
             {
                 loggedUser = uzytkownik;
-                LoggingInCompleted?.Invoke("Pomyślnie zalogowano do systemu");
+                UpdateLoggedInAs?.Invoke(uzytkownik.NazwaUzytkownika);
             }
             else
             {
@@ -80,7 +80,8 @@ namespace KinowySystemRezerwacji.service
         /// </summary>
         internal void LogOut()
         {
-            throw new NotImplementedException();
+            loggedUser = null;
+            UpdateLoggedInAs?.Invoke(null);
         }
 
         /// <summary>
@@ -89,7 +90,14 @@ namespace KinowySystemRezerwacji.service
         /// <returns>Informacje o wcześniejszych rezerwacjach</returns>
         internal BookingResponse[] GetBookings()
         {
-            throw new NotImplementedException();
+            if (loggedUser != null)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                throw new Exception("Nie uzyskano autoryzacji do wykonania zadania");
+            }
         }
 
         /// <summary>
@@ -118,7 +126,14 @@ namespace KinowySystemRezerwacji.service
         /// <param name="request">Dane dotyczące wybranego seansu i miejsc</param>
         internal void BookSeats(BookSeatsRequest request)
         {
-            throw new NotImplementedException();
+            if (loggedUser != null)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                throw new Exception("Nie uzyskano autoryzacji do wykonania zadania");
+            }
         }
 
         #endregion

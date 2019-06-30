@@ -46,7 +46,7 @@ namespace KinowySystemRezerwacji
             view.RequestShowingsList += HandleShowingsList;
             view.RequestSeatsList += HandleSeatsList;
             view.RequestBookShowing += HandleBookShowing;
-            model.LoggingInCompleted += HandleLoggingInCompleted;
+            model.UpdateLoggedInAs += HandleLoggedInAs;
             model.BasicResponse += HandleBasicResponse;
         }
 
@@ -169,9 +169,9 @@ namespace KinowySystemRezerwacji
         /// Metoda obsługująca event ukończenia logowania się do systemu.
         /// </summary>
         /// <param name="username">Nazwa zalogowanego użytkownika</param>
-        private void HandleLoggingInCompleted(string username)
+        private void HandleLoggedInAs(string username)
         {
-            view.LoggingInCompleted(username);
+            view.UpdateLoggedInAs(username);
         }
 
         /// <summary>
@@ -195,6 +195,10 @@ namespace KinowySystemRezerwacji
                 case "Unable to connect to any of the specified MySQL hosts.":
                     {
                         return "Nie udało się uzyskać połączenia z bazą danych.";
+                    }
+                case "Specified cast is not valid.":
+                    {
+                        return "Wystąpił błąd podczas łączenia z bazą danych.";
                     }
                 default:
                     {
