@@ -20,7 +20,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <summary>
         /// Czas trwania filmu (w minutach).
         /// </summary>
-        internal int Czas_trwania { get; set; }
+        internal int CzasTrwania { get; set; }
 
         /// <summary>
         /// Ocena filmu (od 0 do 5).
@@ -30,7 +30,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <summary>
         /// Rok premiery filmu.
         /// </summary>
-        internal int Rok_premiery { get; set; }
+        internal int RokPremiery { get; set; }
 
         /// <summary>
         /// Konstruktor.
@@ -40,9 +40,9 @@ namespace KinowySystemRezerwacji.service.model
         {
             Id = (int)reader["id"];
             Nazwa = (string)reader["nazwa"];
-            Czas_trwania = (int)reader["czas_trwania"];
+            CzasTrwania = (int)reader["czas_trwania"];
             Ocena = (float)reader["ocena"];
-            Rok_premiery = (int)reader["rok_premiery"];
+            RokPremiery = (int)reader["rok_premiery"];
         }
     }
 }

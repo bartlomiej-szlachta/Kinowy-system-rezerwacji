@@ -15,12 +15,12 @@ namespace KinowySystemRezerwacji.service.model
         /// <summary>
         /// Id rezerwacji.
         /// </summary>
-        internal int Id_rezerwacji { get; set; }
+        internal int IdRezerwacji { get; set; }
 
         /// <summary>
         /// Id miejsca.
         /// </summary>
-        internal int Id_miejsca { get; set; }
+        internal int IdMiejsca { get; set; }
 
         /// <summary>
         /// Konstruktor.
@@ -29,8 +29,8 @@ namespace KinowySystemRezerwacji.service.model
         internal MiejsceRezerwacjaEntity(MySqlDataReader reader)
         {
             Id = (int)reader["id"];
-            Id_rezerwacji = (int)reader["id_rezerwacji"];
-            Id_miejsca = (int)reader["id_miejsca"];
+            IdRezerwacji = (int)reader["id_rezerwacji"];
+            IdMiejsca = (int)reader["id_miejsca"];
         }
     }
 }

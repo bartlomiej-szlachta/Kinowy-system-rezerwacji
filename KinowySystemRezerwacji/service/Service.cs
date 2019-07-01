@@ -101,26 +101,24 @@ namespace KinowySystemRezerwacji.service
         {
             SeansRepository projectionsRepo = new SeansRepository();
             FilmRepository moviesRepo = new FilmRepository();
-            List<SeansEntity> projections = new List<SeansEntity>();
-            ShowingResponse[] responses = new ShowingResponse[projections.Capacity];
+            List<SeansEntity> projections = projectionsRepo.FindByKiedy(date);
+            List<ShowingResponse> responses = new List<ShowingResponse>();
             FilmEntity tempFilmEntity;
 
-            projections = projectionsRepo.FindByKiedy(date);
-            
-            for (int i = 0; i < projections.Capacity; i++)
+            foreach (var projection in projections)
             {
-                tempFilmEntity = moviesRepo.FindById(projections[i].Id_filmu);
-                responses[i] = new ShowingResponse
+                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu);
+                responses.Add(new ShowingResponse
                 {
-                    Id = projections[i].Id,
-                    DateTime = projections[i].Kiedy,
+                    Id = projection.Id,
+                    DateTime = projection.Kiedy,
                     FilmName = tempFilmEntity.Nazwa,
-                    FilmDuration = tempFilmEntity.Czas_trwania,
-                    FilmYear = tempFilmEntity.Rok_premiery
-                };
+                    FilmDuration = tempFilmEntity.CzasTrwania,
+                    FilmYear = tempFilmEntity.RokPremiery
+                });
             }
 
-            return responses;
+            return responses.ToArray();
         }
 
         /// <summary>
