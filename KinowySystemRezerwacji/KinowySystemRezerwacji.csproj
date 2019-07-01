@@ -58,6 +58,10 @@
     <Compile Include="service\dao\Optional.cs" />
     <Compile Include="service\dao\UzytkownikRepository.cs" />
     <Compile Include="service\model\UzytkownikEntity.cs" />
+	<Compile Include="service\model\FilmEntity.cs" />
+    <Compile Include="service\model\MiejsceRezerwacjaEntity.cs" />
+    <Compile Include="service\model\RezerwacjaEntity.cs" />
+    <Compile Include="service\model\SeansEntity.cs" />
     <Compile Include="service\Security.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
