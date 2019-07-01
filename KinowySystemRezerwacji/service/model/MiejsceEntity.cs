@@ -37,5 +37,10 @@ namespace KinowySystemRezerwacji.service.model
             Rzad = (int)reader["rzad"];
             Numer = (int)reader["numer"];
         }
+
+        public override bool Equals(object obj)
+        {
+            return ((MiejsceEntity)obj).Id == Id;
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace KinowySystemRezerwacji.service.dao
         /// Metoda wyszukuje w bazie danych użytkownika o wybranej nazwie.
         /// </summary>
         /// <param name="username">Nazwa użytkownika, którego szukamy</param>
-        /// <returns>Zwraca encję użytkownika jeżeli istnieje</returns>
+        /// <returns>Obiekt zawierający dane użytkownika oraz informację o sukcesie</returns>
         internal Optional<UzytkownikEntity> FindByNazwaUzytkownika(string username)
         {
             UzytkownikEntity user = null;

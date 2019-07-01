@@ -16,8 +16,8 @@ namespace KinowySystemRezerwacji.service.dao
         /// <summary>
         /// Metoda wyciągająca z bazy danych dane dotyczące wszystkich miejsc na sali.
         /// </summary>
-        /// <returns>Lista miejsc</returns>
-        internal static List<MiejsceEntity> FindAll()
+        /// <returns>Lista wszystkich miejsc</returns>
+        internal List<MiejsceEntity> FindAll()
         {
             List<MiejsceEntity> miejsca = new List<MiejsceEntity>();
             MySqlConnection connection = DBConnection.Instance.Connection;
@@ -32,6 +32,16 @@ namespace KinowySystemRezerwacji.service.dao
                 connection.Close();
             }
             return miejsca;
+        }
+
+        /// <summary>
+        /// Metoda wyciągająca z bazy danych dane miejsca o podanym ID.
+        /// </summary>
+        /// <param name="idMiejsca">ID miejsca</param>
+        /// <returns>Obiekt zawierający dane miejsca oraz informację o sukcesie operacji</returns>
+        internal Optional<MiejsceEntity> FindById(int idMiejsca)
+        {
+            throw new NotImplementedException();
         }
     }
 }

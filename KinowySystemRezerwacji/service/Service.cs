@@ -144,7 +144,7 @@ namespace KinowySystemRezerwacji.service
             List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllBySeansId(showingId);
             foreach (RezerwacjaEntity rezerwacja in rezerwacje)
             {
-                List<MiejsceRezerwacjaEntity> miejscaRezerwacje = MiejsceRezerwacjaEntity.FindAllByRezerwacjaId(rezerwacja.Id);
+                List<MiejsceRezerwacjaEntity> miejscaRezerwacje = miejsceRezerwacjaRepository.FindAllByRezerwacjaId(rezerwacja.Id);
                 foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
                 {
                     zajeteMiejsca.Add(miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID"));
