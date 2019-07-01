@@ -107,7 +107,26 @@ namespace KinowySystemRezerwacji.service
         /// <returns>Informacje o dostępnych seansach</returns>
         internal ShowingResponse[] GetShowings(DateTime date)
         {
-            throw new NotImplementedException();
+            SeansRepository projectionsRepo = new SeansRepository();
+            FilmRepository moviesRepo = new FilmRepository();
+            List<SeansEntity> projections = projectionsRepo.FindByKiedy(date);
+            List<ShowingResponse> responses = new List<ShowingResponse>();
+            FilmEntity tempFilmEntity;
+
+            foreach (var projection in projections)
+            {
+                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu);
+                responses.Add(new ShowingResponse
+                {
+                    Id = projection.Id,
+                    DateTime = projection.Kiedy,
+                    FilmName = tempFilmEntity.Nazwa,
+                    FilmDuration = tempFilmEntity.CzasTrwania,
+                    FilmYear = tempFilmEntity.RokPremiery
+                });
+            }
+
+            return responses.ToArray();
         }
 
         /// <summary>
