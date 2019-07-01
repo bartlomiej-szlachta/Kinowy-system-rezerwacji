@@ -41,7 +41,19 @@ namespace KinowySystemRezerwacji.service.dao
         /// <returns>Obiekt zawierający dane miejsca oraz informację o sukcesie operacji</returns>
         internal Optional<MiejsceEntity> FindById(int idMiejsca)
         {
-            throw new NotImplementedException();
+            MiejsceEntity miejsce = null;
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            using (MySqlCommand command = new MySqlCommand($"SELECT * FROM miejsca WHERE id = {idMiejsca};", connection))
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    miejsce = new MiejsceEntity(reader);
+                }
+                connection.Close();
+            }
+            return new Optional<MiejsceEntity>(miejsce);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using KinowySystemRezerwacji.service.model;
 
 namespace KinowySystemRezerwacji.service.dao
@@ -19,7 +20,19 @@ namespace KinowySystemRezerwacji.service.dao
         /// <returns>Dane miejsc-rezerwacji</returns>
         internal List<MiejsceRezerwacjaEntity> FindAllByRezerwacjaId(int idRezerwacji)
         {
-            throw new NotImplementedException();
+            List<MiejsceRezerwacjaEntity> miejscaRezerwacje = new List<MiejsceRezerwacjaEntity>();
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            using (MySqlCommand command = new MySqlCommand($"SELECT * FROM miejsca_rezerwacje WHERE id_rezerwacji = {idRezerwacji};", connection))
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    miejscaRezerwacje.Add(new MiejsceRezerwacjaEntity(reader));
+                }
+                connection.Close();
+            }
+            return miejscaRezerwacje;
         }
     }
 }
