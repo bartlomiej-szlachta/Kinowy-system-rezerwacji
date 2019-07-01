@@ -1,5 +1,4 @@
-INSERT INTO FILMY
-VALUES
+INSERT INTO filmy (id, nazwa, czas_trwania, ocena, rok_premiery) VALUES
 (1, "Detektyw Pikachu", 130, 3.9, 2019),
 (2, "Tolkien", 119, 3.7, 2019),
 (3, "Skazani na Shawshank", 133, 4.9, 1994),
@@ -12,14 +11,12 @@ VALUES
 (10, "Barbie: Ksiê¿niczka i Piosenkarka", 86, 3.1, 2012);
 
 -- has³a: 'YouShallNotPass!1'
-INSERT INTO Uzytkownicy
-VALUES
+INSERT INTO uzytkownicy (id, nazwa_uzytkownika, ukryte_haslo, imie, nazwisko, email, data_urodzenia) VALUES
 (1, "sowinho", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Jacek", "Sowa", "jacek.sowa@gmail.com", '2003-12-31'),
 (2, "makumba", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Tomasz", "Rutkowski", "tomekr@gmail.com", '2000-04-16'),
 (3, "mleczko123", "ae7f14e4de6f9469ae624a0ad03994b61e24b0eaa0354ab7bcfa10cc196025ef", "Miko³aj", "Mleczko", "mleko@wp.pl", '2001-02-20');
 
-INSERT INTO Seanse
-VALUES
+INSERT INTO seanse (id, id_filmu, kiedy) VALUES
 (1,1,'2019-06-30 08:00:00'),
 (2,1,'2019-06-30 15:00:00'),
 (3,1,'2019-07-01 12:00:00'),
@@ -51,8 +48,7 @@ VALUES
 (29,10,'2019-07-06 21:00:00'),
 (30,10,'2019-07-08 08:00:00');
 
-INSERT INTO Miejsca
-VALUES
+INSERT INTO miejsca (id, rzad, numer) VALUES
 (1,1,1),
 (2,1,2),
 (3,1,3),
@@ -174,8 +170,7 @@ VALUES
 (119,10,11),
 (120,10,12);
 
-INSERT INTO Rezerwacje
-VALUES
+INSERT INTO rezerwacje (id, id_seansu, id_uzytkownika) VALUES
 (1,13,2),
 (2,15,3),
 (3,30,3),
@@ -187,8 +182,7 @@ VALUES
 (9,9,1),
 (10,26,3);
 
-INSERT INTO Miejsca_Rezerwacje
-VALUES
+INSERT INTO miejsca_rezerwacje (id, id_rezerwacji, id_miejsca) VALUES
 (1,1,113),
 (2,1,114),
 (3,1,115),
@@ -210,4 +204,17 @@ VALUES
 (19,9,44),
 (20,9,45),
 (21,9,46),
-(22,10,33);
+(22,10,33),
+(23,7,111),
+(24,7,112),
+(25,7,113),
+(26,7,114),
+(27,7,115),
+(28,7,116),
+(29,7,117),
+(30,7,118),
+(31,7,100),
+(32,7,101),
+(33,7,102),
+(34,7,103),
+(35,7,104);
