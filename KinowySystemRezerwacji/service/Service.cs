@@ -136,7 +136,46 @@ namespace KinowySystemRezerwacji.service
         /// <returns>Informacje o miejscach na sali</returns>
         internal SeatToChooseResponse[] GetSeats(int showingId)
         {
-            throw new NotImplementedException();
+            MiejsceRepository miejsceRepository = new MiejsceRepository();
+            MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+            RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+
+            List<MiejsceEntity> zajeteMiejsca = new List<MiejsceEntity>();
+            List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllBySeansId(showingId);
+            foreach (RezerwacjaEntity rezerwacja in rezerwacje)
+            {
+                List<MiejsceRezerwacjaEntity> miejscaRezerwacje = MiejsceRezerwacjaEntity.FindAllByRezerwacjaId(rezerwacja.Id);
+                foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
+                {
+                    zajeteMiejsca.Add(miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID"));
+                }
+            }
+
+            List<MiejsceEntity> wszystkieMiejsca = miejsceRepository.FindAll();
+            List<SeatToChooseResponse> seats = new List<SeatToChooseResponse>();
+            foreach (MiejsceEntity miejsce in wszystkieMiejsca)
+            {
+                SeatToChooseResponse seat = new SeatToChooseResponse()
+                {
+                    Id = miejsce.Id,
+                    PosX = miejsce.Numer,
+                    PosY = miejsce.Rzad,
+                    Available = true
+                };
+
+                foreach (MiejsceEntity zajeteMiejsce in zajeteMiejsca)
+                {
+                    if (miejsce.Id == zajeteMiejsce.Id)
+                    {
+                        seat.Available = false;
+                        break;
+                    }
+                }
+
+                seats.Add(seat);
+            }
+
+            return seats.ToArray();
         }
 
         /// <summary>
