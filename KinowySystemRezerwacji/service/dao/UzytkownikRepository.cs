@@ -28,7 +28,7 @@ namespace KinowySystemRezerwacji.service.dao
             insertingCommand.Parameters.AddWithValue("?imie", uzytkownik.Imie);
             insertingCommand.Parameters.AddWithValue("?nazwisko", uzytkownik.Nazwisko);
             insertingCommand.Parameters.AddWithValue("?email", uzytkownik.Email);
-            insertingCommand.Parameters.AddWithValue("?data_urodzenia", uzytkownik.DataUrodzenia.ToString("yyyy-MM-dd"));
+            insertingCommand.Parameters.AddWithValue("?data_urodzenia", uzytkownik.DataUrodzenia.Value.ToString("yyyy-MM-dd"));
             insertingCommand.ExecuteNonQuery();
             connection.Close();
         }
