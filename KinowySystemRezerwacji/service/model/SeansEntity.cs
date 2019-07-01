@@ -16,7 +16,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <summary>
         /// Id filmu.
         /// </summary>
-        internal int Id_filmu { get; set; }
+        internal int IdFilmu { get; set; }
 
         /// <summary>
         /// Data i godzina emisji filmu.
@@ -30,7 +30,7 @@ namespace KinowySystemRezerwacji.service.model
         internal SeansEntity(MySqlDataReader reader)
         {
             Id = (int)reader["id"];
-            Id_filmu = (int)reader["id_filmu"];
+            IdFilmu = (int)reader["id_filmu"];
             Kiedy = (DateTime)reader["kiedy"];
         }
     }

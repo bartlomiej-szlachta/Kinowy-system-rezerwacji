@@ -55,10 +55,12 @@
     <Compile Include="dto\SeatToChooseResponse.cs" />
     <Compile Include="dto\ShowingResponse.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="service\dao\FilmRepository.cs" />
     <Compile Include="service\dao\Optional.cs" />
+    <Compile Include="service\dao\SeansRepository.cs" />
     <Compile Include="service\dao\UzytkownikRepository.cs" />
     <Compile Include="service\model\UzytkownikEntity.cs" />
-	<Compile Include="service\model\FilmEntity.cs" />
+    <Compile Include="service\model\FilmEntity.cs" />
     <Compile Include="service\model\MiejsceRezerwacjaEntity.cs" />
     <Compile Include="service\model\RezerwacjaEntity.cs" />
     <Compile Include="service\model\SeansEntity.cs" />
