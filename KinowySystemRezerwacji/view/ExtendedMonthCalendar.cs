@@ -25,10 +25,24 @@ namespace KinowySystemRezerwacji.view
         }
 
         internal event Action<DateTime> RequestShowingsList;
+        internal event Action RequestShowingsDates;
+
+        internal DateTime[] ShowingsDates
+        {
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
             RequestShowingsList?.Invoke(e.Start);
+        }
+
+        private void ExtendedMonthCalendar_Load(object sender, EventArgs e)
+        {
+            RequestShowingsDates?.Invoke();
         }
     }
 }

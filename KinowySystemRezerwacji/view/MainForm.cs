@@ -18,6 +18,8 @@ namespace KinowySystemRezerwacji.view
             InitializeComponent();
 
             extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            extendedMonthCalendar.RequestShowingsDates += () =>
+            RequestShowingsDates?.Invoke();
         }
 
         internal void SetLoggedUser(string username)
@@ -30,18 +32,24 @@ namespace KinowySystemRezerwacji.view
         public event Action<DateTime> RequestShowingsList;
         public event Action<int> RequestSeatsList;
         public event Action<BookSeatsRequest> RequestBookShowing;
-
+        public event Action RequestShowingsDates;
+        
         public void ShowBookingsList(BookingResponse[] response)
         {
             throw new NotImplementedException();
         }
 
-        public void ShowSeatsList(SeatToChooseResponse[] response)
+        public void ShowShowingsDates(DateTime[] response)
+        {
+            extendedMonthCalendar.ShowingsDates = response;
+        }
+
+        public void ShowShowingsList(ShowingResponse[] response)
         {
             throw new NotImplementedException();
         }
 
-        public void ShowShowingsList(ShowingResponse[] response)
+        public void ShowSeatsList(SeatToChooseResponse[] response)
         {
             throw new NotImplementedException();
         }

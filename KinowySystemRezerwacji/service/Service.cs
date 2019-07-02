@@ -101,6 +101,23 @@ namespace KinowySystemRezerwacji.service
         }
 
         /// <summary>
+        /// Metoda zwracająca listę dni, w których odbywają się seanse.
+        /// </summary>
+        /// <returns>Lista dni, w których odbywają się seanse</returns>
+        internal DateTime[] GetShowingsDates()
+        {
+            SeansRepository seansRepository = new SeansRepository();
+            List<DateTime> dates = new List<DateTime>();
+
+            List<SeansEntity> seanse = seansRepository.FindAll();
+            foreach (SeansEntity seans in seanse)
+            {
+                dates.Add(seans.Kiedy);
+            }
+            return dates.ToArray();
+        }
+
+        /// <summary>
         /// Metoda zwracająca listę dostępnych seansów.
         /// </summary>
         /// <param name="date">Data, dla której mają zostać wyświetlone seanse</param>

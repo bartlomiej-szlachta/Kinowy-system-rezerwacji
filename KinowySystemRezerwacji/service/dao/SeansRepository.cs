@@ -14,6 +14,27 @@ namespace KinowySystemRezerwacji.service.dao
     internal class SeansRepository
     {
         /// <summary>
+        /// Metoda wyciągająca z bazy danych dane dotyczące wszystkich seansów.
+        /// </summary>
+        /// <returns>Lista wszystkich seansów</returns>
+        internal List<SeansEntity> FindAll()
+        {
+            List<SeansEntity> projections = new List<SeansEntity>();
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM seanse;", connection))
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    projections.Add(new SeansEntity(reader));
+                }
+                connection.Close();
+            }
+            return projections;
+        }
+
+        /// <summary>
         /// Metoda wyciągająca z bazy danych dane dotyczące wszystkich seansów w danym dniu.
         /// </summary>
         /// <returns>Lista seansów</returns>
@@ -32,17 +53,6 @@ namespace KinowySystemRezerwacji.service.dao
                 connection.Close();
             }
             return projections;
-        }
-
-        /// <summary>
-        /// Metoda sprawdzająca w bazie danych czy w dany dzień są seanse.
-        /// </summary>
-        /// <param name="kiedy">Dzień, który sprawdzamy</param>
-        /// <returns>Prawda/Fałsz</returns>
-        internal bool ExistsByKiedy(DateTime kiedy)
-        {
-            List<SeansEntity> projections = FindByKiedy(kiedy);
-            return !(projections.Capacity == 0);
         }
     }
 }
