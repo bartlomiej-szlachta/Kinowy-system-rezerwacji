@@ -107,7 +107,7 @@ namespace KinowySystemRezerwacji.service
                     SeansEntity seans = seansRepository.FindById(rezerwacja.IdSeansu).OrElseThrow("Nie istnieje seans o podanym ID");
                     booking.DateTime = seans.Kiedy;
                     
-                    FilmEntity film = filmRepository.FindById(seans.IdFilmu);
+                    FilmEntity film = filmRepository.FindById(seans.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
                     booking.FilmName = film.Nazwa;
 
                     List<BookedSeatResponse> bookedSeats = new List<BookedSeatResponse>();
@@ -150,7 +150,7 @@ namespace KinowySystemRezerwacji.service
 
             foreach (var projection in projections)
             {
-                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu);
+                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
                 responses.Add(new ShowingResponse
                 {
                     Id = projection.Id,
