@@ -42,20 +42,42 @@ Dane dotyczące zalogowanego użytkownika wyświetlane są na górze ekranu.
 
 Ten rozdział zostanie jeszcze uzupełniony. //TODO
 
-## Inicjalizacja bazy danych
+## Baza danych
 
-System zapisuje dane do bazy danych o nazwie `kinowy_system_rezerwacji`, która domyślnie powinna znajdować się na lokalnym serwerze na komputerze. Jej dane dostępowe, znajdujące się w pliku źródłowym `DBInfo.resx`, to:
+### Tworzenie
+
+Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `create-database.sql`. Natomiast skrypt `create-data.sql` wprowadza do przykładowe dane do utworzonej bazy. Nazwa bazy danych: `kinowy_system_rezerwacji`.
+
+### Konfiguracja
+
+Domyślnie skonfigurowanaą bazą danych w systemie jest baza lokalna, która powinna znajdować się na lokalnym serwerze na komputerze. Jej dane dostępowe, znajdujące się w pliku źródłowym `DBInfo.resx`, to:
 - DataBase: `kinowy_system_rezerwacji`
 - Password: puste
 - Port: `3306`
 - Server: `localhost`
 - User: `root`
 
-W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdujące się w tym pliku.
+W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdujące się w tym pliku. Oraz prawdopodobnie zbudować aplikację. //TODO
 
-Skrypty SQL inicjalizujące bazę danych:
-- `create-database.sql`: tworzy bazę danych, umożliwiając wprowadzanie danych
-- `create-data.sql`: wprowadza do bazy danych przykładowe dane do każdej z tabel
+### Opis
 
+Baza danych jest przedstawiona schematami znajdującymi się w katalogu `/resources`: //TODO. 
+//TODO
 
+## Dokumentacja kodu
 
+W trakcie procesu tworzenia systemu, utworzony kod był na bieżąco dokumentowany standardowymi komentarzami XML. Każde klasa, metoda, właściwość i zdarzenie o zasięgu większym niż `private` jest udokumentowane (z wyjątkiem metod implementujących interfejs - dokumentacja znajduje się wtedy w klasie interfejsu). Dodatkowo udokumentowane są również niektóre metody oraz pola prywatne. 
+
+Aby wygenerować plik dokumentacji, należy coś tam wykonać. //TODO
+
+## Podział pracy
+
+Autorzy systemu: Bartłomiej Szlachta, Kamil Rusin.
+
+Praca została podzielona na jak najmniejsze, niezależne zadania, opisane w zakładce `Issues`. Dla każdego zadania zapisana jest informacja o osobie wykonującej zadanie oraz dodatkowe informacje pomocnicze.
+
+Każde zadanie wykonywane jest na osobnej gałęzi, której nazwa jest zgodna ze schematem: `feature-{numer zagadnienia}`. Po ukończeniu zadania:
+- Osoba rozwiązująca zadanie tworzy odpowiedni Pull Request o nazwie identycznej z nazwą zadania
+- Osobę niebędącą autorem rozwiązania zadania recenzuje Pull Request 
+- Osoba rozwiązująca zadanie wprowadza ewentualne poprawki
+- Gałąź jest scalana do głównej gałęzi, operacja jest zapisywana jako jedna modyfikacja (poszczególne Commity są scalane)

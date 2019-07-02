@@ -56,7 +56,9 @@
     <Compile Include="dto\ShowingResponse.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="service\dao\FilmRepository.cs" />
+    <Compile Include="service\dao\MiejsceRezerwacjaRepository.cs" />
     <Compile Include="service\dao\Optional.cs" />
+    <Compile Include="service\dao\RezerwacjaRepository.cs" />
     <Compile Include="service\dao\SeansRepository.cs" />
     <Compile Include="service\dao\UzytkownikRepository.cs" />
     <Compile Include="service\model\UzytkownikEntity.cs" />
