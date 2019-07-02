@@ -31,7 +31,7 @@ namespace KinowySystemRezerwacji.view
         {
             set
             {
-                throw new NotImplementedException();
+                monthCalendar.BoldedDates = value;
             }
         }
 
