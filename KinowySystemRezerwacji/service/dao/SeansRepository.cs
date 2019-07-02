@@ -33,5 +33,27 @@ namespace KinowySystemRezerwacji.service.dao
             }
             return projections;
         }
+
+        /// <summary>
+        /// Metoda wyciągająca z bazy danych dane dotyczące seansu o podanym ID.
+        /// </summary>
+        /// <param name="idSeansu">ID seansu</param>
+        /// <returns>Dane dotyczące seansu</returns>
+        internal Optional<SeansEntity> FindById(int idSeansu)
+        {
+            SeansEntity showing = null;
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM seanse WHERE id = '" + idSeansu + "';", connection))
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    showing = new SeansEntity(reader);
+                }
+                connection.Close();
+            }
+            return new Optional<SeansEntity>(showing);
+        }
     }
 }

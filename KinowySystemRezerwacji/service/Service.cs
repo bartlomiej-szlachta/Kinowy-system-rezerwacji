@@ -92,64 +92,42 @@ namespace KinowySystemRezerwacji.service
         {
             if (loggedUser != null)
             {
-                //TODO: to jest mock
-                return new BookingResponse[]
+                RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+                MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+                MiejsceRepository miejsceRepository = new MiejsceRepository();
+                FilmRepository filmRepository = new FilmRepository();
+                SeansRepository seansRepository = new SeansRepository();
+
+                List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllByUzytkownikId(loggedUser.Id);
+                List<BookingResponse> bookings = new List<BookingResponse>();
+                foreach (RezerwacjaEntity rezerwacja in rezerwacje)
                 {
-                    new BookingResponse()
+                    BookingResponse booking = new BookingResponse();
+
+                    SeansEntity seans = seansRepository.FindById(rezerwacja.IdSeansu).OrElseThrow("Nie istnieje seans o podanym ID");
+                    booking.DateTime = seans.Kiedy;
+                    
+                    FilmEntity film = filmRepository.FindById(seans.IdFilmu);
+                    booking.FilmName = film.Nazwa;
+
+                    List<BookedSeatResponse> bookedSeats = new List<BookedSeatResponse>();
+                    List<MiejsceRezerwacjaEntity> miejscaRezerwacje = miejsceRezerwacjaRepository.FindAllByRezerwacjaId(rezerwacja.Id);
+                    foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
                     {
-                        FilmName = "Shrek",
-                        DateTime = new DateTime(2019, 06, 30, 12, 0, 0),
-                        Seats = new BookedSeatResponse[]
-                        {
-                            new BookedSeatResponse()
-                            {
-                                PosX = 4,
-                                PosY = 6
-                            },
-                            new BookedSeatResponse()
-                            {
-                                PosX = 4,
-                                PosY = 7
-                            }
-                        }
-                    },
-                    new BookingResponse()
-                    {
-                        FilmName = "Miss marca",
-                        DateTime = new DateTime(2019, 07, 02, 17, 0, 0),
-                        Seats = new BookedSeatResponse[]
-                        {
-                            new BookedSeatResponse()
-                            {
-                                PosX = 6,
-                                PosY = 10
-                            },
-                            new BookedSeatResponse()
-                            {
-                                PosX = 7,
-                                PosY = 10
-                            },
-                            new BookedSeatResponse()
-                            {
-                                PosX = 8,
-                                PosY = 10
-                            }
-                        }
-                    },
-                    new BookingResponse()
-                    {
-                        FilmName = "Moonlight",
-                        DateTime = new DateTime(2019, 07, 04, 12, 0, 0),
-                        Seats = new BookedSeatResponse[]
-                        {
-                            new BookedSeatResponse()
-                            {
-                                PosX = 6,
-                                PosY = 9
-                            }
-                        }
+                        BookedSeatResponse bookedSeat = new BookedSeatResponse(); 
+
+                        MiejsceEntity miejsce = miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID");
+                        bookedSeat.PosX = miejsce.Numer;
+                        bookedSeat.PosY = miejsce.Rzad;
+
+                        bookedSeats.Add(bookedSeat);
                     }
-                };
+                    booking.Seats = bookedSeats.ToArray();
+
+                    bookings.Add(booking);
+                }
+
+                return bookings.ToArray();
             }
             else
             {
