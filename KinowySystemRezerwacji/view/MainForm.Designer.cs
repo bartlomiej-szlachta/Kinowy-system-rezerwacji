@@ -78,7 +78,9 @@
             // 
             // bookingsListBox
             // 
-            this.bookingsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.bookingsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.bookingsListBox.BackColor = System.Drawing.SystemColors.Control;
             this.bookingsListBox.Location = new System.Drawing.Point(12, 27);
             this.bookingsListBox.MinimumSize = new System.Drawing.Size(360, 322);
