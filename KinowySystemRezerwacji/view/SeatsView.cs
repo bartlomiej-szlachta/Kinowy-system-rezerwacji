@@ -36,7 +36,7 @@ namespace KinowySystemRezerwacji.view
                     label.Height = labelSize;
                     label.Width = labelSize;
                     label.BackColor = seat.Available ? Color.Green : Color.Red;
-                    label.Top = SPACES_SIZE + seat.PosY*(labelSize+SPACES_SIZE);
+                    label.Top = SPACES_SIZE + seat.PosY * (labelSize + SPACES_SIZE);
                     label.Left = SPACES_SIZE + seat.PosX * (labelSize + SPACES_SIZE);
 
                     label.Click += (object sender, EventArgs e) =>
@@ -55,9 +55,9 @@ namespace KinowySystemRezerwacji.view
                             theLabel.BackColor = Color.Green;
                         }
                     };
-
                     labels.Add(label);
                 }
+                Controls.AddRange(labels.ToArray());
             }
         }
 

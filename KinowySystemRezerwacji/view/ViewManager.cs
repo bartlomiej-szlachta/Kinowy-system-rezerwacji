@@ -38,6 +38,11 @@ namespace KinowySystemRezerwacji.view
             mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
             mainForm.SetLoggedUser(username);
             mainForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
+
+
+
+            //TODO: to jest mock
+            RequestSeatsList?.Invoke(2);
         }
 
         #endregion
