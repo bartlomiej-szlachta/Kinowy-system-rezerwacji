@@ -34,13 +34,6 @@ namespace KinowySystemRezerwacji.view
         public void ShowBookingsList(BookingResponse[] response)
         {
             bookingsListBox.Bookings = response;
-
-            //List<string> bookings = new List<string>();
-            //foreach (BookingResponse booking in response)
-            //{
-            //    bookings.Add($"");
-            //}
-            //throw new NotImplementedException();
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
