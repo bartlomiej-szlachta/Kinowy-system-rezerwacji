@@ -31,25 +31,13 @@ namespace KinowySystemRezerwacji.view
         {
             set
             {
-                monthCalendar.BoldedDates = value;
-            }
-
-            get
-            {
-                return monthCalendar.BoldedDates;
+                throw new NotImplementedException();
             }
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            if (ShowingsDates.Contains(e.Start))
-            {
-                RequestShowingsList?.Invoke(e.Start);
-            }
-            else
-            {
-                MessageBox.Show("There are no projections during that day. Select another.");
-            }
+            RequestShowingsList?.Invoke(e.Start);
         }
 
         private void ExtendedMonthCalendar_Load(object sender, EventArgs e)
