@@ -25,7 +25,7 @@ namespace KinowySystemRezerwacji.view
                 bookingsListBox.Items.Clear();
                 foreach (BookingResponse booking in value)
                 {
-                    bookingsListBox.Items.Add($"Film: {booking.FilmName}, data: {booking.DateTime}, miejsc: {booking.Seats.Length}");
+                    bookingsListBox.Items.Add($"Tytuł: {booking.FilmName}, data seansu: {booking.DateTime}, miejsc: {booking.Seats.Length}");
                 }
             }
         }
