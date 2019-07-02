@@ -16,8 +16,6 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             InitializeComponent();
-
-            bookingsListControl.Left = (ClientSize.Width - bookingsListControl.Width) / 2;
         }
 
         internal void SetLoggedUser(string username)
