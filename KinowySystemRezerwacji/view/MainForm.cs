@@ -53,68 +53,7 @@ namespace KinowySystemRezerwacji.view
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //RequestBookingsList?.Invoke();
-            BookingResponse[] response = new BookingResponse[]
-            {
-                new BookingResponse()
-                {
-                    FilmName = "Shrek",
-                    DateTime = new DateTime(2019, 06, 30, 12, 0, 0),
-                    Seats = new BookedSeatResponse[]
-                    {
-                        new BookedSeatResponse()
-                        {
-                            PosX = 4,
-                            PosY = 6
-                        },
-                        new BookedSeatResponse()
-                        {
-                            PosX = 4,
-                            PosY = 7
-                        }
-                    }
-                },
-                new BookingResponse()
-                {
-                    FilmName = "Miss marca",
-                    DateTime = new DateTime(2019, 07, 02, 17, 0, 0),
-                    Seats = new BookedSeatResponse[]
-                    {
-                        new BookedSeatResponse()
-                        {
-                            PosX = 6,
-                            PosY = 10
-                        },
-                        new BookedSeatResponse()
-                        {
-                            PosX = 7,
-                            PosY = 10
-                        },
-                        new BookedSeatResponse()
-                        {
-                            PosX = 8,
-                            PosY = 10
-                        }
-                    }
-                },
-                new BookingResponse()
-                {
-                    FilmName = "Moonlight",
-                    DateTime = new DateTime(2019, 07, 04, 12, 0, 0),
-                    Seats = new BookedSeatResponse[]
-                    {
-                        new BookedSeatResponse()
-                        {
-                            PosX = 6,
-                            PosY = 9
-                        }
-                    }
-                }
-            };
-        
-            
-
-            ShowBookingsList(response);
+            RequestBookingsList?.Invoke();
         }
     }
 }
