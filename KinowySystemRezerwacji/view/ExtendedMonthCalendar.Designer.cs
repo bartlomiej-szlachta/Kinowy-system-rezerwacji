@@ -37,9 +37,10 @@
             this.monthCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.monthCalendar.Location = new System.Drawing.Point(7, 41);
-            this.monthCalendar.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.monthCalendar.CalendarDimensions = new System.Drawing.Size(2, 2);
+            this.monthCalendar.Location = new System.Drawing.Point(9, 50);
             this.monthCalendar.MaxDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.monthCalendar.MaxSelectionCount = 1;
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 0;
             // 
@@ -50,22 +51,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.engagementLabel.AutoSize = true;
             this.engagementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.engagementLabel.Location = new System.Drawing.Point(59, 11);
-            this.engagementLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.engagementLabel.Location = new System.Drawing.Point(254, 12);
             this.engagementLabel.Name = "engagementLabel";
-            this.engagementLabel.Size = new System.Drawing.Size(137, 24);
+            this.engagementLabel.Size = new System.Drawing.Size(175, 29);
             this.engagementLabel.TabIndex = 1;
             this.engagementLabel.Text = "Choose a date:";
             // 
             // ExtendedMonthCalendar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.engagementLabel);
             this.Controls.Add(this.monthCalendar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ExtendedMonthCalendar";
-            this.Size = new System.Drawing.Size(259, 220);
+            this.Size = new System.Drawing.Size(677, 463);
             this.Load += new System.EventHandler(this.ExtendedMonthCalendar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
