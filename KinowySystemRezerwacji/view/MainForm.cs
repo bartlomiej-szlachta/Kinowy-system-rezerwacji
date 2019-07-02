@@ -16,6 +16,8 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             InitializeComponent();
+
+            bookingsListBox.Left = (ClientSize.Width - bookingsListBox.Width) / 2;
         }
 
         internal void SetLoggedUser(string username)
@@ -31,7 +33,14 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowBookingsList(BookingResponse[] response)
         {
-            throw new NotImplementedException();
+            bookingsListBox.Bookings = response;
+
+            //List<string> bookings = new List<string>();
+            //foreach (BookingResponse booking in response)
+            //{
+            //    bookings.Add($"");
+            //}
+            //throw new NotImplementedException();
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
@@ -47,6 +56,72 @@ namespace KinowySystemRezerwacji.view
         private void wylogujToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             RequestLogOut?.Invoke();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //RequestBookingsList?.Invoke();
+            BookingResponse[] response = new BookingResponse[]
+            {
+                new BookingResponse()
+                {
+                    FilmName = "Shrek",
+                    DateTime = new DateTime(2019, 06, 30, 12, 0, 0),
+                    Seats = new BookedSeatResponse[]
+                    {
+                        new BookedSeatResponse()
+                        {
+                            PosX = 4,
+                            PosY = 6
+                        },
+                        new BookedSeatResponse()
+                        {
+                            PosX = 4,
+                            PosY = 7
+                        }
+                    }
+                },
+                new BookingResponse()
+                {
+                    FilmName = "Miss marca",
+                    DateTime = new DateTime(2019, 07, 02, 17, 0, 0),
+                    Seats = new BookedSeatResponse[]
+                    {
+                        new BookedSeatResponse()
+                        {
+                            PosX = 6,
+                            PosY = 10
+                        },
+                        new BookedSeatResponse()
+                        {
+                            PosX = 7,
+                            PosY = 10
+                        },
+                        new BookedSeatResponse()
+                        {
+                            PosX = 8,
+                            PosY = 10
+                        }
+                    }
+                },
+                new BookingResponse()
+                {
+                    FilmName = "Moonlight",
+                    DateTime = new DateTime(2019, 07, 04, 12, 0, 0),
+                    Seats = new BookedSeatResponse[]
+                    {
+                        new BookedSeatResponse()
+                        {
+                            PosX = 6,
+                            PosY = 9
+                        }
+                    }
+                }
+            };
+        
+            
+
+            ShowBookingsList(response);
         }
     }
 }
