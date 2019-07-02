@@ -46,7 +46,7 @@ Ten rozdział zostanie jeszcze uzupełniony. //TODO
 
 ### Tworzenie
 
-Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `create-database.sql`. Natomiast skrypt `create-data.sql` wprowadza do przykładowe dane do utworzonej bazy. Nazwa bazy danych: `kinowy_system_rezerwacji`.
+Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `create-database.sql`. Natomiast skrypt `create-example-data.sql` wprowadza do przykładowe dane do utworzonej bazy. Nazwa bazy danych: `kinowy_system_rezerwacji`.
 
 ### Konfiguracja
 
