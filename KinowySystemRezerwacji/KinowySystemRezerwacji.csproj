@@ -97,6 +97,12 @@
     <Compile Include="view\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\SeatsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\SeatsView.Designer.cs">
+      <DependentUpon>SeatsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ViewManager.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SeatsView.resx">
+      <DependentUpon>SeatsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
