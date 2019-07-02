@@ -17,7 +17,7 @@ namespace KinowySystemRezerwacji.view
         {
             InitializeComponent();
 
-            bookingsListBox.Left = (ClientSize.Width - bookingsListBox.Width) / 2;
+            bookingsListControl.Left = (ClientSize.Width - bookingsListControl.Width) / 2;
         }
 
         internal void SetLoggedUser(string username)
@@ -33,7 +33,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowBookingsList(BookingResponse[] response)
         {
-            bookingsListBox.Bookings = response;
+            bookingsListControl.Bookings = response;
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
