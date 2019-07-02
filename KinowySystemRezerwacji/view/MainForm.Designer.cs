@@ -45,7 +45,7 @@
             this.użytkownikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(384, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -85,18 +85,18 @@
             this.bookingsListBox.Location = new System.Drawing.Point(12, 27);
             this.bookingsListBox.MinimumSize = new System.Drawing.Size(360, 322);
             this.bookingsListBox.Name = "bookingsListBox";
-            this.bookingsListBox.Size = new System.Drawing.Size(360, 322);
+            this.bookingsListBox.Size = new System.Drawing.Size(560, 322);
             this.bookingsListBox.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.bookingsListBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kinowy system rezerwacji";
