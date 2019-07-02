@@ -29,9 +29,12 @@ namespace KinowySystemRezerwacji.view
                 foreach (SeatToChooseResponse seat in value)
                 {
                     Label label = new Label();
+                    int labelSize1 = (Width - 13 * SPACES_SIZE) / 12;
+                    int labelSize2 = (Height - 11 * SPACES_SIZE) / 10;
+                    int labelSize = labelSize1 < labelSize2 ? labelSize1 : labelSize2;
 
-                    label.Height;
-                    label.Width;
+                    label.Height = labelSize;
+                    label.Width = labelSize;
                     label.BackColor;
                     label.Top;
                     label.Left;
