@@ -16,6 +16,7 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         internal void SetLoggedUser(string username)

@@ -33,31 +33,34 @@
             this.repertuarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.extendedMonthCalendar = new KinowySystemRezerwacji.view.ExtendedMonthCalendar();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mojeRezerwacjeToolStripMenuItem,
             this.repertuarToolStripMenuItem,
             this.użytkownikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // mojeRezerwacjeToolStripMenuItem
             // 
             this.mojeRezerwacjeToolStripMenuItem.Name = "mojeRezerwacjeToolStripMenuItem";
-            this.mojeRezerwacjeToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.mojeRezerwacjeToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.mojeRezerwacjeToolStripMenuItem.Text = "Moje rezerwacje";
             // 
             // repertuarToolStripMenuItem
             // 
             this.repertuarToolStripMenuItem.Name = "repertuarToolStripMenuItem";
-            this.repertuarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.repertuarToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.repertuarToolStripMenuItem.Text = "Repertuar";
             // 
             // użytkownikToolStripMenuItem
@@ -65,23 +68,32 @@
             this.użytkownikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wylogujToolStripMenuItem});
             this.użytkownikToolStripMenuItem.Name = "użytkownikToolStripMenuItem";
-            this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.użytkownikToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.użytkownikToolStripMenuItem.Text = "Użytkownik";
             // 
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click_1);
             // 
+            // extendedMonthCalendar
+            // 
+            this.extendedMonthCalendar.Location = new System.Drawing.Point(337, 118);
+            this.extendedMonthCalendar.Name = "extendedMonthCalendar";
+            this.extendedMonthCalendar.Size = new System.Drawing.Size(348, 279);
+            this.extendedMonthCalendar.TabIndex = 1;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.extendedMonthCalendar);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kinowy system rezerwacji";
@@ -99,5 +111,6 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
+        private ExtendedMonthCalendar extendedMonthCalendar;
     }
 }
