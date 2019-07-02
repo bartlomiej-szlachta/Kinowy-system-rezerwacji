@@ -16,7 +16,8 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             InitializeComponent();
-            
+
+            extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
         }
 
         internal void SetLoggedUser(string username)
