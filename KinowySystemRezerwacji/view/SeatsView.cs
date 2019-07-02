@@ -35,9 +35,26 @@ namespace KinowySystemRezerwacji.view
 
                     label.Height = labelSize;
                     label.Width = labelSize;
-                    label.BackColor;
-                    label.Top;
-                    label.Left;
+                    label.BackColor = seat.Available ? Color.Green : Color.Red;
+                    label.Top = SPACES_SIZE + seat.PosY*(labelSize+SPACES_SIZE);
+                    label.Left = SPACES_SIZE + seat.PosX * (labelSize + SPACES_SIZE);
+
+                    label.Click += (object sender, EventArgs e) =>
+                    {
+                        Label theLabel = (Label)sender;
+                        if (theLabel.BackColor == Color.Red)
+                        {
+                            MessageBox.Show("To miejsce jest już zajęte", "Błąd", MessageBoxButtons.OK);
+                        }
+                        else if (theLabel.BackColor == Color.Green)
+                        {
+                            theLabel.BackColor = Color.Yellow;
+                        }
+                        else if (theLabel.BackColor == Color.Yellow)
+                        {
+                            theLabel.BackColor = Color.Green;
+                        }
+                    };
 
                     labels.Add(label);
                 }

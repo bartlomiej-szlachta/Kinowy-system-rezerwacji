@@ -36,7 +36,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
         {
-            throw new NotImplementedException();
+            seatsView.Seats = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)

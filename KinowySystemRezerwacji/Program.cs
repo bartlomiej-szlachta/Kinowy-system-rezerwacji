@@ -22,6 +22,8 @@ namespace KinowySystemRezerwacji
             Service model = new Service();
             IView view = new ViewManager();
             Presenter presenter = new Presenter(model, view);
+
+            view.ShowSeatsList(model.GetSeats(2));
             
             while(true)
             {
