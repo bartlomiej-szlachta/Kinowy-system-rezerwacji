@@ -67,6 +67,12 @@
     <Compile Include="service\Security.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
+    <Compile Include="view\ExtendedMonthCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\ExtendedMonthCalendar.Designer.cs">
+      <DependentUpon>ExtendedMonthCalendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ExtendedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     <EmbeddedResource Include="service\DBInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ExtendedMonthCalendar.resx">
+      <DependentUpon>ExtendedMonthCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ExtendedTextBox.resx">
       <DependentUpon>ExtendedTextBox.cs</DependentUpon>

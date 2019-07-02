@@ -33,5 +33,16 @@ namespace KinowySystemRezerwacji.service.dao
             }
             return projections;
         }
+
+        /// <summary>
+        /// Metoda sprawdzająca w bazie danych czy w dany dzień są seanse.
+        /// </summary>
+        /// <param name="kiedy">Dzień, który sprawdzamy</param>
+        /// <returns>Prawda/Fałsz</returns>
+        internal bool ExistsByKiedy(DateTime kiedy)
+        {
+            List<SeansEntity> projections = FindByKiedy(kiedy);
+            return !(projections.Capacity == 0);
+        }
     }
 }
