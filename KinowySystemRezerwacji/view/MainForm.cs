@@ -17,9 +17,8 @@ namespace KinowySystemRezerwacji.view
         {
             InitializeComponent();
 
-            extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            extendedMonthCalendar.RequestShowingsDates += () =>
-            RequestShowingsDates?.Invoke();
+            //extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            //extendedMonthCalendar.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
         }
 
         internal void SetLoggedUser(string username)
@@ -41,7 +40,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            extendedMonthCalendar.ShowingsDates = response;
+            //extendedMonthCalendar.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)

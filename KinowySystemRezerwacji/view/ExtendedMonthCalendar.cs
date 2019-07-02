@@ -21,7 +21,7 @@ namespace KinowySystemRezerwacji.view
         internal ExtendedMonthCalendar()
         {
             InitializeComponent();
-            monthCalendar.MinDate = DateTime.Now;
+            //monthCalendar.MinDate = DateTime.Now;
         }
 
         internal event Action<DateTime> RequestShowingsList;
