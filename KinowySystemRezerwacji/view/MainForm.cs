@@ -16,6 +16,7 @@ namespace KinowySystemRezerwacji.view
         private BookingsList bookingsListControl;
         private DateControl chooseDateControl;
         private ShowingsListBox showingsListControl;
+        private SeatsView seatsViewControl;
 
         private void InitializeControl(UserControl control)
         {
@@ -30,15 +31,18 @@ namespace KinowySystemRezerwacji.view
             bookingsListControl = new BookingsList();
             chooseDateControl = new DateControl();
             showingsListControl = new ShowingsListBox();
+            seatsViewControl = new SeatsView();
 
             InitializeControl(bookingsListControl);
             InitializeControl(chooseDateControl);
             InitializeControl(showingsListControl);
+            InitializeControl(seatsViewControl);
             InitializeComponent();
             
             chooseDateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
             chooseDateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             showingsListControl.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
+            seatsViewControl.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
         }
 
         #region Shared with ViewManager
@@ -74,7 +78,9 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
         {
-            throw new NotImplementedException();
+            showingsListControl.Visible = false;
+            seatsViewControl.Visible = true;
+            seatsViewControl.Seats = response;
         }
 
         #endregion

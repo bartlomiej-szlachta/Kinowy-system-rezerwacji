@@ -36,9 +36,8 @@ namespace KinowySystemRezerwacji.view
             mainForm.RequestBookingsList += () => RequestBookingsList?.Invoke();
             mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
+            mainForm.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
             mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
-            mainForm.RequestShowingsDates += () => 
-            RequestShowingsDates?.Invoke();
 
             mainForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
 

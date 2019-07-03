@@ -121,6 +121,18 @@
     <Compile Include="view\ShowingsListBox.Designer.cs">
       <DependentUpon>ShowingsListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\SeatsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\SeatsPanel.Designer.cs">
+      <DependentUpon>SeatsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SeatsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\SeatsView.Designer.cs">
+      <DependentUpon>SeatsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ViewManager.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,6 +167,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\ShowingsListBox.resx">
       <DependentUpon>ShowingsListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SeatsPanel.resx">
+      <DependentUpon>SeatsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SeatsView.resx">
+      <DependentUpon>SeatsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
