@@ -14,9 +14,8 @@ namespace KinowySystemRezerwacji.view
     internal partial class MainForm : Form
     {
         private BookingsList bookingsListControl;
-        private DateControl dateControl;
-        //private ShowingsList showingsList;
-        private ShowingsListBox listBoxShowing;
+        private DateControl chooseDateControl;
+        private ShowingsListBox showingsListControl;
 
         private void InitializeControl(UserControl control)
         {
@@ -29,21 +28,17 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             bookingsListControl = new BookingsList();
-            dateControl = new DateControl();
-            //showingsList = new ShowingsList();
-            listBoxShowing = new ShowingsListBox();
+            chooseDateControl = new DateControl();
+            showingsListControl = new ShowingsListBox();
 
             InitializeControl(bookingsListControl);
-            InitializeControl(dateControl);
-            //InitializeControl(showingsList);
-            InitializeControl(listBoxShowing);
+            InitializeControl(chooseDateControl);
+            InitializeControl(showingsListControl);
             InitializeComponent();
             
-            dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
-            dateControl.RequestShowingsList += (DateTime date) => 
-            RequestShowingsList?.Invoke(date);
-            //showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
-            listBoxShowing.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
+            chooseDateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+            chooseDateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            showingsListControl.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }
 
         #region Shared with ViewManager
@@ -67,16 +62,14 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            dateControl.ShowingsDates = response;
+            chooseDateControl.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)
         {
-            //showingsList.Showings = response;
-            listBoxShowing.Showings = response;
-            dateControl.Visible = false;
-            //showingsList.Visible = true;
-            listBoxShowing.Visible = true;
+            showingsListControl.Showings = response;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = true;
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
@@ -91,18 +84,16 @@ namespace KinowySystemRezerwacji.view
         private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bookingsListControl.Visible = true;
-            dateControl.Visible = false;
-            //showingsList.Visible = false;
-            listBoxShowing.Visible = false;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = false;
             RequestBookingsList?.Invoke();
         }
 
         private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bookingsListControl.Visible = false;
-            dateControl.Visible = true;
-            //showingsList.Visible = false;
-            listBoxShowing.Visible = false;
+            chooseDateControl.Visible = true;
+            showingsListControl.Visible = false;
             RequestShowingsDates?.Invoke();
         }
 
@@ -114,9 +105,8 @@ namespace KinowySystemRezerwacji.view
         private void MainForm_Load(object sender, EventArgs e)
         {
             bookingsListControl.Visible = true;
-            dateControl.Visible = false;
-            //showingsList.Visible = true;
-            listBoxShowing.Visible = true;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
