@@ -20,10 +20,18 @@ namespace KinowySystemRezerwacji
             Application.SetCompatibleTextRenderingDefault(false);
 
             Service model = new Service();
+
+            model.LogIn("dupa", "dupa");
+            model.BookSeats(new dto.BookSeatsRequest()
+            {
+                ShowingId = 22,
+                SeatsIds = new int[] { 115, 116, 117 }
+            });
+
             IView view = new ViewManager();
             Presenter presenter = new Presenter(model, view);
-            
-            while(true)
+
+            while (true)
             {
                 Form activeForm = (((ViewManager)view)).GetActiveForm();
                 if (activeForm != null)
