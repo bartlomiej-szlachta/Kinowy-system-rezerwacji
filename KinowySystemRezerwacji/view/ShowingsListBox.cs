@@ -35,7 +35,7 @@ namespace KinowySystemRezerwacji.view
             }
         }
 
-        private void ShowingsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             RequestSeatsList?.Invoke(showings[listBox1.SelectedIndex].Id);
         }
