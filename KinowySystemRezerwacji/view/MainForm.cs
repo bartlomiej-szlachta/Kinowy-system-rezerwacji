@@ -14,28 +14,31 @@ namespace KinowySystemRezerwacji.view
     internal partial class MainForm : Form
     {
         private BookingsList bookingsListControl;
-        private DateControl dateControl;
+        private DateControl chooseDateControl;
+        private ShowingsListBox showingsListControl;
 
         private void InitializeControl(UserControl control)
         {
             control.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             control.Location = new Point(12, 27);
-            control.MinimumSize = new Size(560, 322);
+            control.Size = new Size(560, 322);
             Controls.Add(control);
         }
 
         public MainForm()
         {
             bookingsListControl = new BookingsList();
-            dateControl = new DateControl();
+            chooseDateControl = new DateControl();
+            showingsListControl = new ShowingsListBox();
 
             InitializeControl(bookingsListControl);
-            InitializeControl(dateControl);
-            
+            InitializeControl(chooseDateControl);
+            InitializeControl(showingsListControl);
             InitializeComponent();
             
-            dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+            chooseDateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+            chooseDateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            showingsListControl.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }
 
         #region Shared with ViewManager
@@ -59,12 +62,14 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            dateControl.ShowingsDates = response;
+            chooseDateControl.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)
         {
-            throw new NotImplementedException();
+            showingsListControl.Showings = response;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = true;
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
@@ -78,15 +83,17 @@ namespace KinowySystemRezerwacji.view
 
         private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dateControl.Visible = false;
             bookingsListControl.Visible = true;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = false;
             RequestBookingsList?.Invoke();
         }
 
         private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dateControl.Visible = true;
             bookingsListControl.Visible = false;
+            chooseDateControl.Visible = true;
+            showingsListControl.Visible = false;
             RequestShowingsDates?.Invoke();
         }
 
@@ -97,8 +104,9 @@ namespace KinowySystemRezerwacji.view
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            dateControl.Visible = false;
             bookingsListControl.Visible = true;
+            chooseDateControl.Visible = false;
+            showingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
