@@ -29,7 +29,7 @@ namespace KinowySystemRezerwacji.view
                 listBox1.Items.Clear();
                 foreach (ShowingResponse showing in value)
                 {
-                    listBox1.Items.Add($"ID: {showing.Id} Tytuł: {showing.FilmName}, data seansu: {showing.DateTime}, czas trwania: {showing.FilmDuration}, rok premiery: {showing.FilmYear}");
+                    listBox1.Items.Add($"Tytuł: {showing.FilmName}, data seansu: {showing.DateTime}, czas trwania: {showing.FilmDuration}, rok premiery: {showing.FilmYear}");
                     showings.Add(showing);
                 }
             }
