@@ -14,11 +14,11 @@ namespace KinowySystemRezerwacji.service.dao
     internal class FilmRepository
     {
         /// <summary>
-        /// Metoda wyszukuje w bazie danych film o wybranym id.
+        /// Metoda uzyskująca z bazy danych film o wybranym ID.
         /// </summary>
-        /// <param name="id">Id filmu, którego szukamy</param>
-        /// <returns>Zwraca encję filmu wyszukanego w bazie</returns>
-        internal FilmEntity FindById(int id)
+        /// <param name="id">Id szukanego filmu</param>
+        /// <returns>Encja filmu oraz informacja o sukcesie operacji</returns>
+        internal Optional<FilmEntity> FindById(int id)
         {
             FilmEntity movie = null;
             MySqlConnection connection = DBConnection.Instance.Connection;
@@ -32,7 +32,7 @@ namespace KinowySystemRezerwacji.service.dao
                 }
                 connection.Close();
             }
-            return movie;
+            return new Optional<FilmEntity>(movie);
         }
     }
 }

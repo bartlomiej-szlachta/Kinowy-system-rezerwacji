@@ -92,7 +92,42 @@ namespace KinowySystemRezerwacji.service
         {
             if (loggedUser != null)
             {
-                throw new NotImplementedException();
+                RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+                MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+                MiejsceRepository miejsceRepository = new MiejsceRepository();
+                FilmRepository filmRepository = new FilmRepository();
+                SeansRepository seansRepository = new SeansRepository();
+
+                List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllByUzytkownikId(loggedUser.Id);
+                List<BookingResponse> bookings = new List<BookingResponse>();
+                foreach (RezerwacjaEntity rezerwacja in rezerwacje)
+                {
+                    BookingResponse booking = new BookingResponse();
+
+                    SeansEntity seans = seansRepository.FindById(rezerwacja.IdSeansu).OrElseThrow("Nie istnieje seans o podanym ID");
+                    booking.DateTime = seans.Kiedy;
+                    
+                    FilmEntity film = filmRepository.FindById(seans.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
+                    booking.FilmName = film.Nazwa;
+
+                    List<BookedSeatResponse> bookedSeats = new List<BookedSeatResponse>();
+                    List<MiejsceRezerwacjaEntity> miejscaRezerwacje = miejsceRezerwacjaRepository.FindAllByRezerwacjaId(rezerwacja.Id);
+                    foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
+                    {
+                        BookedSeatResponse bookedSeat = new BookedSeatResponse(); 
+
+                        MiejsceEntity miejsce = miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID");
+                        bookedSeat.PosX = miejsce.Numer;
+                        bookedSeat.PosY = miejsce.Rzad;
+
+                        bookedSeats.Add(bookedSeat);
+                    }
+                    booking.Seats = bookedSeats.ToArray();
+
+                    bookings.Add(booking);
+                }
+
+                return bookings.ToArray();
             }
             else
             {
@@ -132,7 +167,7 @@ namespace KinowySystemRezerwacji.service
 
             foreach (var projection in projections)
             {
-                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu);
+                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
                 responses.Add(new ShowingResponse
                 {
                     Id = projection.Id,
@@ -153,7 +188,46 @@ namespace KinowySystemRezerwacji.service
         /// <returns>Informacje o miejscach na sali</returns>
         internal SeatToChooseResponse[] GetSeats(int showingId)
         {
-            throw new NotImplementedException();
+            MiejsceRepository miejsceRepository = new MiejsceRepository();
+            MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+            RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+
+            List<MiejsceEntity> zajeteMiejsca = new List<MiejsceEntity>();
+            List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllBySeansId(showingId);
+            foreach (RezerwacjaEntity rezerwacja in rezerwacje)
+            {
+                List<MiejsceRezerwacjaEntity> miejscaRezerwacje = miejsceRezerwacjaRepository.FindAllByRezerwacjaId(rezerwacja.Id);
+                foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
+                {
+                    zajeteMiejsca.Add(miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID"));
+                }
+            }
+
+            List<MiejsceEntity> wszystkieMiejsca = miejsceRepository.FindAll();
+            List<SeatToChooseResponse> seats = new List<SeatToChooseResponse>();
+            foreach (MiejsceEntity miejsce in wszystkieMiejsca)
+            {
+                SeatToChooseResponse seat = new SeatToChooseResponse()
+                {
+                    Id = miejsce.Id,
+                    PosX = miejsce.Numer,
+                    PosY = miejsce.Rzad,
+                    Available = true
+                };
+
+                foreach (MiejsceEntity zajeteMiejsce in zajeteMiejsca)
+                {
+                    if (miejsce.Id == zajeteMiejsce.Id)
+                    {
+                        seat.Available = false;
+                        break;
+                    }
+                }
+
+                seats.Add(seat);
+            }
+
+            return seats.ToArray();
         }
 
         /// <summary>

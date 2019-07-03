@@ -48,7 +48,7 @@ namespace KinowySystemRezerwacji.view
         
         public void ShowBookingsList(BookingResponse[] response)
         {
-            throw new NotImplementedException();
+            bookingsListControl.Bookings = response;
         }
 
         public void ShowShowingsDates(DateTime[] response)
@@ -85,6 +85,12 @@ namespace KinowySystemRezerwacji.view
         private void wylogujToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             RequestLogOut?.Invoke();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            calendarControl = null;
+            RequestBookingsList?.Invoke();
         }
 
         #endregion

@@ -33,6 +33,7 @@
             this.repertuarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookingsListControl = new KinowySystemRezerwacji.view.BookingsList();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             this.użytkownikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,16 +79,32 @@
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click_1);
             // 
+            // bookingsListBox
+            // 
+            this.bookingsListControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookingsListControl.BackColor = System.Drawing.SystemColors.Control;
+            this.bookingsListControl.Location = new System.Drawing.Point(12, 27);
+            this.bookingsListControl.MinimumSize = new System.Drawing.Size(360, 322);
+            this.bookingsListControl.Name = "bookingsListBox";
+            this.bookingsListControl.Size = new System.Drawing.Size(560, 322);
+            this.bookingsListControl.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.bookingsListControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kinowy system rezerwacji";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -102,5 +119,6 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
+        private BookingsList bookingsListControl;
     }
 }

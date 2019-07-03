@@ -56,7 +56,9 @@
     <Compile Include="dto\ShowingResponse.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="service\dao\FilmRepository.cs" />
+    <Compile Include="service\dao\MiejsceRezerwacjaRepository.cs" />
     <Compile Include="service\dao\Optional.cs" />
+    <Compile Include="service\dao\RezerwacjaRepository.cs" />
     <Compile Include="service\dao\SeansRepository.cs" />
     <Compile Include="service\dao\UzytkownikRepository.cs" />
     <Compile Include="service\model\UzytkownikEntity.cs" />
@@ -67,6 +69,12 @@
     <Compile Include="service\Security.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
+    <Compile Include="view\BookingsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\BookingsList.Designer.cs">
+      <DependentUpon>BookingsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ExtendedMonthCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +122,9 @@
     <EmbeddedResource Include="service\DBInfo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\BookingsList.resx">
+      <DependentUpon>BookingsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ExtendedMonthCalendar.resx">
       <DependentUpon>ExtendedMonthCalendar.cs</DependentUpon>
