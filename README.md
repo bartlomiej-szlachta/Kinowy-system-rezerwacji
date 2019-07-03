@@ -64,8 +64,14 @@ W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdują
 
 ### Opis
 
-Baza danych jest przedstawiona schematami znajdującymi się w katalogu `/resources`: //TODO. 
+Baza danych jest przedstawiona schematami znajdującymi się w katalogu `/resources`: //TODO.
+
+Diagram związków encji: 
+
 ![Diagram związków encji](resources/diagram-zwiazkow-encji.jpg)
+
+
+Model relacyjny bazy danych:
 
 ![Model relacyjny bazy danych](resources/model-relacyjny-bazy-danych.png)
 
