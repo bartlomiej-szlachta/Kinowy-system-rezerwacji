@@ -13,14 +13,26 @@ namespace KinowySystemRezerwacji.view
 {
     internal partial class MainForm : Form
     {
+
+        #region Private controls
+
+        private ExtendedMonthCalendar calendarControl;
+
+
+        private void InitializeCalendar()
+        {
+            calendarControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            calendarControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+        }
+
+        #endregion
+
         public MainForm()
         {
             InitializeComponent();
-
-            extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            extendedMonthCalendar.RequestShowingsDates += () =>
-            RequestShowingsDates?.Invoke();
         }
+
+        #region Shared with ViewManager
 
         internal void SetLoggedUser(string username)
         {
@@ -41,7 +53,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            extendedMonthCalendar.ShowingsDates = response;
+            calendarControl.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)
@@ -54,9 +66,27 @@ namespace KinowySystemRezerwacji.view
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region Generated methods
+
+        private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            calendarControl = null;
+            RequestBookingsList?.Invoke();
+        }
+
+        private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            calendarControl = new ExtendedMonthCalendar();
+            RequestShowingsDates?.Invoke();
+        }
+
         private void wylogujToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             RequestLogOut?.Invoke();
         }
+
+        #endregion
     }
 }
