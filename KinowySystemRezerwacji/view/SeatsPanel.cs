@@ -26,6 +26,7 @@ namespace KinowySystemRezerwacji.view
         {
             set
             {
+                Labels?.Clear();
                 Labels = new List<Label>();
 
                 int suggestedLabelWidth = (Width - 13 * SPACES_SIZE) / 12;
