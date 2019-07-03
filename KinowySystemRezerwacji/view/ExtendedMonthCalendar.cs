@@ -42,13 +42,14 @@ namespace KinowySystemRezerwacji.view
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            if (ShowingsDates.Contains(e.Start))
-            {
-                RequestShowingsList?.Invoke(e.Start);
-            }
-            else
-            {
-                MessageBox.Show("There are no projections during that day. Select another.");
+
+            foreach (var projection in ShowingsDates)
+            {   
+                if (e.End.Date.Equals(projection.Date))
+                {
+                    RequestShowingsList?.Invoke(e.Start);
+                    break;
+                }
             }
         }
 

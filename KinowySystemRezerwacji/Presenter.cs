@@ -126,6 +126,7 @@ namespace KinowySystemRezerwacji
         {
             try
             {
+                
                 view.ShowShowingsList(model.GetShowings(date));
             }
             catch (Exception ex)
