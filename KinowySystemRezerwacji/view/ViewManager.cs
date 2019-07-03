@@ -25,6 +25,7 @@ namespace KinowySystemRezerwacji.view
             loginForm = LoginForm.GetInstance();
             loginForm.RequestRegister += (RegisterRequest request) => RequestRegister?.Invoke(request);
             loginForm.RequestLogIn += (string login, string password) => RequestLogIn?.Invoke(login, password);
+
             loginForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
         }
 
@@ -36,13 +37,12 @@ namespace KinowySystemRezerwacji.view
             mainForm.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             mainForm.RequestSeatsList += (int showingId) => RequestSeatsList.Invoke(showingId);
             mainForm.RequestBookShowing += (BookSeatsRequest request) => RequestBookShowing?.Invoke(request);
-            mainForm.SetLoggedUser(username);
+            mainForm.RequestShowingsDates += () => 
+            RequestShowingsDates?.Invoke();
+
             mainForm.FormClosing += (object sender, FormClosingEventArgs e) => activeForm = null;
 
-
-
-            //TODO: to jest mock
-            RequestSeatsList?.Invoke(2);
+            mainForm.SetLoggedUser(username);
         }
 
         #endregion
@@ -78,6 +78,7 @@ namespace KinowySystemRezerwacji.view
         public event Action<DateTime> RequestShowingsList;
         public event Action<int> RequestSeatsList;
         public event Action<BookSeatsRequest> RequestBookShowing;
+        public event Action RequestShowingsDates;
 
         public void UpdateLoggedInAs(string username)
         {
@@ -111,6 +112,11 @@ namespace KinowySystemRezerwacji.view
         public void ShowBookingsList(BookingResponse[] response)
         {
             mainForm.ShowBookingsList(response);
+        }
+
+        public void ShowShowingsDates(DateTime[] response)
+        {
+            mainForm.ShowShowingsDates(response);
         }
 
         public void ShowShowingsList(ShowingResponse[] response)

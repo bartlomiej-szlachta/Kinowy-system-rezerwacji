@@ -92,12 +92,64 @@ namespace KinowySystemRezerwacji.service
         {
             if (loggedUser != null)
             {
-                throw new NotImplementedException();
+                RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+                MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+                MiejsceRepository miejsceRepository = new MiejsceRepository();
+                FilmRepository filmRepository = new FilmRepository();
+                SeansRepository seansRepository = new SeansRepository();
+
+                List<RezerwacjaEntity> rezerwacje = rezerwacjaRepository.FindAllByUzytkownikId(loggedUser.Id);
+                List<BookingResponse> bookings = new List<BookingResponse>();
+                foreach (RezerwacjaEntity rezerwacja in rezerwacje)
+                {
+                    BookingResponse booking = new BookingResponse();
+
+                    SeansEntity seans = seansRepository.FindById(rezerwacja.IdSeansu).OrElseThrow("Nie istnieje seans o podanym ID");
+                    booking.DateTime = seans.Kiedy;
+                    
+                    FilmEntity film = filmRepository.FindById(seans.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
+                    booking.FilmName = film.Nazwa;
+
+                    List<BookedSeatResponse> bookedSeats = new List<BookedSeatResponse>();
+                    List<MiejsceRezerwacjaEntity> miejscaRezerwacje = miejsceRezerwacjaRepository.FindAllByRezerwacjaId(rezerwacja.Id);
+                    foreach (MiejsceRezerwacjaEntity miejsceRezerwacja in miejscaRezerwacje)
+                    {
+                        BookedSeatResponse bookedSeat = new BookedSeatResponse(); 
+
+                        MiejsceEntity miejsce = miejsceRepository.FindById(miejsceRezerwacja.IdMiejsca).OrElseThrow("Nie istnieje miejsce o podanym ID");
+                        bookedSeat.PosX = miejsce.Numer;
+                        bookedSeat.PosY = miejsce.Rzad;
+
+                        bookedSeats.Add(bookedSeat);
+                    }
+                    booking.Seats = bookedSeats.ToArray();
+
+                    bookings.Add(booking);
+                }
+
+                return bookings.ToArray();
             }
             else
             {
                 throw new Exception("Nie uzyskano autoryzacji do wykonania zadania");
             }
+        }
+
+        /// <summary>
+        /// Metoda zwracająca listę dni, w których odbywają się seanse.
+        /// </summary>
+        /// <returns>Lista dni, w których odbywają się seanse</returns>
+        internal DateTime[] GetShowingsDates()
+        {
+            SeansRepository seansRepository = new SeansRepository();
+            List<DateTime> dates = new List<DateTime>();
+
+            List<SeansEntity> seanse = seansRepository.FindAll();
+            foreach (SeansEntity seans in seanse)
+            {
+                dates.Add(seans.Kiedy);
+            }
+            return dates.ToArray();
         }
 
         /// <summary>
@@ -115,7 +167,7 @@ namespace KinowySystemRezerwacji.service
 
             foreach (var projection in projections)
             {
-                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu);
+                tempFilmEntity = moviesRepo.FindById(projection.IdFilmu).OrElseThrow("Nie można odnaleźć w bazie danych filmu o podanym ID");
                 responses.Add(new ShowingResponse
                 {
                     Id = projection.Id,

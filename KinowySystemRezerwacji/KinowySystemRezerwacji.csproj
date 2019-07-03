@@ -69,6 +69,18 @@
     <Compile Include="service\Security.cs" />
     <Compile Include="service\Service.cs" />
     <Compile Include="service\dao\MiejsceRepository.cs" />
+    <Compile Include="view\BookingsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\BookingsList.Designer.cs">
+      <DependentUpon>BookingsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\DateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\DateControl.Designer.cs">
+      <DependentUpon>DateControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ExtendedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,6 +109,18 @@
     <Compile Include="view\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\ShowingsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\ShowingsList.Designer.cs">
+      <DependentUpon>ShowingsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ShowingsListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\ShowingsListBox.Designer.cs">
+      <DependentUpon>ShowingsListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\SeatsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +147,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DBInfo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\BookingsList.resx">
+      <DependentUpon>BookingsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DateControl.resx">
+      <DependentUpon>DateControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\ExtendedTextBox.resx">
       <DependentUpon>ExtendedTextBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +161,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ShowingsList.resx">
+      <DependentUpon>ShowingsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ShowingsListBox.resx">
+      <DependentUpon>ShowingsListBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\SeatsPanel.resx">
       <DependentUpon>SeatsPanel.cs</DependentUpon>

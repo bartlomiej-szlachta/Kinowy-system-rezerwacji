@@ -33,19 +33,19 @@
             this.repertuarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seatsView = new KinowySystemRezerwacji.view.SeatsView();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mojeRezerwacjeToolStripMenuItem,
             this.repertuarToolStripMenuItem,
             this.użytkownikToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -54,12 +54,14 @@
             this.mojeRezerwacjeToolStripMenuItem.Name = "mojeRezerwacjeToolStripMenuItem";
             this.mojeRezerwacjeToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.mojeRezerwacjeToolStripMenuItem.Text = "Moje rezerwacje";
+            this.mojeRezerwacjeToolStripMenuItem.Click += new System.EventHandler(this.mojeRezerwacjeToolStripMenuItem_Click);
             // 
             // repertuarToolStripMenuItem
             // 
             this.repertuarToolStripMenuItem.Name = "repertuarToolStripMenuItem";
             this.repertuarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.repertuarToolStripMenuItem.Text = "Repertuar";
+            this.repertuarToolStripMenuItem.Click += new System.EventHandler(this.repertuarToolStripMenuItem_Click);
             // 
             // użytkownikToolStripMenuItem
             // 
@@ -76,27 +78,19 @@
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click_1);
             // 
-            // seatsView
-            // 
-            this.seatsView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.seatsView.Location = new System.Drawing.Point(12, 27);
-            this.seatsView.Name = "seatsView";
-            this.seatsView.Size = new System.Drawing.Size(776, 411);
-            this.seatsView.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.seatsView);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(600, 398);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kinowy system rezerwacji";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -111,6 +105,5 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private SeatsView seatsView;
     }
 }
