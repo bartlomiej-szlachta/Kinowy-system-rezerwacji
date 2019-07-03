@@ -40,7 +40,8 @@ namespace KinowySystemRezerwacji.view
             InitializeComponent();
             
             dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
-            dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            dateControl.RequestShowingsList += (DateTime date) => 
+            RequestShowingsList?.Invoke(date);
             //showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
             listBoxShowing.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }

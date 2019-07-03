@@ -28,21 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewShowings = new System.Windows.Forms.ListView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // listViewShowings
+            // listBox1
             // 
-            this.listViewShowings.Location = new System.Drawing.Point(3, 3);
-            this.listViewShowings.Name = "listViewShowings";
-            this.listViewShowings.Size = new System.Drawing.Size(392, 301);
-            this.listViewShowings.TabIndex = 0;
-            this.listViewShowings.UseCompatibleStateImageBehavior = false;
-            this.listViewShowings.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ShowingsListBox_MouseDoubleClick);
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Location = new System.Drawing.Point(4, 4);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(391, 292);
+            this.listBox1.TabIndex = 0;
             // 
             // ShowingsListBox
             // 
-            this.Controls.Add(this.listViewShowings);
+            this.Controls.Add(this.listBox1);
             this.Name = "ShowingsListBox";
             this.Size = new System.Drawing.Size(398, 307);
             this.ResumeLayout(false);
@@ -50,8 +54,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxShowings;
-        private System.Windows.Forms.ListView listViewShowings;
+        
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

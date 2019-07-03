@@ -27,10 +27,10 @@ namespace KinowySystemRezerwacji.view
         {
             set
             {
-                listBoxShowings.Items.Clear();
+                listBox1.Items.Clear();
                 foreach (ShowingResponse showing in value)
                 {
-                    listBoxShowings.Items.Add($"ID: {showing.Id} Tytuł: {showing.FilmName}, data seansu: {showing.DateTime}, czas trwania: {showing.FilmDuration}, rok premiery: {showing.FilmYear}");
+                    listBox1.Items.Add($"ID: {showing.Id} Tytuł: {showing.FilmName}, data seansu: {showing.DateTime}, czas trwania: {showing.FilmDuration}, rok premiery: {showing.FilmYear}");
                     sramNaWinFormsy.Add(showing);
                 }
             }
@@ -38,7 +38,7 @@ namespace KinowySystemRezerwacji.view
 
         private void ShowingsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            RequestSeatsList?.Invoke(sramNaWinFormsy[listBoxShowings.SelectedIndex].Id);
+            RequestSeatsList?.Invoke(sramNaWinFormsy[listBox1.SelectedIndex].Id);
         }
     }
 }
