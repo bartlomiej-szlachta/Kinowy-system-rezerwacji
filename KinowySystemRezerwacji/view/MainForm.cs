@@ -16,6 +16,7 @@ namespace KinowySystemRezerwacji.view
         public MainForm()
         {
             InitializeComponent();
+            showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }
 
         internal void SetLoggedUser(string username)
@@ -41,7 +42,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsList(ShowingResponse[] response)
         {
-            throw new NotImplementedException();
+            showingsList.Showings = response;
         }
 
         private void wylogujToolStripMenuItem_Click_1(object sender, EventArgs e)
