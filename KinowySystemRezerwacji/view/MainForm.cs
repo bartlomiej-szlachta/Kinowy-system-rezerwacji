@@ -14,22 +14,12 @@ namespace KinowySystemRezerwacji.view
     internal partial class MainForm : Form
     {
 
-        #region Private controls
-
-        private ExtendedMonthCalendar calendarControl;
-
-
-        private void InitializeCalendar()
-        {
-            calendarControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            calendarControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
-        }
-
-        #endregion
-
         public MainForm()
         {
             InitializeComponent();
+
+            extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            extendedMonthCalendar.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
         }
 
         #region Shared with ViewManager
@@ -53,7 +43,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            calendarControl.ShowingsDates = response;
+            extendedMonthCalendar.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)
@@ -72,13 +62,15 @@ namespace KinowySystemRezerwacji.view
 
         private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            calendarControl = null;
+            extendedMonthCalendar.Visible = false;
+            bookingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
         private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            calendarControl = new ExtendedMonthCalendar();
+            extendedMonthCalendar.Visible = true;
+            bookingsListControl.Visible = false;
             RequestShowingsDates?.Invoke();
         }
 
@@ -89,7 +81,8 @@ namespace KinowySystemRezerwacji.view
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            calendarControl = null;
+            extendedMonthCalendar.Visible = false;
+            bookingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
