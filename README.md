@@ -38,9 +38,12 @@ W przypadku niespełnienia któregoś  z warunków, odpowiedni komunikat jest wy
 
 ### Korzystanie z systemu
 
-Dane dotyczące zalogowanego użytkownika wyświetlane są na górze ekranu.
+Dane dotyczące zalogowanego użytkownika wyświetlane są na górze ekranu. Na początku wita nas widok istniejących rezerwacji na danego
+użytkownika. Następnie w górnym menu można wybrać zakładkę `Repertuar`, w której wybierzemy datę, która nas interesuje odnośnie projekcji filmów. Po podjętej decyzji, mamy do dyspozycji listę seansów w danym dniu. Po podwójnym kliknięciu w wybrany wiersz, pokaże nam się okno z rezerwacją miejsc. 
+//TODO
+Jak to wygląda potem?
 
-Ten rozdział zostanie jeszcze uzupełniony. //TODO
+Kolejna zakładka umożliwia nam wylogowanie się, `Wyloguj się: nazwa_uzytkownika`. Powrócimy wtedy do ekranu logowania się do wybranego konta.
 
 ## Baza danych
 
@@ -50,19 +53,21 @@ Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `create-data
 
 ### Konfiguracja
 
-Domyślnie skonfigurowanaą bazą danych w systemie jest baza lokalna, która powinna znajdować się na lokalnym serwerze na komputerze. Jej dane dostępowe, znajdujące się w pliku źródłowym `DBInfo.resx`, to:
+Domyślnie skonfigurowaną bazą danych w systemie jest baza lokalna, która powinna znajdować się na lokalnym serwerze na komputerze. Jej dane dostępowe, znajdujące się w pliku źródłowym `DBInfo.resx`, to:
 - DataBase: `kinowy_system_rezerwacji`
 - Password: puste
 - Port: `3306`
 - Server: `localhost`
 - User: `root`
 
-W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdujące się w tym pliku. Oraz prawdopodobnie zbudować aplikację. //TODO
+W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdujące się w tym pliku oraz zbudować aplikację. //TODO
 
 ### Opis
 
 Baza danych jest przedstawiona schematami znajdującymi się w katalogu `/resources`: //TODO. 
-//TODO
+![Diagram związków encji](resources/diagram-zwiazkow-encji.jpg)
+
+![Model relacyjny bazy danych](resources/model-relacyjny-bazy-danych.png)
 
 ## Dokumentacja kodu
 
