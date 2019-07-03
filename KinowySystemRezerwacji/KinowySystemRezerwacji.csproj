@@ -97,6 +97,12 @@
     <Compile Include="view\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\SeatsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\SeatsPanel.Designer.cs">
+      <DependentUpon>SeatsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\SeatsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SeatsPanel.resx">
+      <DependentUpon>SeatsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\SeatsView.resx">
       <DependentUpon>SeatsView.cs</DependentUpon>
