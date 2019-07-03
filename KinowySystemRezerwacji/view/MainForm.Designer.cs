@@ -34,6 +34,7 @@
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsListControl = new KinowySystemRezerwacji.view.BookingsList();
+            this.dateControl = new KinowySystemRezerwacji.view.DateControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,28 +86,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bookingsListControl.BackColor = System.Drawing.SystemColors.Control;
-            this.bookingsListControl.Location = new System.Drawing.Point(12, 27);
+            this.bookingsListControl.Location = new System.Drawing.Point(0, 27);
             this.bookingsListControl.MinimumSize = new System.Drawing.Size(360, 322);
             this.bookingsListControl.Name = "bookingsListControl";
-            this.bookingsListControl.Size = new System.Drawing.Size(560, 322);
+            this.bookingsListControl.Size = new System.Drawing.Size(572, 322);
             this.bookingsListControl.TabIndex = 1;
             // 
-            // extendedMonthCalendar
+            // dateControl
             // 
-            this.extendedMonthCalendar.Location = new System.Drawing.Point(199, 78);
-            this.extendedMonthCalendar.Margin = new System.Windows.Forms.Padding(2);
-            this.extendedMonthCalendar.MaximumSize = new System.Drawing.Size(241, 200);
-            this.extendedMonthCalendar.MinimumSize = new System.Drawing.Size(241, 200);
-            this.extendedMonthCalendar.Name = "extendedMonthCalendar";
-            this.extendedMonthCalendar.Size = new System.Drawing.Size(241, 200);
-            this.extendedMonthCalendar.TabIndex = 2;
+            this.dateControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateControl.Location = new System.Drawing.Point(12, 27);
+            this.dateControl.Name = "dateControl";
+            this.dateControl.Size = new System.Drawing.Size(560, 89);
+            this.dateControl.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.extendedMonthCalendar);
+            this.Controls.Add(this.dateControl);
             this.Controls.Add(this.bookingsListControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -131,6 +131,6 @@
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private BookingsList bookingsListControl;
-        private ExtendedMonthCalendar extendedMonthCalendar;
+        private DateControl dateControl;
     }
 }

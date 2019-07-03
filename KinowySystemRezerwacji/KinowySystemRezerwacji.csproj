@@ -75,11 +75,11 @@
     <Compile Include="view\BookingsList.Designer.cs">
       <DependentUpon>BookingsList.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\ExtendedMonthCalendar.cs">
+    <Compile Include="view\DateControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\ExtendedMonthCalendar.Designer.cs">
-      <DependentUpon>ExtendedMonthCalendar.cs</DependentUpon>
+    <Compile Include="view\DateControl.Designer.cs">
+      <DependentUpon>DateControl.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ExtendedTextBox.cs">
       <SubType>UserControl</SubType>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="view\BookingsList.resx">
       <DependentUpon>BookingsList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ExtendedMonthCalendar.resx">
-      <DependentUpon>ExtendedMonthCalendar.cs</DependentUpon>
+    <EmbeddedResource Include="view\DateControl.resx">
+      <DependentUpon>DateControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ExtendedTextBox.resx">
       <DependentUpon>ExtendedTextBox.cs</DependentUpon>

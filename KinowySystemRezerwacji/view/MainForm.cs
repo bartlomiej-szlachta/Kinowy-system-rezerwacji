@@ -18,8 +18,8 @@ namespace KinowySystemRezerwacji.view
         {
             InitializeComponent();
 
-            extendedMonthCalendar.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            extendedMonthCalendar.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+            dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
+            dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
         }
 
         #region Shared with ViewManager
@@ -43,7 +43,7 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsDates(DateTime[] response)
         {
-            extendedMonthCalendar.ShowingsDates = response;
+            dateControl.ShowingsDates = response;
         }
 
         public void ShowShowingsList(ShowingResponse[] response)
@@ -62,14 +62,14 @@ namespace KinowySystemRezerwacji.view
 
         private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            extendedMonthCalendar.Visible = false;
+            dateControl.Visible = false;
             bookingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
         private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            extendedMonthCalendar.Visible = true;
+            dateControl.Visible = true;
             bookingsListControl.Visible = false;
             RequestShowingsDates?.Invoke();
         }
@@ -81,7 +81,7 @@ namespace KinowySystemRezerwacji.view
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            extendedMonthCalendar.Visible = false;
+            dateControl.Visible = false;
             bookingsListControl.Visible = true;
             RequestBookingsList?.Invoke();
         }
