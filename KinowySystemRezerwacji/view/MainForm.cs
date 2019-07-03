@@ -15,6 +15,7 @@ namespace KinowySystemRezerwacji.view
     {
         private BookingsList bookingsListControl;
         private DateControl dateControl;
+        private ShowingsList showingsList;
 
         private void InitializeControl(UserControl control)
         {
@@ -28,6 +29,7 @@ namespace KinowySystemRezerwacji.view
         {
             bookingsListControl = new BookingsList();
             dateControl = new DateControl();
+            showingsList = new ShowingsList();
 
             InitializeControl(bookingsListControl);
             InitializeControl(dateControl);

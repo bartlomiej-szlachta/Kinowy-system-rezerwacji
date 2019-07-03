@@ -92,20 +92,13 @@
             this.bookingsListControl.Name = "bookingsListControl";
             this.bookingsListControl.Size = new System.Drawing.Size(747, 396);
             this.bookingsListControl.TabIndex = 1;
-            // 
-            // showingsList
-            // 
-            this.showingsList.Location = new System.Drawing.Point(252, 254);
-            this.showingsList.Name = "showingsList";
-            this.showingsList.Size = new System.Drawing.Size(526, 301);
-            this.showingsList.TabIndex = 2;
+            
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 444);
-            this.Controls.Add(this.showingsList);
             this.Controls.Add(this.bookingsListControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -129,6 +122,5 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private BookingsList bookingsListControl;
     }
 }
