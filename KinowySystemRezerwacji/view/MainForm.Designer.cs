@@ -34,7 +34,6 @@
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookingsListControl = new KinowySystemRezerwacji.view.BookingsList();
-            this.showingsList = new KinowySystemRezerwacji.view.ShowingsList();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,12 +56,14 @@
             this.mojeRezerwacjeToolStripMenuItem.Name = "mojeRezerwacjeToolStripMenuItem";
             this.mojeRezerwacjeToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.mojeRezerwacjeToolStripMenuItem.Text = "Moje rezerwacje";
+            this.mojeRezerwacjeToolStripMenuItem.Click += new System.EventHandler(this.mojeRezerwacjeToolStripMenuItem_Click);
             // 
             // repertuarToolStripMenuItem
             // 
             this.repertuarToolStripMenuItem.Name = "repertuarToolStripMenuItem";
             this.repertuarToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.repertuarToolStripMenuItem.Text = "Repertuar";
+            this.repertuarToolStripMenuItem.Click += new System.EventHandler(this.repertuarToolStripMenuItem_Click);
             // 
             // użytkownikToolStripMenuItem
             // 
@@ -119,7 +120,6 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -130,6 +130,5 @@
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private BookingsList bookingsListControl;
-        private ShowingsList showingsList;
     }
 }
