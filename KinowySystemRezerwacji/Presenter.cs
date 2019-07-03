@@ -43,6 +43,7 @@ namespace KinowySystemRezerwacji
             view.RequestLogIn += HandleLogIn;
             view.RequestLogOut += HandleLogOut;
             view.RequestBookingsList += HandleBookingsList;
+            view.RequestShowingsDates += HandleShowingsDates;
             view.RequestShowingsList += HandleShowingsList;
             view.RequestSeatsList += HandleSeatsList;
             view.RequestBookShowing += HandleBookShowing;
@@ -125,6 +126,7 @@ namespace KinowySystemRezerwacji
         {
             try
             {
+                
                 view.ShowShowingsList(model.GetShowings(date));
             }
             catch (Exception ex)
@@ -158,6 +160,21 @@ namespace KinowySystemRezerwacji
             try
             {
                 model.BookSeats(request);
+            }
+            catch (Exception ex)
+            {
+                view.ShowMessage(false, TranslateToPolish(ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Metoda obsługująca event żądania uzyskania listy dni, w których odbywają się seanse.
+        /// </summary>
+        private void HandleShowingsDates()
+        {
+            try
+            {
+                view.ShowShowingsDates(model.GetShowingsDates());
             }
             catch (Exception ex)
             {

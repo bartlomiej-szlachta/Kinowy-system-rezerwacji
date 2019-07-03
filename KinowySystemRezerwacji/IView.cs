@@ -33,6 +33,11 @@ namespace KinowySystemRezerwacji
         event Action RequestBookingsList;
 
         /// <summary>
+        /// Event reprezentujący żądanie uzyskania listy dni, w których odbywają się seanse.
+        /// </summary>
+        event Action RequestShowingsDates;
+
+        /// <summary>
         /// Event reprezentujący żądanie wyświetlenia listy dostępnych seansów.
         /// </summary>
         event Action<DateTime> RequestShowingsList;
@@ -58,6 +63,12 @@ namespace KinowySystemRezerwacji
         /// </summary>
         /// <param name="response">Zestaw obiektów zawierających dane dotyczące rezerwacji</param>
         void ShowBookingsList(BookingResponse[] response);
+
+        /// <summary>
+        /// Metoda wyświetlająca dni, w których odbywają się seanse.
+        /// </summary>
+        /// <param name="response"></param>
+        void ShowShowingsDates(DateTime[] response);
 
         /// <summary>
         /// Metoda wyświetlająca listę dostępnych seansów.

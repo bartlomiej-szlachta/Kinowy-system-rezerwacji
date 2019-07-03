@@ -33,12 +33,12 @@
             this.repertuarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingsListControl = new KinowySystemRezerwacji.view.BookingsList();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mojeRezerwacjeToolStripMenuItem,
             this.repertuarToolStripMenuItem,
@@ -54,12 +54,14 @@
             this.mojeRezerwacjeToolStripMenuItem.Name = "mojeRezerwacjeToolStripMenuItem";
             this.mojeRezerwacjeToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.mojeRezerwacjeToolStripMenuItem.Text = "Moje rezerwacje";
+            this.mojeRezerwacjeToolStripMenuItem.Click += new System.EventHandler(this.mojeRezerwacjeToolStripMenuItem_Click);
             // 
             // repertuarToolStripMenuItem
             // 
             this.repertuarToolStripMenuItem.Name = "repertuarToolStripMenuItem";
             this.repertuarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.repertuarToolStripMenuItem.Text = "Repertuar";
+            this.repertuarToolStripMenuItem.Click += new System.EventHandler(this.repertuarToolStripMenuItem_Click);
             // 
             // użytkownikToolStripMenuItem
             // 
@@ -76,24 +78,11 @@
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click_1);
             // 
-            // bookingsListBox
-            // 
-            this.bookingsListControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bookingsListControl.BackColor = System.Drawing.SystemColors.Control;
-            this.bookingsListControl.Location = new System.Drawing.Point(12, 27);
-            this.bookingsListControl.MinimumSize = new System.Drawing.Size(360, 322);
-            this.bookingsListControl.Name = "bookingsListBox";
-            this.bookingsListControl.Size = new System.Drawing.Size(560, 322);
-            this.bookingsListControl.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.bookingsListControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(600, 400);
@@ -106,7 +95,6 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -116,6 +104,5 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private BookingsList bookingsListControl;
     }
 }
