@@ -39,6 +39,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.monthCalendar.Location = new System.Drawing.Point(9, 50);
             this.monthCalendar.MaxDate = new System.DateTime(2019, 12, 31, 0, 0, 0, 0);
+            this.monthCalendar.MaxSelectionCount = 1;
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 0;
             this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
