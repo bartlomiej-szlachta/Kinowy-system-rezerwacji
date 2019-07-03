@@ -33,8 +33,6 @@
             this.repertuarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookingsListControl = new KinowySystemRezerwacji.view.BookingsList();
-            this.dateControl = new KinowySystemRezerwacji.view.DateControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,34 +78,11 @@
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             this.wylogujToolStripMenuItem.Click += new System.EventHandler(this.wylogujToolStripMenuItem_Click_1);
             // 
-            // bookingsListControl
-            // 
-            this.bookingsListControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bookingsListControl.BackColor = System.Drawing.SystemColors.Control;
-            this.bookingsListControl.Location = new System.Drawing.Point(0, 27);
-            this.bookingsListControl.MinimumSize = new System.Drawing.Size(360, 322);
-            this.bookingsListControl.Name = "bookingsListControl";
-            this.bookingsListControl.Size = new System.Drawing.Size(572, 322);
-            this.bookingsListControl.TabIndex = 1;
-            // 
-            // dateControl
-            // 
-            this.dateControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateControl.Location = new System.Drawing.Point(12, 27);
-            this.dateControl.Name = "dateControl";
-            this.dateControl.Size = new System.Drawing.Size(560, 89);
-            this.dateControl.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.dateControl);
-            this.Controls.Add(this.bookingsListControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(600, 400);
@@ -120,7 +95,6 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -130,7 +104,5 @@
         private System.Windows.Forms.ToolStripMenuItem repertuarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private BookingsList bookingsListControl;
-        private DateControl dateControl;
     }
 }

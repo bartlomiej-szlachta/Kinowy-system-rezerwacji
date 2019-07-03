@@ -13,11 +13,27 @@ namespace KinowySystemRezerwacji.view
 {
     internal partial class MainForm : Form
     {
+        private BookingsList bookingsListControl;
+        private DateControl dateControl;
+
+        private void InitializeControl(UserControl control)
+        {
+            control.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            control.Location = new Point(12, 27);
+            control.MinimumSize = new Size(560, 322);
+            Controls.Add(control);
+        }
 
         public MainForm()
         {
-            InitializeComponent();
+            bookingsListControl = new BookingsList();
+            dateControl = new DateControl();
 
+            InitializeControl(bookingsListControl);
+            InitializeControl(dateControl);
+            
+            InitializeComponent();
+            
             dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
         }
