@@ -115,6 +115,12 @@
     <Compile Include="view\ShowingsList.Designer.cs">
       <DependentUpon>ShowingsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\ShowingsListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\ShowingsListBox.Designer.cs">
+      <DependentUpon>ShowingsListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ViewManager.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\ShowingsList.resx">
       <DependentUpon>ShowingsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ShowingsListBox.resx">
+      <DependentUpon>ShowingsListBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

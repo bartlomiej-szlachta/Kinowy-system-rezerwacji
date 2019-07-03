@@ -15,7 +15,8 @@ namespace KinowySystemRezerwacji.view
     {
         private BookingsList bookingsListControl;
         private DateControl dateControl;
-        private ShowingsList showingsList;
+        //private ShowingsList showingsList;
+        private ShowingsListBox listBoxShowing;
 
         private void InitializeControl(UserControl control)
         {
@@ -29,17 +30,19 @@ namespace KinowySystemRezerwacji.view
         {
             bookingsListControl = new BookingsList();
             dateControl = new DateControl();
-            showingsList = new ShowingsList();
+            //showingsList = new ShowingsList();
+            listBoxShowing = new ShowingsListBox();
 
             InitializeControl(bookingsListControl);
             InitializeControl(dateControl);
-            InitializeControl(showingsList);
-
+            //InitializeControl(showingsList);
+            InitializeControl(listBoxShowing);
             InitializeComponent();
             
             dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
             dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
-            showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
+            //showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
+            listBoxShowing.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }
 
         #region Shared with ViewManager
@@ -68,9 +71,11 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsList(ShowingResponse[] response)
         {
-            showingsList.Showings = response;
+            //showingsList.Showings = response;
+            listBoxShowing.Showings = response;
             dateControl.Visible = false;
-            showingsList.Visible = true;
+            //showingsList.Visible = true;
+            listBoxShowing.Visible = true;
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
@@ -86,7 +91,8 @@ namespace KinowySystemRezerwacji.view
         {
             bookingsListControl.Visible = true;
             dateControl.Visible = false;
-            showingsList.Visible = false;
+            //showingsList.Visible = false;
+            listBoxShowing.Visible = false;
             RequestBookingsList?.Invoke();
         }
 
@@ -94,7 +100,8 @@ namespace KinowySystemRezerwacji.view
         {
             bookingsListControl.Visible = false;
             dateControl.Visible = true;
-            showingsList.Visible = false;
+            //showingsList.Visible = false;
+            listBoxShowing.Visible = false;
             RequestShowingsDates?.Invoke();
         }
 
@@ -107,7 +114,8 @@ namespace KinowySystemRezerwacji.view
         {
             bookingsListControl.Visible = true;
             dateControl.Visible = false;
-            showingsList.Visible = true;
+            //showingsList.Visible = true;
+            listBoxShowing.Visible = true;
             RequestBookingsList?.Invoke();
         }
 

@@ -49,7 +49,7 @@
             this.showingsListView.Location = new System.Drawing.Point(17, 15);
             this.showingsListView.MultiSelect = false;
             this.showingsListView.Name = "showingsListView";
-            this.showingsListView.Size = new System.Drawing.Size(491, 273);
+            this.showingsListView.Size = new System.Drawing.Size(495, 273);
             this.showingsListView.TabIndex = 1;
             this.showingsListView.UseCompatibleStateImageBehavior = false;
             this.showingsListView.View = System.Windows.Forms.View.Details;
