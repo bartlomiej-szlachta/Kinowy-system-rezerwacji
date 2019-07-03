@@ -13,8 +13,7 @@ namespace KinowySystemRezerwacji.view
 {
     internal partial class ShowingsListBox : UserControl
     {
-        List<ShowingResponse> sramNaWinFormsy = new List<ShowingResponse>();
-
+        List<ShowingResponse> showings = new List<ShowingResponse>();
 
         internal ShowingsListBox()
         {
@@ -31,14 +30,14 @@ namespace KinowySystemRezerwacji.view
                 foreach (ShowingResponse showing in value)
                 {
                     listBox1.Items.Add($"ID: {showing.Id} Tytuł: {showing.FilmName}, data seansu: {showing.DateTime}, czas trwania: {showing.FilmDuration}, rok premiery: {showing.FilmYear}");
-                    sramNaWinFormsy.Add(showing);
+                    showings.Add(showing);
                 }
             }
         }
 
         private void ShowingsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            RequestSeatsList?.Invoke(sramNaWinFormsy[listBox1.SelectedIndex].Id);
+            RequestSeatsList?.Invoke(showings[listBox1.SelectedIndex].Id);
         }
     }
 }
