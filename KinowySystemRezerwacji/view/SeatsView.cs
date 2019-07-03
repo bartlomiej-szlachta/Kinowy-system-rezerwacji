@@ -39,6 +39,12 @@ namespace KinowySystemRezerwacji.view
                     label.Top = SPACES_SIZE + seat.PosY * (labelSize + SPACES_SIZE);
                     label.Left = SPACES_SIZE + seat.PosX * (labelSize + SPACES_SIZE);
 
+            //        label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            //| System.Windows.Forms.AnchorStyles.Left)
+            //| System.Windows.Forms.AnchorStyles.Right)));
+
+                    label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
                     label.Click += (object sender, EventArgs e) =>
                     {
                         Label theLabel = (Label)sender;
