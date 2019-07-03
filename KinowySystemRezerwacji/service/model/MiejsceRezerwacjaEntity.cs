@@ -5,7 +5,7 @@ namespace KinowySystemRezerwacji.service.model
     /// <summary>
     /// Klasa reprezentująca encję miejsca_rezerwacje z bazy danych.
     /// </summary>
-    class MiejsceRezerwacjaEntity
+    internal class MiejsceRezerwacjaEntity
     {
         /// <summary>
         /// Id miejsca_rezerwacje.
@@ -31,6 +31,17 @@ namespace KinowySystemRezerwacji.service.model
             Id = (int)reader["id"];
             IdRezerwacji = (int)reader["id_rezerwacji"];
             IdMiejsca = (int)reader["id_miejsca"];
+        }
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="idRezerwacji">ID rezerwacji</param>
+        /// <param name="idMiejsca">ID miejsca</param>
+        internal MiejsceRezerwacjaEntity(int idRezerwacji, int idMiejsca)
+        {
+            IdRezerwacji = IdRezerwacji;
+            IdMiejsca = idMiejsca;
         }
     }
 }

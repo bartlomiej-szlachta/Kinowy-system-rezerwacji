@@ -238,7 +238,17 @@ namespace KinowySystemRezerwacji.service
         {
             if (loggedUser != null)
             {
-                throw new NotImplementedException();
+                RezerwacjaRepository rezerwacjaRepository = new RezerwacjaRepository();
+                MiejsceRezerwacjaRepository miejsceRezerwacjaRepository = new MiejsceRezerwacjaRepository();
+                
+                rezerwacjaRepository.Save(new RezerwacjaEntity(request.ShowingId, loggedUser.Id));
+                RezerwacjaEntity rezerwacja = rezerwacjaRepository.GetLast().OrElseThrow("Nie można odnaleźć żadnej rezerwacji w bazie danych");
+
+                foreach (int seatId in request.SeatsIds)
+                {
+                    miejsceRezerwacjaRepository.Save(new MiejsceRezerwacjaEntity(rezerwacja.Id, seatId));
+                }
+                BasicResponse?.Invoke(true, "Zapisano rezerwację");
             }
             else
             {
