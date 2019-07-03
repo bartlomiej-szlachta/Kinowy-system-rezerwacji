@@ -21,7 +21,7 @@ namespace KinowySystemRezerwacji.view
         {
             control.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             control.Location = new Point(12, 27);
-            control.MinimumSize = new Size(560, 322);
+            control.Size = new Size(560, 322);
             Controls.Add(control);
         }
 
@@ -33,11 +33,12 @@ namespace KinowySystemRezerwacji.view
 
             InitializeControl(bookingsListControl);
             InitializeControl(dateControl);
-            
+            InitializeControl(showingsList);
+
             InitializeComponent();
             
-            dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             dateControl.RequestShowingsDates += () => RequestShowingsDates?.Invoke();
+            dateControl.RequestShowingsList += (DateTime date) => RequestShowingsList?.Invoke(date);
             showingsList.RequestSeatsList += (int id) => RequestSeatsList?.Invoke(id);
         }
 
@@ -67,7 +68,9 @@ namespace KinowySystemRezerwacji.view
 
         public void ShowShowingsList(ShowingResponse[] response)
         {
-            throw new NotImplementedException();
+            showingsList.Showings = response;
+            dateControl.Visible = false;
+            showingsList.Visible = true;
         }
 
         public void ShowSeatsList(SeatToChooseResponse[] response)
@@ -81,15 +84,17 @@ namespace KinowySystemRezerwacji.view
 
         private void mojeRezerwacjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dateControl.Visible = false;
             bookingsListControl.Visible = true;
+            dateControl.Visible = false;
+            showingsList.Visible = false;
             RequestBookingsList?.Invoke();
         }
 
         private void repertuarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dateControl.Visible = true;
             bookingsListControl.Visible = false;
+            dateControl.Visible = true;
+            showingsList.Visible = false;
             RequestShowingsDates?.Invoke();
         }
 
@@ -100,8 +105,9 @@ namespace KinowySystemRezerwacji.view
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            dateControl.Visible = false;
             bookingsListControl.Visible = true;
+            dateControl.Visible = false;
+            showingsList.Visible = true;
             RequestBookingsList?.Invoke();
         }
 
