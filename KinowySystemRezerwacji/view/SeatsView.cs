@@ -33,10 +33,6 @@ namespace KinowySystemRezerwacji.view
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            BookSeatsRequest request = new BookSeatsRequest
-            {
-                ShowingId = ShowingId
-            };
             List<int> chosenIds = new List<int>();
             foreach (Label label in seatsPanel1.Labels)
             {
@@ -46,9 +42,26 @@ namespace KinowySystemRezerwacji.view
                     chosenIds.Add(id);
                 }
             }
-            request.SeatsIds = chosenIds.ToArray();
-            seatsPanel1.Labels.Clear();
-            RequestBookShowing.Invoke(request);
+            if (chosenIds.Count == 0)
+            {
+                MessageBox.Show("Nie wybrano żadnego miejsca", "Błąd", MessageBoxButtons.OK);
+            }
+            else
+            {
+                BookSeatsRequest request = new BookSeatsRequest
+                {
+                    ShowingId = ShowingId
+                };
+                request.SeatsIds = chosenIds.ToArray();
+
+                RequestBookShowing.Invoke(request);
+
+                foreach (Label label in seatsPanel1.Labels)
+                {
+                    seatsPanel1.Controls.Remove(label);
+                }
+                Visible = false;
+            }
         }
     }
 }
