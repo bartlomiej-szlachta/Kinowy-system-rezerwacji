@@ -44,7 +44,7 @@ namespace KinowySystemRezerwacji.service.dao
             MySqlConnection connection = DBConnection.Instance.Connection;
             connection.Open();
             MySqlCommand insertingCommand = connection.CreateCommand();
-            insertingCommand.CommandText = "INSERT INTO rezerwacje (id_rezerwacji, id_miejsca) VALUES (?id_rezerwacji, ?id_miejsca)";
+            insertingCommand.CommandText = "INSERT INTO miejsca_rezerwacje (id_rezerwacji, id_miejsca) VALUES (?id_rezerwacji, ?id_miejsca)";
             insertingCommand.Parameters.AddWithValue("?id_rezerwacji", miejsceRezerwacja.IdRezerwacji);
             insertingCommand.Parameters.AddWithValue("?id_miejsca", miejsceRezerwacja.IdMiejsca);
             insertingCommand.ExecuteNonQuery();
