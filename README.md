@@ -49,7 +49,7 @@ Kolejna zakładka umożliwia nam wylogowanie się, `Wyloguj się: nazwa_uzytkown
 
 ### Tworzenie
 
-Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `create-database.sql`. Natomiast skrypt `create-example-data.sql` wprowadza do przykładowe dane do utworzonej bazy. Nazwa bazy danych: `kinowy_system_rezerwacji`.
+Aby utworzyć bazę danych, należy wykonać skrypt zawarty w pliku `resources/create-database.sql`. Natomiast skrypt `resources/create-example-data.sql` wprowadza do przykładowe dane do utworzonej bazy. Nazwa bazy danych: `kinowy_system_rezerwacji`.
 
 ### Konfiguracja
 
@@ -64,7 +64,7 @@ W przypadku innej lokalizacji bazy danych, należy zaktualizować dane znajdują
 
 ### Opis
 
-Baza danych jest przedstawiona schematami znajdującymi się w katalogu `/resources`: //TODO.
+Schematy bazy danych (dokumenty, grafiki) znajdują się w katalogu `/resources`. 
 
 Diagram związków encji: 
 
