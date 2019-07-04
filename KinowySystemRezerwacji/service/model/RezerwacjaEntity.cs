@@ -33,5 +33,16 @@ namespace KinowySystemRezerwacji.service.model
             IdSeansu = (int)reader["id_seansu"];
             IdUzytkownika = (int)reader["id_uzytkownika"];
         }
+
+        /// <summary>
+        /// Konstruktor.
+        /// </summary>
+        /// <param name="idSeansu">ID seansu</param>
+        /// <param name="IdUzytkownika">ID użytkownika</param>
+        internal RezerwacjaEntity(int idSeansu, int idUzytkownika)
+        {
+            IdSeansu = idSeansu;
+            IdUzytkownika = idUzytkownika;
+        }
     }
 }
