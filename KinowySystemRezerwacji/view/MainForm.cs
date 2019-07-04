@@ -81,6 +81,7 @@ namespace KinowySystemRezerwacji.view
             showingsListControl.Visible = false;
             seatsViewControl.Visible = true;
             seatsViewControl.Seats = response;
+            seatsViewControl.ShowingId = showingsListControl.ChosenShowingId;
         }
 
         #endregion

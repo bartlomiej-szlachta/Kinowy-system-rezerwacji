@@ -35,9 +35,11 @@ namespace KinowySystemRezerwacji.view
             }
         }
 
+        internal int ChosenShowingId { get { return showings[listBox1.SelectedIndex].Id; } }
+
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            RequestSeatsList?.Invoke(showings[listBox1.SelectedIndex].Id);
+            RequestSeatsList?.Invoke(ChosenShowingId);
         }
     }
 }

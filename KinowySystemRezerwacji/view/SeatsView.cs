@@ -29,9 +29,14 @@ namespace KinowySystemRezerwacji.view
             }
         }
 
+        internal int ShowingId { private get; set; }
+
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            BookSeatsRequest request = new BookSeatsRequest();
+            BookSeatsRequest request = new BookSeatsRequest
+            {
+                ShowingId = ShowingId
+            };
             List<int> chosenIds = new List<int>();
             foreach (Label label in seatsPanel1.Labels)
             {
