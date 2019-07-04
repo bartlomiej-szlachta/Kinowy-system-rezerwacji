@@ -41,7 +41,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <param name="IdUzytkownika">ID użytkownika</param>
         internal RezerwacjaEntity(int idSeansu, int idUzytkownika)
         {
-            IdSeansu = IdSeansu;
+            IdSeansu = idSeansu;
             IdUzytkownika = idUzytkownika;
         }
     }
