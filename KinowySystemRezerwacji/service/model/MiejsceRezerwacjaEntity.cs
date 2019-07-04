@@ -40,7 +40,7 @@ namespace KinowySystemRezerwacji.service.model
         /// <param name="idMiejsca">ID miejsca</param>
         internal MiejsceRezerwacjaEntity(int idRezerwacji, int idMiejsca)
         {
-            IdRezerwacji = IdRezerwacji;
+            IdRezerwacji = idRezerwacji;
             IdMiejsca = idMiejsca;
         }
     }
