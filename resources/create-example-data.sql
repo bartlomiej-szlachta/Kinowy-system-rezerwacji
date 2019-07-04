@@ -180,7 +180,8 @@ INSERT INTO rezerwacje (id, id_seansu, id_uzytkownika) VALUES
 (7,2,2),
 (8,5,2),
 (9,9,1),
-(10,26,3);
+(10,26,3),
+(11,22,3);
 
 INSERT INTO miejsca_rezerwacje (id, id_rezerwacji, id_miejsca) VALUES
 (1,1,113),
@@ -217,4 +218,12 @@ INSERT INTO miejsca_rezerwacje (id, id_rezerwacji, id_miejsca) VALUES
 (32,7,101),
 (33,7,102),
 (34,7,103),
-(35,7,104);
+(35,7,104),
+(36,11,111),
+(37,11,112),
+(38,11,113),
+(39,11,114),
+(40,11,115),
+(41,11,116),
+(42,11,117),
+(43,11,118);
