@@ -56,5 +56,42 @@ namespace KinowySystemRezerwacji.service.dao
             }
             return rezerwacje;
         }
+
+        /// <summary>
+        /// Metoda zapisująca do bazy nową encję rezerwacji.
+        /// </summary>
+        /// <param name="rezerwacja">Rezerwacja do dodania</param>
+        internal void Save(RezerwacjaEntity rezerwacja)
+        {
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            connection.Open();
+            MySqlCommand insertingCommand = connection.CreateCommand();
+            insertingCommand.CommandText = "INSERT INTO rezerwacje (id_seansu, id_uzytkownika) VALUES (?id_seansu, ?id_uzytkownika)";
+            insertingCommand.Parameters.AddWithValue("?id_seansu", rezerwacja.IdSeansu);
+            insertingCommand.Parameters.AddWithValue("?id_uzytkownika", rezerwacja.IdUzytkownika);
+            insertingCommand.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /// <summary>
+        /// Metoda uzyskująca z bazy danych dane dotyczące ostatniej dodanej rezerwacji.
+        /// </summary>
+        /// <returns>Dane dotyczące ostatniej dodanej rezerwacji</returns>
+        internal Optional<RezerwacjaEntity> GetLast()
+        {
+            RezerwacjaEntity rezerwacja = null;
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM rezerwacje ORDER BY id DESC LIMIT 1;", connection))
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    rezerwacja = new RezerwacjaEntity(reader);
+                }
+                connection.Close();
+            }
+            return new Optional<RezerwacjaEntity>(rezerwacja);
+        }
     }
 }

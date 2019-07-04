@@ -22,8 +22,8 @@ namespace KinowySystemRezerwacji
             Service model = new Service();
             IView view = new ViewManager();
             Presenter presenter = new Presenter(model, view);
-            
-            while(true)
+
+            while (true)
             {
                 Form activeForm = (((ViewManager)view)).GetActiveForm();
                 if (activeForm != null)

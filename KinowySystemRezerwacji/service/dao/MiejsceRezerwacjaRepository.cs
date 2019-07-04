@@ -34,5 +34,21 @@ namespace KinowySystemRezerwacji.service.dao
             }
             return miejscaRezerwacje;
         }
+
+        /// <summary>
+        /// Metoda zapisująca do bazy nową encję miejsca-rezerwacji.
+        /// </summary>
+        /// <param name="miejsceRezerwacja">Miejsce-rezerwacja do dodania</param>
+        internal void Save(MiejsceRezerwacjaEntity miejsceRezerwacja)
+        {
+            MySqlConnection connection = DBConnection.Instance.Connection;
+            connection.Open();
+            MySqlCommand insertingCommand = connection.CreateCommand();
+            insertingCommand.CommandText = "INSERT INTO miejsca_rezerwacje (id_rezerwacji, id_miejsca) VALUES (?id_rezerwacji, ?id_miejsca)";
+            insertingCommand.Parameters.AddWithValue("?id_rezerwacji", miejsceRezerwacja.IdRezerwacji);
+            insertingCommand.Parameters.AddWithValue("?id_miejsca", miejsceRezerwacja.IdMiejsca);
+            insertingCommand.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
